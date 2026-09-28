@@ -13,26 +13,52 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Local data and generated artifacts
+# ── Data ────────────────────────────────────────────────────────────────────
+# raw/ is immutable and large — excluded from git
 data/raw/*
-data/processed/*
-reports/figures/*
-reports/metrics/*
 !data/raw/.gitkeep
-!data/processed/.gitkeep
-!reports/figures/.gitkeep
-!reports/metrics/.gitkeep
-*.joblib
-*.pickle
-*.pkl
 
-# Local tooling and secrets
+# interim/ contains extracted ASCII files — large, reproducible from raw/
+data/interim/*
+!data/interim/.gitkeep
+
+# processed/ contains computed features — reproducible from interim/
+data/processed/train/*
+data/processed/val/*
+data/processed/test/*
+!data/processed/train/.gitkeep
+!data/processed/val/.gitkeep
+!data/processed/test/.gitkeep
+
+# macOS metadata (may appear inside extracted RARs)
+__MACOSX/
+._*
+
+# ── Experiments ─────────────────────────────────────────────────────────────
+# Run subdirectories are large (model weights, figures) — NOT tracked in git.
+# Only registry.csv (text, small) is tracked.
+experiments/*/
+!experiments/.gitkeep
+!experiments/registry.csv
+
+# Model artefacts that could appear elsewhere
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.joblib
+
+# ── Reports ─────────────────────────────────────────────────────────────────
+reports/figures/*
+!reports/figures/.gitkeep
+
+# ── Local tooling and secrets ────────────────────────────────────────────────
 .env
 .vscode/
 .pytest_cache/
 .coverage
 htmlcov/
 
-# OS files
+# ── OS files ─────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

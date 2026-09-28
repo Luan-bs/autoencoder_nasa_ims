@@ -1,0 +1,1 @@
+run_id,model,test_set,channel,seed,window_size_files,recall,precision,f1,pr_auc,roc_auc,false_alarm_rate,detection_lead_files,detection_lead_hours,threshold_value,threshold_strategy,alert_recall_lt_accuracy,git_commit,data_hash,lib_versions,device,training_time_s,timestamp

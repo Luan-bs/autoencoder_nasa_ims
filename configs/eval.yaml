@@ -1,0 +1,121 @@
+# Evaluation protocol — FIXED for all models and baselines
+#
+# Changing this file invalidates all comparisons between existing runs.
+# DO NOT MODIFY after the first training run.
+# Changes require: new section in this file, bump version, and approval.
+
+version: "1.0"
+status: "ACTIVE"
+
+# ── Threshold selection ──────────────────────────────────────────────────────
+# Threshold is chosen on the VALIDATION set ONLY.
+# Never look at the test set when selecting the threshold.
+threshold:
+  strategy: "percentile"      # options: "percentile" | "recall_target"
+  # if strategy = "percentile":
+  percentile: 99.0            # use 99th percentile of TRAIN reconstruction error
+  # if strategy = "recall_target":
+  recall_target: null         # target recall on val set (unused when strategy=percentile)
+
+# ── Metrics ─────────────────────────────────────────────────────────────────
+# PRINCIPAL metric: recall.
+# accuracy / balanced_accuracy are REPORTED but NEVER used to select model or threshold.
+metrics:
+  primary: "recall"
+
+  report_all:
+    - recall                  # fraction of failure files correctly flagged
+    - precision
+    - f1
+    - pr_auc                  # area under precision-recall curve (threshold-independent)
+    - roc_auc                 # area under ROC curve (threshold-independent)
+    - false_alarm_rate        # fraction of healthy files incorrectly flagged
+    - detection_lead_files    # files before end-of-life at first sustained alarm
+    - detection_lead_hours    # same, converted to hours
+    - accuracy                # REPORTED ONLY — not used for selection
+    - balanced_accuracy       # REPORTED ONLY — not used for selection
+
+  # Sustained alarm: N consecutive files above threshold
+  sustained_alarm_window_files: 5
+
+  # ALERT: if recall < accuracy in any run, mark "ALERTA" in report and explain.
+  # This is a sanity check, not a target to optimise.
+  alert_if_recall_lt_accuracy: true
+
+  save_per_run:
+    - confusion_matrix        # saved as confusion_matrix.png + confusion_matrix.json
+    - pr_curve                # precision-recall curve
+    - roc_curve
+    - reconstruction_error_timeline  # error over time with threshold line
+
+# ── Seeds ────────────────────────────────────────────────────────────────────
+seeds:
+  list: [42, 123, 456]
+  n_seeds: 3                  # report mean ± std across seeds for all metrics
+
+# ── Experiment management ────────────────────────────────────────────────────
+experiment:
+  require_clean_git: true     # abort if there are uncommitted changes
+  run_id_format: "YYYYMMDD-HHMM_{model}_{test_set}_seed{seed}"
+
+  # experiments/registry.csv — one row per run
+  registry_path: "experiments/registry.csv"
+  registry_columns:
+    - run_id
+    - model
+    - test_set
+    - channel
+    - seed
+    - window_size_files
+    - recall
+    - precision
+    - f1
+    - pr_auc
+    - roc_auc
+    - false_alarm_rate
+    - detection_lead_files
+    - detection_lead_hours
+    - threshold_value
+    - threshold_strategy
+    - alert_recall_lt_accuracy  # bool
+    - git_commit
+    - data_hash
+    - lib_versions
+    - device                  # cpu | cuda (+ GPU model)
+    - training_time_s
+    - timestamp
+
+  # Per-run artefacts saved in experiments/<run_id>/
+  run_artefacts:
+    - config.yaml             # full snapshot of all configs at run time
+    - metrics.json            # all metrics for this run
+    - training_curve.png      # loss vs epoch
+    - confusion_matrix.png
+    - confusion_matrix.json
+    - pr_curve.png
+    - roc_curve.png
+    - reconstruction_error_timeline.png
+    - scaler.pkl              # StandardScaler fitted on train only
+    - model_weights.pt        # PyTorch state_dict (autoencoders)
+                              # or model.pkl (PCA / IsolationForest)
+
+# ── Baselines ────────────────────────────────────────────────────────────────
+# Same protocol, same split, same features, same evaluation for all.
+# Only architecture differs.
+baselines:
+  - name: "pca"
+    type: "sklearn"
+    note: "PCA reconstruction error — n_components from explained variance ≥ 0.95"
+  - name: "isolation_forest"
+    type: "sklearn"
+    note: "IsolationForest with contamination=auto"
+
+# ── Models to compare ────────────────────────────────────────────────────────
+models:
+  - name: "mlp"
+    input: "window_flat"      # features of L files flattened into 1D vector
+  - name: "conv1d"
+    input: "window_sequence"  # features of L files as (L, n_features) sequence
+  - name: "lstm"
+    input: "window_sequence"  # same; LSTM operates on time axis between files
+                              # sequences never cross timestamp gaps

@@ -1,0 +1,65 @@
+# Labeling protocol — temporal train / val / test split
+#
+# STATUS: *** SKELETON — NOT FILLED ***
+# To be completed after EDA (notebooks/01_EDA.ipynb) and approved by project owner.
+# Once approved and first training run starts, this file is FROZEN.
+# Any change = new experiment, new run_id. Never edit retroactively.
+#
+# ── Rules ───────────────────────────────────────────────────────────────────
+# 1. Split is STRICTLY TEMPORAL (file index order = time order).
+# 2. train   → only healthy data (beginning of test).
+# 3. val     → used ONLY for threshold selection; no model hyperparameter tuning.
+# 4. grey_zone → excluded entirely from train, val, and test evaluation.
+#               (transition zone: behaviour unclear, not used for labelling)
+# 5. test    → degradation / failure zone; used only for final evaluation.
+# 6. Indices are 0-based and refer to the sorted file list after gap detection.
+# 7. Windows / sequences must NEVER cross a gap (registered in interim logs).
+#
+# ── Format ──────────────────────────────────────────────────────────────────
+# For each set:
+#   train_end_idx        : last file index (inclusive) of the TRAIN set
+#   grey_start_idx       : first file of the grey zone (excluded from all splits)
+#   grey_end_idx         : last file of the grey zone (excluded from all splits)
+#   val_start_idx        : first file of the VALIDATION set
+#   val_end_idx          : last file of the VALIDATION set
+#   test_start_idx       : first file of the TEST set (degradation / failure)
+#   note                 : justification / EDA observation that drove the cut
+#   approved_by          : initials + date (filled when owner approves)
+#   frozen               : set to true after first training run — DO NOT change
+
+status: "SKELETON — pending EDA approval"
+
+sets:
+
+  "2nd_test":                  # Failure: Bearing1 outer race  |  984 files
+    train_end_idx: null        # ← to fill after EDA
+    grey_start_idx: null
+    grey_end_idx: null
+    val_start_idx: null
+    val_end_idx: null
+    test_start_idx: null
+    note: "pending EDA (01_EDA.ipynb)"
+    approved_by: null
+    frozen: false
+
+  "1st_test":                  # Failure: B3 inner race, B4 rolling element  |  2156 files
+    train_end_idx: null
+    grey_start_idx: null
+    grey_end_idx: null
+    val_start_idx: null
+    val_end_idx: null
+    test_start_idx: null
+    note: "not yet extracted or explored"
+    approved_by: null
+    frozen: false
+
+  "3rd_test":                  # Failure: B3 outer race  |  4448 files
+    train_end_idx: null
+    grey_start_idx: null
+    grey_end_idx: null
+    val_start_idx: null
+    val_end_idx: null
+    test_start_idx: null
+    note: "not yet extracted or explored"
+    approved_by: null
+    frozen: false
