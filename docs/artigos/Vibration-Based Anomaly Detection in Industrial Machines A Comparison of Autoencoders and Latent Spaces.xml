@@ -1,0 +1,1592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.3 20210610//EN" "JATS-journalpublishing1-3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.3" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">machines</journal-id>
+      <journal-title-group>
+        <journal-title>Machines</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Machines</abbrev-journal-title>
+        <abbrev-journal-title abbrev-type="pubmed">Machines</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">2075-1702</issn>
+      <publisher>
+        <publisher-name>MDPI</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.3390/machines13020139</article-id>
+      <article-id pub-id-type="publisher-id">machines-13-00139</article-id>
+      <article-categories>
+        <subj-group>
+          <subject>Article</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Vibration-Based Anomaly Detection in Industrial Machines: A Comparison of Autoencoders and Latent Spaces</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0001-5920-871X</contrib-id>
+          <name>
+            <surname>Radicioni</surname>
+            <given-names>Luca</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">Conceptualization</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">Methodology</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">Software</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Validation" vocab-term-identifier="https://credit.niso.org/contributor-roles/validation/">Validation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Formal analysis" vocab-term-identifier="https://credit.niso.org/contributor-roles/formal-analysis/">Formal analysis</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Data curation" vocab-term-identifier="https://credit.niso.org/contributor-roles/data-curation/">Data curation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">Writing &#x2013; original draft</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing &#x2013; review &amp; editing</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">Visualization</role>
+          <xref rid="c1-machines-13-00139" ref-type="corresp">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-6206-593X</contrib-id>
+          <name>
+            <surname>Bono</surname>
+            <given-names>Francesco Morgan</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">Conceptualization</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">Methodology</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">Software</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing &#x2013; review &amp; editing</role>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0001-9296-0874</contrib-id>
+          <name>
+            <surname>Cinquemani</surname>
+            <given-names>Simone</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Resources" vocab-term-identifier="https://credit.niso.org/contributor-roles/resources/">Resources</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing &#x2013; review &amp; editing</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Supervision" vocab-term-identifier="https://credit.niso.org/contributor-roles/supervision/">Supervision</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Project administration" vocab-term-identifier="https://credit.niso.org/contributor-roles/project-administration/">Project administration</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">Funding acquisition</role>
+        </contrib>
+      </contrib-group>
+      <contrib-group>
+        <contrib contrib-type="editor">
+          <name>
+            <surname>Friswell</surname>
+            <given-names>Michael I.</given-names>
+          </name>
+          <role>Academic Editor</role>
+        </contrib>
+        <contrib contrib-type="editor">
+          <name>
+            <surname>Korka</surname>
+            <given-names>Zoltan-Iosif</given-names>
+          </name>
+          <role>Academic Editor</role>
+        </contrib>
+      </contrib-group>
+      <aff id="af1-machines-13-00139">Department of Mechanical Engineering, Politecnico di Milano, 20133 Milan, Italy; <email>francescomorgan.bono@polimi.it</email> (F.M.B.); <email>simone.cinquemani@polimi.it</email> (S.C.)</aff>
+      <author-notes>
+        <corresp id="c1-machines-13-00139"><label>*</label>Correspondence: <email>luca.radicioni@polimi.it</email></corresp>
+      </author-notes>
+      <pub-date pub-type="epub">
+        <day>12</day>
+        <month>02</month>
+        <year>2025</year>
+      </pub-date>
+      <pub-date pub-type="collection">
+        <month>02</month>
+        <year>2025</year>
+      </pub-date>
+      <volume>13</volume>
+      <issue>2</issue>
+      <elocation-id>139</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>15</day>
+          <month>01</month>
+          <year>2025</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>08</day>
+          <month>02</month>
+          <year>2025</year>
+        </date>
+        <date date-type="accepted">
+          <day>10</day>
+          <month>02</month>
+          <year>2025</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>&#xA9; 2025 by the authors.</copyright-statement>
+        <copyright-year>2025</copyright-year>
+        <license license-type="open-access">
+          <license-p>Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (<ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</ext-link>).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>In industrial settings, machinery components inevitably wear and degrade due to friction between moving parts. To address this, various maintenance strategies, including corrective, preventive, and predictive maintenance, are commonly employed. This paper focuses on predictive maintenance through vibration analysis, utilizing data-driven models. This study explores the application of unsupervised learning methods, particularly Convolutional Autoencoders (CAEs) and variational Autoencoders (VAEs), for anomaly detection (AD) in vibration signals. By transforming vibration signals into images using the Synchrosqueezing Transform (SST), this research leverages the strengths of convolutional neural networks (CNNs) in image processing, which have proven effective in AD, especially at the pixel level. The methodology involves training CAEs and VAEs on data from machinery in healthy condition and testing them on new data samples representing different levels of system degradation. The results indicate that models with spatial latent spaces outperform those with dense latent spaces in terms of reconstruction accuracy and AD capabilities. However, VAEs did not yield satisfactory results, likely because reconstruction-based metrics are not entirely useful for AD purposes in such models. This study also highlights the potential of ReLU residuals in enhancing the visibility of anomalies. The data used in this study are openly available.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>predictive maintenance</kwd>
+        <kwd>system degradation</kwd>
+        <kwd>anomaly detection</kwd>
+        <kwd>autoencoders</kwd>
+        <kwd>variational autoencoders</kwd>
+        <kwd>synchrosqueezing</kwd>
+        <kwd>vibration analysis</kwd>
+      </kwd-group>
+      <funding-group>
+        <award-group>
+          <funding-source>FSE REACT-EU, Programma Operativo Nazionale Ricerca e Innovazione 2014&#x2013;2020</funding-source>
+          <award-id>CCI2014IT16M2OP005</award-id>
+        </award-group>
+        <award-group>
+          <funding-source>Azione IV.5 &#x201C;Dottorati su tematiche Green&#x201D;</funding-source>
+          <award-id>DOT1316301-5</award-id>
+        </award-group>
+        <funding-statement>The authors acknowledge funding from FSE REACT-EU, Programma Operativo Nazionale Ricerca e Innovazione 2014&#x2013;2020 (CCI2014IT16M2OP005), Azione IV.5 &#x201C;Dottorati su tematiche Green&#x201D; (DOT1316301-5).</funding-statement>
+      </funding-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro" id="sec1-machines-13-00139">
+      <title>1. Introduction</title>
+      <p>Regardless of the specific field an industry operates in, when moving elements are involved, there will inevitably be wear and degradation of surfaces in contact. By definition, machines have moving components, which means that some of their parts must be replaced to restore nominal operating conditions. Consequently, industrial plant managers are constantly dealing with the maintenance of their equipment to maintain high availability and limit downtimes. In industry, maintenance strategies are regularly classified into three areas: <italic>corrective</italic>, <italic>preventive</italic>, and <italic>predictive</italic> [<xref ref-type="bibr" rid="B1-machines-13-00139">1</xref>]. In corrective maintenance, replacements are made only after a failure has occurred, which means that the consequent equipment unavailability is accepted in favor of low servicing and monitoring costs. In preventive maintenance, inspections and actions are performed based on predefined schedules. The scheduling can be time-based or condition-based [<xref ref-type="bibr" rid="B2-machines-13-00139">2</xref>]. Predictive maintenance occurs when maintenance is performed just before a fault happens, thereby reducing both planned and unplanned downtime. Continuous monitoring of the equipment improves the latter, which necessarily requires the adoption of a sensor mesh.</p>
+      <p>The literature has widely focused on preventive maintenance in recent decades due to its attractiveness in minimizing downtime costs. Rytter [<xref ref-type="bibr" rid="B3-machines-13-00139">3</xref>] and later Worden [<xref ref-type="bibr" rid="B4-machines-13-00139">4</xref>] performed a remarkable job in formalizing the problem of fault identification; the resulting hierarchical framework prescribes the possible level of accuracy achievable from the monitoring system. Moreover, two main areas of research are addressed in these works: the construction of an optimal sensor network and the consequent data processing required to create a suitable predictive model. In this work, the sensors considered are those capable of measuring the vibration of a machine, such as accelerometers. The methods used to create the predictive models are data-driven.</p>
+      <p>The friction between two surfaces in contact produces vibrations in the bodies involved. Although it has been widely demonstrated how vibrations convey relevant information about the nature of a process [<xref ref-type="bibr" rid="B5-machines-13-00139">5</xref>,<xref ref-type="bibr" rid="B6-machines-13-00139">6</xref>], modeling the friction process is highly time-consuming and strictly depends on the observed system. Vibration condition monitoring is a topic that has been extensively addressed in the literature. Due to the extent of this field and the numerous traditional approaches, a comprehensive discussion is unfeasible here. Interested readers may find valuable information in [<xref ref-type="bibr" rid="B7-machines-13-00139">7</xref>], whereas a practical tutorial can be found in [<xref ref-type="bibr" rid="B8-machines-13-00139">8</xref>]. However, it is still worth noting that a rigorous modeling of the phenomenon in novel scenarios could be such a complex task [<xref ref-type="bibr" rid="B9-machines-13-00139">9</xref>] that it might appear unfeasible to construct and validate a vibration-based model for most practical cases. For this reason, the adoption of data-driven modeling is extremely profitable in this context: a data-driven model can be fitted onto data with virtually no human supervision. Data-driven modeling is generally referred to as &#x201C;machine learning&#x201D; in many contexts. In learning theory, <italic>supervised</italic> refers to methodologies that can be applied to a dataset where each instance is accompanied by its corresponding target. Conversely, <italic>unsupervised</italic> indicates a problem where the dataset is unlabeled. While supervised algorithms are applied to create predictive models, unsupervised ones are used to identify structure within the dataset without the need for the &#x201C;labeling&#x201D; task, which is carried out by humans and is thus both time-consuming and resource-intensive. This property of unsupervised algorithms makes them suitable for various contexts, ranging from identifying patterns and clusters in big data to reducing the dimensionality of virtual objects, a feature frequently employed in the fields of image and signal compression [<xref ref-type="bibr" rid="B10-machines-13-00139">10</xref>].</p>
+      <p>A significant number of publications in the field of industrial monitoring deal with <italic>supervised</italic> learning [<xref ref-type="bibr" rid="B11-machines-13-00139">11</xref>], although the application of such models in real-life scenarios is often impractical due to the difficulty of mapping all possible failure modes. Instead, unsupervised learning methods are appealing since the models can be fitted onto the system in a &#x201C;nominal&#x201D; condition and then identify if the system deviates from the nominal condition. To support this concept, Eltouny et al. [<xref ref-type="bibr" rid="B12-machines-13-00139">12</xref>] proposed a systematic review focused on applications in vibration-based condition monitoring using unsupervised methods, highlighting the strengths of these approaches: they are particularly praised for not requiring the collection of damaged data, not relying on physics-based models, and addressing the difficulties in collecting datasets from laboratory samples or field tests.</p>
+      <p>Unsupervised learning methods for novelty detection have seen rapid development, especially in image processing. Novelty identification in graphical patterns has progressed significantly at the pixel level, particularly due to the adoption of convolutional neural networks. In this field, a major contribution was made by Wang et al. [<xref ref-type="bibr" rid="B13-machines-13-00139">13</xref>], who introduced an innovative similarity index to quantify differences in images. Another significant contribution is attributed to Selvaraju et al. [<xref ref-type="bibr" rid="B14-machines-13-00139">14</xref>], who proposed a method (Grad-CAM) to highlight the regions of an image that contributed the most to the outcome of a convolutional neural network. But more importantly, anomaly detection (AD) in images has experienced significant improvements in recent decade thanks to the introduction of <italic>Convolutional Autoencoders</italic> (CAEs) and the more refined <italic>variational Autoencoders</italic> (VAEs), classes of neural networks explicitly trained to reconstruct the input object [<xref ref-type="bibr" rid="B15-machines-13-00139">15</xref>]. The use of Autoencoders (AEs) in AD at the pixel level has been addressed by Baur et al. [<xref ref-type="bibr" rid="B16-machines-13-00139">16</xref>], who compared the performances of AE&#x2013;GAN and VAE&#x2013;GAN with both dense and spatial latent spaces to unsupervisedly identify brain lesions. Bergmann et al. [<xref ref-type="bibr" rid="B17-machines-13-00139">17</xref>] introduced a dataset (MVTec AD) specifically designed to test unsupervised methods for images, demonstrating the performance of the most common neural network-based methods. Venkataramanan et al. [<xref ref-type="bibr" rid="B18-machines-13-00139">18</xref>] proposed an attention-guided framework (CAVGA) to improve the AD capabilities of three unsupervised datasets. Gangloff et al. [<xref ref-type="bibr" rid="B19-machines-13-00139">19</xref>] proposed a variation of VAE (VAE-GRF), introducing a novel anomaly map. Finally, Nguyen et al. [<xref ref-type="bibr" rid="B20-machines-13-00139">20</xref>] published a comparison of state-of-the-art VAE methods.</p>
+      <p>In the context of vibration condition monitoring, deep learning [<xref ref-type="bibr" rid="B21-machines-13-00139">21</xref>], and, specifically, AEs, have proven effective in identifying structural anomalies [<xref ref-type="bibr" rid="B22-machines-13-00139">22</xref>]. Moreover, having assessed the capabilities of AEs to identify anomalies in images, it is worth exploring the concept of transforming vibration signals into &#x201C;images&#x201D;. This approach has been extensively investigated in the literature, particularly using the Short-Time Fourier Transform (STFT) or Discrete Wavelet Transform (DWT). Recently, some research has focused on a variation of these techniques called the <italic>Synchrosqueezing Transform</italic> (SST), which produces spectrograms with clearer and sharper components. The literature on the use of the SST for AD or condition monitoring is relatively sparse, although some notable examples exist. Wang et al. [<xref ref-type="bibr" rid="B23-machines-13-00139">23</xref>] utilized the SST to overcome the limitations of Fourier transform and wavelet analysis in seismic data analysis. Hazra et al. employed the SST to study anomalies involving gearboxes before using unsupervised methods in several applications [<xref ref-type="bibr" rid="B24-machines-13-00139">24</xref>,<xref ref-type="bibr" rid="B25-machines-13-00139">25</xref>,<xref ref-type="bibr" rid="B26-machines-13-00139">26</xref>]. Mao [<xref ref-type="bibr" rid="B27-machines-13-00139">27</xref>] used a variation of the SST, called the adaptive SST, to identify oil reservoirs. Tian et al. [<xref ref-type="bibr" rid="B28-machines-13-00139">28</xref>] applied the SST to detect ferromagnetic objects. Finally, Rasul et al. [<xref ref-type="bibr" rid="B29-machines-13-00139">29</xref>] exploited the SST before feeding a deep learning model built for classification. Generally speaking, the SST can be applied to both the STFT and the DWT. However, in this work, we explore the synchrosqueezing of a Short-Time Fourier Transform (FSST). This choice is based on the observation that the frequency content of the STFT is often immediately understandable, as well as the meaning of the main frequency components, which can be directly used in mathematical relationships accounting for periodic functions. The FSST is essentially a refinement of the STFT, where sparsity is promoted, making the main frequency components clearer. In contrast, the interpretation of the DWT is not as straightforward. Although DWTs have proven to be highly effective in AD, in this phase it has been decided to postpone their exploration to future works.</p>
+      <p>From this comprehensive review on AD with AEs and SST, the following observations have been derived:<list list-type="bullet"><list-item><p>In the field of AD based on vibrations, using the SST instead of the STFT and DWT appears to be a profitable strategy due to the sparsity and sharpness of the resulting spectrograms.</p></list-item><list-item><p>The use of convolutional neural networks (CNNs) seems to be the main reason behind the outstanding performance of unsupervised AD in images, which also allows for good interpretability, especially as evidenced by the heatmaps produced by Grad-CAM [<xref ref-type="bibr" rid="B14-machines-13-00139">14</xref>].</p></list-item><list-item><p>Many studies employ AEs with a spatial latent space. It is observed that models with this latent space generally feature better performance than those with dense layers, with fewer weights.</p></list-item><list-item><p>The performance of VAEs is generally superior to that of AEs, at the cost of a slight complication, i.e., the implementation of the KL loss in the latent space. At the same time, more refined VAE variations do improve overall performance, although this increase is not always justified by the complexity of those models.</p></list-item></list></p>
+      <p>All these observations suggest that mapping raw vibrations into a domain where they can be treated as images allows for analysis with a suitable CAE.</p>
+      <sec>
+        <title>Main Contributions</title>
+        <p>The objective of this paper is to investigate the application of image processing techniques for vibration monitoring. This involves transforming the signals from the time domain to the time&#x2013;frequency domain using an SST. Subsequently, various types of CAEs are trained on initial samples of acceleration data collected from industrial machinery in healthy condition. Finally, these models are tested on new data samples, which represent different levels of system degradation. The main contributions of the paper are listed as follows:<list list-type="bullet"><list-item><p>The SST is systematically applied to an extensive dataset produced by an accelerometer mounted on machinery subjected to degradation, so as to enable a vibration-based unsupervised AD methodology.</p></list-item><list-item><p>A comparison of two types of unsupervised AD models is conducted: CAEs and VAEs. Additionally, for each model, two latent spaces are examined: the common dense latent space and the less common spatial (convolutional) latent space. This comparison enables an understanding of the practical implications of this combinations in terms of AD performance, model structure, and best practices in model training.</p></list-item><list-item><p>The introduction of &#x201C;ReLU residual&#x201D;, a metric to enhance the visibility of anomalies at pixel level.</p></list-item></list></p>
+        <p>This paper is arranged as follows: In <xref ref-type="sec" rid="sec2-machines-13-00139">Section 2</xref>, the main theoretical concepts are briefly introduced. <xref ref-type="sec" rid="sec3-machines-13-00139">Section 3</xref> describes the structure of the dataset and the methodology adopted to compare the different versions of AEs. In <xref ref-type="sec" rid="sec4-machines-13-00139">Section 4</xref>, the results are shown and discussed. Finally, in <xref ref-type="sec" rid="sec5-machines-13-00139">Section 5</xref>, some conclusive comments are drawn. The data used in this study are available at <uri>https://bit.ly/4ahDnzY</uri> (accessed on 26 January 2025).</p>
+      </sec>
+    </sec>
+    <sec id="sec2-machines-13-00139">
+      <title>2. Theoretical Background</title>
+      <p>To achieve the objectives proposed in the introduction, the theoretical background of the main concepts addressed in this study is presented here.</p>
+      <sec id="sec2dot1-machines-13-00139">
+        <title>2.1. Unsupervised Anomaly Detection</title>
+        <p>Anomaly detection (AD), also known as <italic>outlier</italic> or <italic>novelty</italic> detection, focuses on methods that use data to identify observations that significantly deviate from the concept of &#x201C;nominality&#x201D;. The methods commonly used in AD are <italic>unsupervised</italic>, meaning that anomalous observations are unlabeled, and when labels do exist, they are generally insufficient to effectively characterize the concept of anomalousness [<xref ref-type="bibr" rid="B30-machines-13-00139">30</xref>]. In the context of industrial monitoring, a simple yet effective scheme to build an unsupervised monitoring solution is depicted in <xref ref-type="fig" rid="machines-13-00139-f001">Figure 1</xref>. The unsupervised model is trained on data from the system in a &#x201C;healthy&#x201D; condition. It is hypothesized that machinery is in good condition at the beginning of its service life. The baseline (training set) is therefore selected from a period during which the machinery is operating in an optimal state. This procedure is similar to that used in unsupervised anomaly detection with images, where the training set typically consists of photos of objects with no superficial defects. However, for such datasets, there is usually an anomaly map at the pixel level, which allows for evaluating the model&#x2019;s performance during deployment for each image. Ideally, the model should identify the patterns associated with the anomaly map as anomalous. Finally, the trained model is then deployed on new data from the monitored system. The use of suitable metrics should help the machinery&#x2019;s responsible personnel make informed decisions on when to perform maintenance.</p>
+      </sec>
+      <sec id="sec2dot2-machines-13-00139">
+        <title>2.2. Time or Space Analysis?</title>
+        <p>Acceleration signals are ergodic and time-dependent, meaning they can be viewed as collections of values (vectors) with strong statistical&#x2013;temporal relationships among samples. However, the commonly used neural network layers designed to capture temporal relationships, such as Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU), are notoriously difficult to train, leading to long training times and issues like vanishing gradients [<xref ref-type="bibr" rid="B31-machines-13-00139">31</xref>,<xref ref-type="bibr" rid="B32-machines-13-00139">32</xref>]. By transforming the time series into spatial matrices, we can leverage the power of convolutional layers, which are more efficient to train compared to recurrent layers. Convolutional layers operate on local regions of the input, allowing them to capture spatial patterns without the need for long-range dependencies. This is why it is increasingly common to find research where digital signals are transformed into <italic>images</italic> through time&#x2013;frequency analysis, using techniques such as the STFT and DWT.</p>
+      </sec>
+      <sec id="sec2dot3-machines-13-00139">
+        <title>2.3. Synchrosqueezing Transform</title>
+        <p>The Synchrosqueezing Transform (SST) was initially introduced in the context of audio signal processing and is particularly appealing due to its properties of invertibility and sparsity [<xref ref-type="bibr" rid="B33-machines-13-00139">33</xref>]. It can be applied to both the Fourier Transform and the Wavelet Transform; in the former case, it is considered an enhancement of the STFT. The STFT of a signal <inline-formula><mml:math id="mm1"><mml:semantics><mml:mrow><mml:mi>x</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> is expressed as follows: <disp-formula id="FD1-machines-13-00139"><label>(1)</label><mml:math id="mm2" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi>STFT</mml:mi><mml:mi>x</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>,</mml:mo><mml:mi>&#x3C9;</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msubsup><mml:mo>&#x222B;</mml:mo><mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mo>&#x221E;</mml:mo></mml:mrow><mml:mo>&#x221E;</mml:mo></mml:msubsup><mml:mi>x</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>&#x3C4;</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>&#xB7;</mml:mo><mml:mi>w</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>&#x2212;</mml:mo><mml:mi>&#x3C4;</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>&#xB7;</mml:mo><mml:msup><mml:mi>e</mml:mi><mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mi>j</mml:mi><mml:mi>&#x3C9;</mml:mi><mml:mi>&#x3C4;</mml:mi></mml:mrow></mml:msup><mml:mspace width="0.277778em"/><mml:mi>d</mml:mi><mml:mi>&#x3C4;</mml:mi></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm3"><mml:semantics><mml:mrow><mml:mi>w</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> is a window function centered at <italic>t</italic>, and <italic>j</italic> is the imaginary unit. While the STFT provides a time&#x2013;frequency representation of the signal, it can suffer from blurring due to the Heisenberg uncertainty principle.</p>
+        <p>The SST aims to offer a more localized time&#x2013;frequency representation by redistributing the energy of the STFT. This is achieved by computing a modified STFT, where each frequency component is &#x201C;squeezed&#x201D; to its central frequency, resulting in the SST of an STFT, usually indicated as the FSST. The FSST of <inline-formula><mml:math id="mm4"><mml:semantics><mml:mrow><mml:mi>x</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> is defined as follows [<xref ref-type="bibr" rid="B34-machines-13-00139">34</xref>]: <disp-formula id="FD2-machines-13-00139"><label>(2)</label><mml:math id="mm5" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi>FSST</mml:mi><mml:mi>x</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>,</mml:mo><mml:mi>&#x3C9;</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msubsup><mml:mo>&#x222B;</mml:mo><mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mo>&#x221E;</mml:mo></mml:mrow><mml:mo>&#x221E;</mml:mo></mml:msubsup><mml:msup><mml:mrow><mml:mo>|</mml:mo><mml:msub><mml:mi>STFT</mml:mi><mml:mi>x</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>,</mml:mo><mml:msup><mml:mi>&#x3C9;</mml:mi><mml:mo>&#x2032;</mml:mo></mml:msup><mml:mo>)</mml:mo></mml:mrow><mml:mo>|</mml:mo></mml:mrow><mml:mn>2</mml:mn></mml:msup><mml:mo>&#xB7;</mml:mo><mml:mi>&#x3B4;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>&#x3C9;</mml:mi><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mi>&#x3C9;</mml:mi><mml:mi>c</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>,</mml:mo><mml:msup><mml:mi>&#x3C9;</mml:mi><mml:mo>&#x2032;</mml:mo></mml:msup><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mspace width="0.277778em"/><mml:mi>d</mml:mi><mml:msup><mml:mi>&#x3C9;</mml:mi><mml:mo>&#x2032;</mml:mo></mml:msup></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm6"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3C9;</mml:mi><mml:mi>c</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>,</mml:mo><mml:msup><mml:mi>&#x3C9;</mml:mi><mml:mo>&#x2032;</mml:mo></mml:msup><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula> is the central frequency at time <italic>t</italic> and frequency <inline-formula><mml:math id="mm7"><mml:semantics><mml:msup><mml:mi>&#x3C9;</mml:mi><mml:mo>&#x2032;</mml:mo></mml:msup></mml:semantics></mml:math></inline-formula>, and <inline-formula><mml:math id="mm8"><mml:semantics><mml:mi>&#x3B4;</mml:mi></mml:semantics></mml:math></inline-formula> is the Dirac delta function. By redistributing the energy of the STFT in this way, the FSST provides a more accurate and interpretable time&#x2013;frequency representation of the signal. This makes it particularly useful for analyzing non-stationary signals, where the spectral content varies over time. In time series analysis, this can help uncover hidden structures and patterns in the data that are not evident in the raw time series or the simple STFT. In <xref ref-type="fig" rid="machines-13-00139-f002">Figure 2</xref>, an example of the results by applying the STFT and the FSST to the same accelerometer signal is shown. Clearly, the SST promotes a more sparse representation of the signal, making the dominant frequency contents evident.</p>
+      </sec>
+      <sec id="sec2dot4-machines-13-00139">
+        <title>2.4. Autoencoders</title>
+        <p>Among the various methods for achieving AD, Autoencoders (AEs) fall into the category of reconstruction-based models. These models are based on the idea that if a model is trained to successfully reconstruct a certain category of objects, it will fail to reconstruct objects with characteristics significantly different from those in the &#x201C;nominal&#x201D; category. In practice, AEs are a type of neural network characterized by the following properties [<xref ref-type="bibr" rid="B30-machines-13-00139">30</xref>]: Consider a feature map <inline-formula><mml:math id="mm9"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mo>:</mml:mo><mml:mi mathvariant="script">X</mml:mi><mml:mo>&#x2192;</mml:mo><mml:mi mathvariant="script">X</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula>, which maps the input data space <inline-formula><mml:math id="mm10"><mml:semantics><mml:mi mathvariant="script">X</mml:mi></mml:semantics></mml:math></inline-formula> onto itself. Let us assume that <inline-formula><mml:math id="mm11"><mml:semantics><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>&#x3B8;</mml:mi></mml:msub></mml:semantics></mml:math></inline-formula> is obtained by concatenating two sub-functions, <inline-formula><mml:math id="mm12"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mo>&#x2218;</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula>, where <inline-formula><mml:math id="mm13"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mo>:</mml:mo><mml:mi mathvariant="script">X</mml:mi><mml:mo>&#x2192;</mml:mo><mml:mi mathvariant="script">Z</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> is the &#x201C;encoding&#x201D; function, and <inline-formula><mml:math id="mm14"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mo>:</mml:mo><mml:mi mathvariant="script">Z</mml:mi><mml:mo>&#x2192;</mml:mo><mml:mi mathvariant="script">X</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> is the &#x201C;decoding&#x201D; function. The training objective is to learn the set of parameters <inline-formula><mml:math id="mm15"><mml:semantics><mml:mi>&#x3B8;</mml:mi></mml:semantics></mml:math></inline-formula> so that an unlabeled input is reconstructed with minimal error, i.e., <inline-formula><mml:math id="mm16"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi mathvariant="bold">x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi mathvariant="bold">x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:mover accent="true"><mml:mi mathvariant="bold">x</mml:mi><mml:mo>^</mml:mo></mml:mover></mml:mrow></mml:semantics></mml:math></inline-formula>. If the loss function considered is the mean absolute error (MAE), the problem formalizes as follows: <disp-formula id="FD3-machines-13-00139"><label>(3)</label><mml:math id="mm17" display="block"><mml:semantics><mml:mrow><mml:munder><mml:mi>min</mml:mi><mml:mi>&#x3B8;</mml:mi></mml:munder><mml:mspace width="0.277778em"/><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mn>1</mml:mn><mml:mi>n</mml:mi></mml:mfrac></mml:mstyle><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mi>n</mml:mi></mml:munderover><mml:mfenced separators="" open="|" close="|"><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mo>&#x2218;</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mspace width="0.277778em"/><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:mi mathvariant="script">R</mml:mi></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm18"><mml:semantics><mml:mi mathvariant="script">R</mml:mi></mml:semantics></mml:math></inline-formula> refers to the regularization terms that might be introduced to promote certain characteristics in the model. An example of a simple AE is shown in <xref ref-type="fig" rid="machines-13-00139-f003">Figure 3</xref>a.</p>
+        <p>When dealing with objects characterized by spatial information, convolutional CAEs are the most common unsupervised models. Like an AE, the structure of a CAE is symmetric and composed of convolutional layers in both the encoder and decoder. During the encoding phase, the CAE utilizes a series of convolutional and pooling layers to compress the input data into a lower-dimensional latent space. This process preserves the most critical features of the input while eliminating less important details and noise. In the decoding phase, the CAE takes this compressed representation and employs a sequence of upsampling and convolutional layers to reconstruct it back to the original input space. In CAEs, the latent space can be either dense&#x2014;meaning there is a one-axis tensor in the latent space (<inline-formula><mml:math id="mm19"><mml:semantics><mml:mrow><mml:mi mathvariant="bold">z</mml:mi><mml:mo>&#x2208;</mml:mo><mml:msup><mml:mi mathvariant="double-struck">R</mml:mi><mml:mi>h</mml:mi></mml:msup></mml:mrow></mml:semantics></mml:math></inline-formula>)&#x2014;or spatial, where the convolutional structure is preserved in the latent space (<inline-formula><mml:math id="mm20"><mml:semantics><mml:mrow><mml:mi mathvariant="bold">z</mml:mi><mml:mo>&#x2208;</mml:mo><mml:msup><mml:mi mathvariant="double-struck">R</mml:mi><mml:mrow><mml:mi>h</mml:mi><mml:mo>&#xD7;</mml:mo><mml:mi>w</mml:mi><mml:mo>&#xD7;</mml:mo><mml:mi>c</mml:mi></mml:mrow></mml:msup></mml:mrow></mml:semantics></mml:math></inline-formula>). The former configuration requires a flatten layer, which introduces many weights into the model, whereas the latter configuration ensures a model characterized by a reduced number of weights, thereby assuring better performance [<xref ref-type="bibr" rid="B16-machines-13-00139">16</xref>]. An example of a CAE with a spatial latent space is shown in <xref ref-type="fig" rid="machines-13-00139-f003">Figure 3</xref>b.</p>
+      </sec>
+      <sec id="sec2dot5-machines-13-00139">
+        <title>2.5. Variational Autoencoders</title>
+        <p>One main drawback of AEs in their &#x201C;vanilla&#x201D; version is that they do not consider the structure of the latent space. Typically, the latent space does not produce an ordered representation, making AD in the latent space less effective [<xref ref-type="bibr" rid="B35-machines-13-00139">35</xref>]. However, the literature review in the introduction has shown that generative models have been extensively explored, even in the context of AD. Variational Autoencoders (VAEs) are a class of neural generative models that maximize data likelihood by optimizing the evidence lower bound (ELBO), defined in the generic variational approach as follows [<xref ref-type="bibr" rid="B36-machines-13-00139">36</xref>]: <disp-formula id="FD4-machines-13-00139"><label>(4)</label><mml:math id="mm21" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>ELBO</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mi mathvariant="double-struck">E</mml:mi><mml:mrow><mml:mi>z</mml:mi><mml:mo>&#x223C;</mml:mo><mml:mi>Q</mml:mi><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mo form="prefix">log</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mi>P</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>|</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mi>K</mml:mi><mml:mi>L</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>Q</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mspace width="0.277778em"/><mml:mo>|</mml:mo><mml:mo>|</mml:mo><mml:mspace width="0.277778em"/><mml:mi>P</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>The first term represents the expected value of the log-likelihood of the datapoint <italic>x</italic> given the latent variable <italic>z</italic>, with the expectation taken with respect to the approximate posterior distribution <inline-formula><mml:math id="mm22"><mml:semantics><mml:mrow><mml:mi>Q</mml:mi><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>. The second term represents the Kullback&#x2013;Leibler divergence between the approximate posterior distribution <inline-formula><mml:math id="mm23"><mml:semantics><mml:mrow><mml:mi>Q</mml:mi><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> and the prior distribution of the latent variable <inline-formula><mml:math id="mm24"><mml:semantics><mml:mrow><mml:mi>P</mml:mi><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>. This KL divergence encourages a well-structured latent space and prevents the training process from converging to trivial solutions.</p>
+        <p>Assuming that <inline-formula><mml:math id="mm25"><mml:semantics><mml:mrow><mml:mi>Q</mml:mi><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> is normally distributed, with mean and variance given by the encoding functions <inline-formula><mml:math id="mm26"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3BC;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm27"><mml:semantics><mml:mrow><mml:msubsup><mml:mi>&#x3C3;</mml:mi><mml:mi>e</mml:mi><mml:mn>2</mml:mn></mml:msubsup><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula>, and considering a standard normal distribution as the prior, the KL divergence can be computed in closed form: <disp-formula id="FD5-machines-13-00139"><label>(5)</label><mml:math id="mm28" display="block"><mml:semantics><mml:mrow><mml:mi>K</mml:mi><mml:mi>L</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>G</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3BC;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>,</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>,</mml:mo><mml:mi>G</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:mn>1</mml:mn><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mn>1</mml:mn><mml:mn>2</mml:mn></mml:mfrac></mml:mstyle><mml:mfenced separators="" open="(" close=")"><mml:msub><mml:mi>&#x3BC;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mn>2</mml:mn></mml:msup><mml:mo>+</mml:mo><mml:msubsup><mml:mi>&#x3C3;</mml:mi><mml:mi>e</mml:mi><mml:mn>2</mml:mn></mml:msubsup><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mo form="prefix">log</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:msubsup><mml:mi>&#x3C3;</mml:mi><mml:mi>e</mml:mi><mml:mn>2</mml:mn></mml:msubsup><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mn>1</mml:mn></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>The Gaussian assumption also simplifies the first term, as it can be shown that<disp-formula id="FD6-machines-13-00139"><label>(6)</label><mml:math id="mm29" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="double-struck">E</mml:mi><mml:mrow><mml:mi>z</mml:mi><mml:mo>&#x223C;</mml:mo><mml:mi>G</mml:mi><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3BC;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>,</mml:mo><mml:mspace width="0.277778em"/><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mo form="prefix">log</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mi>P</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>|</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mn>2</mml:mn></mml:msup></mml:mrow></mml:semantics></mml:math></disp-formula>
+        
+        which is the reconstruction loss. This allows us to introduce the following compact equation for the ELBO problem in VAEs: <disp-formula id="FD7-machines-13-00139"><label>(7)</label><mml:math id="mm30" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>ELBO</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi mathvariant="normal">R</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>KL</mml:mi></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula><disp-formula id="FD8-machines-13-00139"><label>(8)</label><mml:math id="mm31" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi mathvariant="normal">R</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mi mathvariant="double-struck">E</mml:mi><mml:mrow><mml:mi>z</mml:mi><mml:mo>&#x223C;</mml:mo><mml:mi>Q</mml:mi><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mo form="prefix">log</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mi>P</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>|</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula><disp-formula id="FD9-machines-13-00139"><label>(9)</label><mml:math id="mm32" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>KL</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mo>&#x2212;</mml:mo><mml:mi>K</mml:mi><mml:mi>L</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>Q</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>|</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mspace width="0.277778em"/><mml:mo>|</mml:mo><mml:mo>|</mml:mo><mml:mspace width="0.277778em"/><mml:mi>P</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula>
+        
+        
+        where <inline-formula><mml:math id="mm33"><mml:semantics><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi mathvariant="normal">R</mml:mi></mml:msub></mml:semantics></mml:math></inline-formula> is the reconstruction loss and <inline-formula><mml:math id="mm34"><mml:semantics><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>KL</mml:mi></mml:msub></mml:semantics></mml:math></inline-formula> is the KL divergence.</p>
+        <p>In VAEs, the encoding functions <inline-formula><mml:math id="mm35"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3BC;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm36"><mml:semantics><mml:mrow><mml:msubsup><mml:mi>&#x3C3;</mml:mi><mml:mi>e</mml:mi><mml:mn>2</mml:mn></mml:msubsup><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula>, and the decoding function <inline-formula><mml:math id="mm37"><mml:semantics><mml:mrow><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>z</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula>, are approximated by neural networks. Finally, backpropagation is enabled by the well-known reparameterization trick [<xref ref-type="bibr" rid="B37-machines-13-00139">37</xref>]. Examples of VAEs with dense and spatial latent spaces (sVAE) are shown in <xref ref-type="fig" rid="machines-13-00139-f004">Figure 4</xref>a,b.</p>
+      </sec>
+      <sec id="sec2dot6-machines-13-00139">
+        <title>2.6. Annealing in VAE Training</title>
+        <p>Training a VAE is notoriously challenging. Balancing the reconstruction error and the KL divergence has been the subject of numerous studies. A significant breakthrough in this field was achieved with the introduction of the <inline-formula><mml:math id="mm38"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula>-VAE, which incorporates a weight that multiplies the KL divergence to help balance the two loss functions [<xref ref-type="bibr" rid="B38-machines-13-00139">38</xref>]. In this context, the VAE can be seen as a regularized version of the simple AE (refer to Equation (<xref ref-type="disp-formula" rid="FD3-machines-13-00139">3</xref>)): <disp-formula id="FD10-machines-13-00139"><label>(10)</label><mml:math id="mm39" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>&#x3B2;</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi mathvariant="normal">R</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:mi>&#x3B2;</mml:mi><mml:mo>&#xB7;</mml:mo><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>KL</mml:mi></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>Building on the <inline-formula><mml:math id="mm40"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula>-VAE configuration, Hao et al. [<xref ref-type="bibr" rid="B39-machines-13-00139">39</xref>] proposed cyclical annealing of the KL divergence to mitigate KL vanishing, improving upon the concept of monotonic annealing [<xref ref-type="bibr" rid="B40-machines-13-00139">40</xref>]. In practice, the weight <inline-formula><mml:math id="mm41"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula> increases after each epoch, starting from a null value. After a predefined number of epochs, <inline-formula><mml:math id="mm42"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula> is reset to null, and the procedure repeats. An example of training following these procedures is shown in <xref ref-type="fig" rid="machines-13-00139-f005">Figure 5</xref>.</p>
+      </sec>
+    </sec>
+    <sec sec-type="methods" id="sec3-machines-13-00139">
+      <title>3. Dataset Description and Methodology</title>
+      <p>The dataset considered in this research comes from machinery used for the transportation of lumped goods, specifically a conveyor chain. In this section, only the relevant information for the research scope is reported about the acquired data, introducing some simplifications on how the data were collected. However, a precise description of the system under study and the complete acquisition system is presented in [<xref ref-type="bibr" rid="B41-machines-13-00139">41</xref>], bearing in mind that this is an example of vibration monitoring of machinery subjected to degradation. Although the dataset used for testing data-driven models is commonly presented after the description of the methodology, here the opposite will be carried out to make the procedure prescribed in the methodology clearer for the reader.</p>
+      <sec id="sec3dot1-machines-13-00139">
+        <title>3.1. Data Collection</title>
+        <p>An accelerometer (<xref ref-type="fig" rid="machines-13-00139-f006">Figure 6</xref>) was mounted on the platform of a conveyor chain, where high degradation is expected for the material located between the platform and the moving chain. Several tests, each three hours long, were conducted, varying the boundary conditions: three main velocities were considered for the electric motor moving the chain, and three load configurations, varying the number of masses on the conveyor. The nine tests were then repeated for a total of four rounds to highlight the system&#x2019;s degradation after several working hours. From previous knowledge of the system, two main failure modes are expected to be visible in the measured accelerations due to the system&#x2019;s degradation:<list list-type="order"><list-item><p>The degradation of the chain elements produces an elongation of the average chain pitch. This will be reflected in the shifting of the main frequencies in the spectra towards lower-frequency components.</p></list-item><list-item><p>The degradation of the polyethylene sleeve between the platform and the chain generates an increase in the mean RMS of the vibrations, producing an increase in the frequency amplitudes.</p></list-item></list></p>
+        <p>To provide more evidence of these aspects, which are present but not visually clear in the spectra, three more rounds were generated, starting from the real data by artificially increasing the chain elongation, and then simulating a severe degradation of the chain elements. Further details on chain elongation and its effect in the frequency domain can be found in [<xref ref-type="bibr" rid="B41-machines-13-00139">41</xref>]. Additionally, artificially increasing the chain pitch by lowering the main frequency components is expected to facilitate the anomaly detection task performed by the models. This assertion will be corroborated in the results, and specifically in <xref ref-type="sec" rid="sec4dot2-machines-13-00139">Section 4.2</xref>. The procedure followed to generate these artificial rounds is described in the next subsection.</p>
+      </sec>
+      <sec id="sec3dot2-machines-13-00139">
+        <title>3.2. Data Preprocessing</title>
+        <p>As discussed in depth in the introduction, the main purpose of this work is to leverage models suitable for image processing to achieve AD. This requires converting the vibration signals into images, i.e., 2-D tensors. It should be noted that most convolutional layers support the possibility of applying the convolutional operation separately to multiple channels, thus handling 3-D tensors. However, to enable a visual representation of the tensors and maintain consistency with the literature, only one channel (i.e., one accelerometer) is addressed here.</p>
+        <p>The FSST, as defined in <xref ref-type="sec" rid="sec2dot3-machines-13-00139">Section 2.3</xref>, is applied to the accelerometer signals (1-D tensors) extracted from the tests, with time windows of 10 s. The resulting time&#x2013;frequency spectrogram is then segmented into several 2-D tensors, each 20 s long. Considering a sampling frequency of 64 Hz, each tensor has a shape of 320 &#xD7; 1280. Moreover, with 50 min of acceleration data for each test, this procedure yields 150 &#x201C;images&#x201D; per test, and approximately 1350 images per round.</p>
+        <p>An issue emerges: due to the different velocities at which tests are carried out, the main frequency contribution in the spectra changes significantly for different tests, even though they might occur within a few hours, with the system in practically the same condition. For this reason, a &#x201C;normalization&#x201D; of the spectrograms with respect to the motor velocity is applied by dividing the frequencies by the <italic>theoretical frequency</italic> (i.e., the frequency imposed by a chain with a nominal pitch for a given motor velocity) [<xref ref-type="bibr" rid="B35-machines-13-00139">35</xref>]. In this way, for the healthy system, the higher contributions in the spectrogram are expected at a normalized frequency of 1, and they shift towards lower normalized frequencies as the chain wears out. This feature is also exploited to create three more synthetic rounds by modifying the tensors from rounds 2, 3, and 4. This is carried out by considering theoretical link passage frequencies that are increased by 10%, 20%, and 30% compared to the real ones, respectively, so that the main dominant frequencies in the spectrogram are found at lower frequencies (i.e., the chain appears dangerously elongated). A summary of the complete dataset employed is schematically shown in <xref ref-type="fig" rid="machines-13-00139-f007">Figure 7</xref>.</p>
+        <p>Finally, to maintain the constant shape of the 2-D tensors, the normalized frequency axis is linearly interpolated onto a predefined normalized frequency vector, ranging from 0 to 2.5, with steps of 0.01 (251 elements). This technique, widely used in image processing [<xref ref-type="bibr" rid="B42-machines-13-00139">42</xref>], ensures consistent frequency indexing and enables the effective feeding of the tensors to the same neural network. The result of motor velocity normalization is represented in <xref ref-type="fig" rid="machines-13-00139-f008">Figure 8</xref>. In this way, the load condition is the only external factor whose value the model does not have access to.</p>
+      </sec>
+      <sec sec-type="methods" id="sec3dot3-machines-13-00139">
+        <title>3.3. Methodology</title>
+        <p>In health monitoring problems, and more generally in an AD setting, unsupervised approaches are currently the only profitable class of algorithms [<xref ref-type="bibr" rid="B30-machines-13-00139">30</xref>]. With reference to <xref ref-type="fig" rid="machines-13-00139-f001">Figure 1</xref>, two key phases are clearly present in the pipeline:<list list-type="bullet"><list-item><p>In the <italic>training phase</italic>, data representative of the machinery in good condition are used to train a data-driven model. The selection of the model is crucial, as the system&#x2019;s performance will be closely related to the model and its hyperparameters. In this work, four AEs are compared, each of which will be detailed in the next subsection. The spectrograms from round 1 serve as the training set used to fit the models.</p></list-item><list-item><p>In the <italic>monitoring phase</italic>, the trained model is deployed to identify possible anomalies in the new data. To do so, several metrics must be introduced. In this work, for AD at the image level, the metrics introduced are the KL divergence (for the VAEs), the MAE between the input and the output tensor, and the ReLU MAE (for both the AE and VAE). At the pixel level, anomalies are identified by the point-wise difference between the input and output tensors (residual tensor) and the ReLU residual. All these metrics are detailed in the next subsection. All rounds will be evaluated in this phase to establish how the metrics change round after round.</p></list-item></list></p>
+        <p>The procedure follows this pipeline: the models are trained on round 1 and then tested on all rounds, evaluating the metrics.</p>
+      </sec>
+      <sec id="sec3dot4-machines-13-00139">
+        <title>3.4. Anomaly Metrics</title>
+        <p>To establish if an object is anomalous or not, it is crucial to define the <italic>anomaly metrics</italic>. In particular, two classes of metrics are introduced here: those at the image level, which allow us to infer if a spectrogram is anomalous or not, and those at the pixel level, which allow us to determine which elements of the spectrogram are anomalous.</p>
+        <p>At the pixel level, the metrics chosen are directly derived from the reconstruction loss: the <italic>residual</italic> spectrogram and the <italic>ReLU residual</italic> (Rectified Linear Unit) spectrogram. The residual spectrogram is the simple difference between the input tensor and the reconstructed tensor (with reference to the symbols introduced in Equation (<xref ref-type="disp-formula" rid="FD3-machines-13-00139">3</xref>)): <disp-formula id="FD11-machines-13-00139"><label>(11)</label><mml:math id="mm43" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="bold">r</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mo>&#x2218;</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mspace width="0.277778em"/><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where the pedix <italic>i</italic> refers to the <italic>i</italic>-th pixel. The ReLU residual spectrogram is developed from the observation that we are interested in what is present in the input and not in the output, and not vice versa, which is similar to what is carried out in Grad-CAM [<xref ref-type="bibr" rid="B14-machines-13-00139">14</xref>]: <disp-formula id="FD12-machines-13-00139"><label>(12)</label><mml:math id="mm44" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi mathvariant="bold">r</mml:mi><mml:mrow><mml:mi>ReLU</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mo movablelimits="true" form="prefix">max</mml:mo><mml:mfenced separators="" open="(" close=")"><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mo>&#x2218;</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mspace width="0.277778em"/><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula>The ReLU MAE is expected to increase in correspondence with the pixels characterized by patterns that are not recognized by the AE.</p>
+        <p>Regarding the metrics at the image level, two metrics are used for the CAEs and three for the VAEs. One is the <italic>simple MAE</italic>, already presented in Equation (<xref ref-type="disp-formula" rid="FD3-machines-13-00139">3</xref>). The other is the <italic>ReLU MAE</italic>, introduced to extend the idea of the ReLU residual from the pixel level to the image level: <disp-formula id="FD13-machines-13-00139"><label>(13)</label><mml:math id="mm45" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mi>MAE</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mn>1</mml:mn><mml:mi>n</mml:mi></mml:mfrac></mml:mstyle><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mi>n</mml:mi></mml:munderover><mml:mfenced separators="" open="|" close="|"><mml:mo movablelimits="true" form="prefix">max</mml:mo><mml:mfenced separators="" open="(" close=")"><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:mspace width="0.277778em"/><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>d</mml:mi></mml:msub><mml:mo>&#x2218;</mml:mo><mml:msub><mml:mi>&#x3D5;</mml:mi><mml:mi>e</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:msub><mml:mspace width="0.277778em"/><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi mathvariant="bold">x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:mfenced></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula>For the VAEs, the last metric is the KL divergence (Equation (<xref ref-type="disp-formula" rid="FD5-machines-13-00139">5</xref>)).</p>
+      </sec>
+      <sec id="sec3dot5-machines-13-00139">
+        <title>3.5. Models</title>
+        <p>Four data-driven models are considered in this work; all share the same input and output dimensions (251 &#xD7; 1280) and most of the layers. They all have the structure of a CAE. All the models have an encoder made up of four <italic>2-D convolutional</italic> layers, each followed by a <italic>2-D Max pooling</italic> layer. The decoder is made up of four <italic>2-D Convolutional Transpose</italic> layers, each followed by a <italic>2-D Upsampling</italic> layer. Finally, a further <italic>2-D Convolutional Transpose</italic> and a <italic>2-D Cropping</italic> layer are employed to adjust the output tensor dimension to the input one. The common structure for the AEs is depicted in <xref ref-type="fig" rid="machines-13-00139-f009">Figure 9</xref>. The four models differ in what happens in the <italic>latent</italic> space. The models are as follows:<list list-type="order"><list-item><p>A CAE with a <italic>dense</italic> latent space of 128 elements. To achieve this, a <italic>flatten</italic> layer is required. This model is characterized by 42,448,769 weights. The metric used in training is the MAE.</p></list-item><list-item><p>A CAE with a <italic>spatial</italic> latent space of dimensions (8, 40, 16). This model is characterized by 233,505 weights. The metric used in training is the MAE.</p></list-item><list-item><p>A VAE with a <italic>dense</italic> latent space of 128 elements. Similar to model 1, a <italic>flatten</italic> layer is required. This model is characterized by 21,379,969 weights. In training, the reconstruction error is the MAE, whereas annealing is applied to the KL divergence to regulate the <inline-formula><mml:math id="mm46"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula> value from Equation (<xref ref-type="disp-formula" rid="FD10-machines-13-00139">10</xref>).</p></list-item><list-item><p>A VAE with a <italic>spatial</italic> latent space of dimensions (8, 40, 16). This model is characterized by 134,048 weights. As per model 3, the reconstruction error is the MAE and annealing is applied to the KL divergence.</p></list-item></list>
+		For the VAEs, both cycling and monotonic annealing will be tested, with different cycle length and maximum values for <inline-formula><mml:math id="mm47"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula>.</p>
+      </sec>
+    </sec>
+    <sec sec-type="results" id="sec4-machines-13-00139">
+      <title>4. Results</title>
+      <p>All the models were trained on a machine equipped with an NVIDIA GeForce RTX 3090 and using the Python library TensorFlow 2.12. In the first round, which serves as the training set, 15% of the spectrograms were kept for validation. The batch size chosen was eight, resulting in 120 batches per epoch. All the models were trained for 1000 epochs.</p>
+      <sec id="sec4dot1-machines-13-00139">
+        <title>4.1. CAE with Dense Latent Space</title>
+        <p>The training time for this model was approximately 5 s per epoch. <xref ref-type="fig" rid="machines-13-00139-f010">Figure 10</xref>a shows the training process, highlighting how the system began overfitting on the validation set after fewer than 100 epochs of training.</p>
+        <p>The trained model was then deployed on the spectrograms from all the rounds. <xref ref-type="fig" rid="machines-13-00139-f010">Figure 10</xref>b presents the distributions of the metrics at the image level, that is, the MAE and the ReLU MAE, shown separately for each round. It is evident that both metrics generally increased between the training round (the first one) and the other rounds. However, the model seems unable to capture the progressive level of anomaly from each round, as all rounds share similar values for both metrics and do not feature a clear progression. Additionally, the two metrics yielded comparable results.</p>
+        <p>At the pixel level, it is possible to appreciate the anomalous frequency components. Two random tensors from the rounds that scored the minimum and maximum median values in <xref ref-type="fig" rid="machines-13-00139-f010">Figure 10</xref>b were chosen, specifically round 1 and the modified round 2. <xref ref-type="fig" rid="machines-13-00139-f011">Figure 11</xref>a shows an original spectrogram from round 1, its reconstructed spectrogram, the residual, and the ReLU residual, in this order. It is clear, especially from the ReLU residual, that most of the tensor was reconstructed correctly. <xref ref-type="fig" rid="machines-13-00139-f011">Figure 11</xref>b presents the corresponding results for a spectrogram from the modified round 2. Here, the model clearly identified the main two frequency components as anomalous, as they are still present in the residuals. Again, the ReLU residual shows more concise and understandable results compared to the simple residual.</p>
+      </sec>
+      <sec id="sec4dot2-machines-13-00139">
+        <title>4.2. CAE with Spatial Latent Space</title>
+        <p>The training time for this model was approximately 5 s per epoch. <xref ref-type="fig" rid="machines-13-00139-f010">Figure 10</xref>a represents the training process for this model. From <xref ref-type="fig" rid="machines-13-00139-f012">Figure 12</xref>a, it is evident that the spatial latent space achieves better performance compared to a dense latent space in terms of reconstruction accuracy. Moreover, after 1000 epochs, both training and validation losses are still improving.</p>
+        <p>The trained model was subsequently tested on the other rounds. <xref ref-type="fig" rid="machines-13-00139-f012">Figure 12</xref>b shows the boxplots of the MAE and ReLU MAE obtained by the model in all the rounds. According to this model, the &#x201C;real&#x201D; rounds are all nominal, whereas both anomaly metrics increase substantially for the &#x201C;artificial&#x201D; rounds. <xref ref-type="fig" rid="machines-13-00139-f013">Figure 13</xref>a,b show the results for the lowest MAE (round 3) and the highest one (modified round 2), respectively. From the comparison of the two ReLU residuals, it can be seen that an almost perfect reconstruction is obtained for round 3, whereas the main frequency component present in the modified round 2 spectrogram is perfectly preserved, meaning that is an anomalous pattern according this CAE.</p>
+      </sec>
+      <sec id="sec4dot3-machines-13-00139">
+        <title>4.3. VAE with Dense Latent Space</title>
+        <p>The training time for this model took approximately 5 s per epoch. After evaluating both cycling and monotonic annealing with different combinations of cycle length and max <inline-formula><mml:math id="mm48"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula> value, it was noted that the monotonic strategy with a max <inline-formula><mml:math id="mm49"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula> of <inline-formula><mml:math id="mm50"><mml:semantics><mml:msup><mml:mn>10</mml:mn><mml:mn>3</mml:mn></mml:msup></mml:semantics></mml:math></inline-formula> yielded a smooth reduction in the overall loss. <xref ref-type="fig" rid="machines-13-00139-f014">Figure 14</xref>a shows the history of reconstruction and KL loss during training. The boxplots with the KL divergence, MAE, and ReLU MAE obtained when testing the model on all the rounds are represented in <xref ref-type="fig" rid="machines-13-00139-f014">Figure 14</xref>b. In VAEs, the KL divergence loss can be used as an anomaly score; it appears that the distribution estimated for the &#x201C;synthetic&#x201D; rounds progressively deviates from a standard Gaussian distribution.</p>
+        <p>The lowest median for the ReLU MAE is achieved for round 3, whereas the highest is for the modified round 2. One spectrogram for each of these rounds is represented in <xref ref-type="fig" rid="machines-13-00139-f015">Figure 15</xref>a,b. Two results are quite visible here: the two reconstructed spectrograms are practically the same, and they seem to represent an &#x201C;average&#x201D; round 1 spectrogram. This result is noted for more spectrograms taken randomly from any round, which means that this &#x201C;average&#x201D; spectrogram is produced by this VAE regardless of the input tensor. The ReLU residual from round 3 (<xref ref-type="fig" rid="machines-13-00139-f015">Figure 15</xref>a) could be interpreted as having no anomaly identified by the model, whereas the ReLU residual for round 2 modified shows that the original spectrogram is entirely preserved, meaning that it is likely to present anomalous patterns.</p>
+      </sec>
+      <sec id="sec4dot4-machines-13-00139">
+        <title>4.4. VAE with Spatial Latent Space</title>
+        <p>Finally, the VAE with a spatial latent space was trained on round 1, with monotonic annealing and a max <inline-formula><mml:math id="mm51"><mml:semantics><mml:mi>&#x3B2;</mml:mi></mml:semantics></mml:math></inline-formula> of <inline-formula><mml:math id="mm52"><mml:semantics><mml:msup><mml:mn>10</mml:mn><mml:mn>6</mml:mn></mml:msup></mml:semantics></mml:math></inline-formula>, following similar considerations to the ones made for the dense VAE. Also for this model, the training time took 5 s per epoch. The training history is reported in <xref ref-type="fig" rid="machines-13-00139-f016">Figure 16</xref>a. The KL loss value appears unstable during the training process.</p>
+        <p><xref ref-type="fig" rid="machines-13-00139-f016">Figure 16</xref>b shows the boxplots for the three losses (KL divergence, MAE, and ReLU MAE). In this case, the KL divergence loss decreases with the rounds, whereas the &#x201C;synthetic&#x201D; rounds achieve higher reconstruction losses compared to the real rounds, although the difference is not sharp. <xref ref-type="fig" rid="machines-13-00139-f017">Figure 17</xref> and <xref ref-type="fig" rid="machines-13-00139-f018">Figure 18</xref> represent the spectrograms for which the lowest and highest median reconstruction loss is achieved by the spatial VAE model, respectively, for round 3 and round 2 modified. The residual spectrograms differ substantially between the two rounds: most of the original spectrogram from round 3 is not present in the ReLU residual, whereas the majority of the spectrogram from round 2 modified is preserved in the ReLU residual. This indicates that the patterns in the spectrogram from round 2 modified are considered anomalous by this model.</p>
+        <p>Although it appears that the model is able to identify anomalous patterns at the pixel level, this capacity does not reflect on the metrics at the image level (<xref ref-type="fig" rid="machines-13-00139-f016">Figure 16</xref>b), where none of the metrics substantially increase with the round number.</p>
+      </sec>
+      <sec sec-type="discussion" id="sec4dot5-machines-13-00139">
+        <title>4.5. Discussion</title>
+        <p>By examining the reconstructed spectrograms, it is evident that utilizing a spatial latent space enables accurate image reconstruction. Particularly in the VAE, the dense latent space (<xref ref-type="fig" rid="machines-13-00139-f015">Figure 15</xref>a,b) proves inadequate for characterizing the spectrograms, as all output tensors exhibit a similar appearance, resembling an &#x201C;average&#x201D; and simplified representation of the round 1 spectrograms. This is also reflected in the KL loss achieved for the VAE with a dense latent space, as depicted in <xref ref-type="fig" rid="machines-13-00139-f014">Figure 14</xref>b. It shows a very low KL divergence only for round 2, with limited median values for rounds 1, 3, and 4, that substantially increase for all the synthetic rounds. This indicates that the produced distributions become increasingly different from the nominal one with each round. Generally speaking, the poor results of the two VAEs compared to the two CAEs in AD capabilities can be attributed to the fact that reconstruction metrics are not suitable for use with VAEs. Due to the statistical arrangement of their latent space, metrics built in the latent space (such as the KL divergence) or more refined methods based on the latent space distribution should be used instead. This outcome could also be due to a suboptimal choice of the latent space or the training approach. Optimization of both factors should be addressed in future work, as it is evident that, compared to their CAE counterparts, VAEs require dedicated and more refined hyperparameter tuning.</p>
+        <p>It is also noteworthy that the spatial latent space requires significantly fewer weights&#x2014;and consequently, less model memory usage&#x2014;compared to the dense latent space. In fact, better reconstruction losses are achieved with spatial latent spaces within a comparable training time.</p>
+        <p>Regarding AD at the pixel level, employing the ReLU residual instead of the simple residual tensor results in a more comprehensible representation of the anomalous frequency components in the spectrogram. Additionally, the use of ReLU MAE and simple MAE did not yield significant differences at the image level, regardless of the model considered, as clearly seen in <xref ref-type="fig" rid="machines-13-00139-f010">Figure 10</xref>b, <xref ref-type="fig" rid="machines-13-00139-f012">Figure 12</xref>b, <xref ref-type="fig" rid="machines-13-00139-f014">Figure 14</xref>b and <xref ref-type="fig" rid="machines-13-00139-f016">Figure 16</xref>b. It is also evident that when relying solely on image-level losses for making informed decisions, the CAE with a spatial latent space is the only model capable of identifying a clear distinction between the &#x201C;real&#x201D; and &#x201C;synthetic&#x201D; data. Moreover, due to the extensive use of VAEs in the literature for AD in images, it is clear that further work on the metrics and models is required to fine-tune VAEs to optimal working conditions.</p>
+        <p>Finally, it is important to discuss the practical implementation of this methodology in a real-world industrial scenario. For instance, the duration required to collect a training set comprising signals representative of &#x201C;healthy&#x201D; machinery should be assessed beforehand, necessitating a minimum understanding of the degradation velocity. Additionally, if one relies solely on metrics extracted at the image level (such as reconstruction loss or ReLU MAE), a subsequent method should be introduced to define a threshold (or multiple thresholds) beyond which the machinery is considered non-operable. To establish these thresholds, it might be essential to collect more vibrational datasets from similar systems undergoing degradation, thereby compiling a comprehensive collection of data upon which to base the selection of the thresholds. Furthermore, factors such as operational environments and different machinery types might have unpredictable effects on the acquired vibrations and the consequent model behavior. This necessitates the consideration of various possible vibrational datasets in the methodology evaluation, which will enable more robust and generalizable anomaly detection capabilities.</p>
+      </sec>
+    </sec>
+    <sec sec-type="conclusions" id="sec5-machines-13-00139">
+      <title>5. Conclusions</title>
+      <p>In this paper, we have presented a methodology for monitoring machinery based on vibration analysis. The methodology relies on the FSST, followed by the use of a CAE. This paper explores the rationale behind introducing such a methodology: in pixel-level AD of images, unsupervised methods have seen outstanding development over the last decade due to the implementation of convolutional neural networks. Moreover, the research community is gradually acknowledging that unsupervised methodologies should be preferred for monitoring problems in industrial contexts. The use of the SST allows for the production of sparse and clear spectrograms, while the use of AEs and VAEs is explored for both dense and spatial latent spaces. Overall, the superiority of the spatial latent space compared to the dense one is observed in terms of reconstruction accuracy and AD capabilities, with the CAE with a spatial latent space able to identify as anomalous the synthetic rounds, where the main frequency components have been substantially shifted. Additionally, the VAEs did not yield satisfactory results, likely due to a poor choice of the metrics and non-optimal training process. Finally, it is observed that the use of ReLU residuals could aid the human eye in identifying anomalies present in the spectrogram, although this metric might not be suitable for VAEs.</p>
+      <p>Further developments are necessary to fine-tune the VAEs and bring this type of generative neural network to optimal conditions for AD purposes. This objective will involve not only a revision of the model&#x2019;s structure, but also of the metrics employed and, likely, part of the methodology. Furthermore, future work should include comparing additional state-of-the-art models in the field of anomaly detection at the pixel level, beyond the four models presented in this paper. This will enable a more comprehensive and favorable comparison.</p>
+    </sec>
+  </body>
+  <back>
+    <notes>
+      <title>Author Contributions</title>
+      <p>Conceptualization, L.R. and F.M.B.; methodology, L.R. and F.M.B.; software, L.R. and F.M.B.; validation, L.R.; formal analysis, L.R.; investigation, L.R. and F.M.B.; resources, S.C.; data curation, L.R.; writing&#x2014;original draft preparation, L.R.; writing&#x2014;review and editing, L.R., F.M.B., and S.C.; visualization, L.R.; supervision, S.C.; project administration, S.C.; funding acquisition, S.C. All authors have read and agreed to the published version of the manuscript.</p>
+    </notes>
+    <notes>
+      <title>Data Availability Statement</title>
+      <p>The original data presented in this study are openly available in a Google Drive repository at <uri>https://bit.ly/4ahDnzY</uri> (accessed on 26 January 2025).</p>
+    </notes>
+    <ack>
+      <title>Acknowledgments</title>
+      <p>The authors are grateful to the FlexLink company for providing the test rig and continuous support.</p>
+    </ack>
+    <notes notes-type="COI-statement">
+      <title>Conflicts of Interest</title>
+      <p>The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the results.</p>
+    </notes>
+    <glossary>
+      <title>Abbreviations</title>
+      <p>The following abbreviations are used in this manuscript:
+      <array><tbody><tr><td align="left" valign="middle">AD</td><td align="left" valign="middle">Anomaly Detection</td></tr><tr><td align="left" valign="middle">AE</td><td align="left" valign="middle">Autoencoder</td></tr><tr><td align="left" valign="middle">VAE</td><td align="left" valign="middle">Variational Autoencoder</td></tr><tr><td align="left" valign="middle">CAE</td><td align="left" valign="middle">Convolutional Autoencoder</td></tr><tr><td align="left" valign="middle">KL</td><td align="left" valign="middle">Kullback&#x2013;Leibler</td></tr><tr><td align="left" valign="middle">STFT</td><td align="left" valign="middle">Short-Time Fourier Transform</td></tr><tr><td align="left" valign="middle">SST</td><td align="left" valign="middle">Synchrosqueezing Transform</td></tr><tr><td align="left" valign="middle">DWT</td><td align="left" valign="middle">Discrete Wavelet Transform</td></tr><tr><td align="left" valign="middle">FSST</td><td align="left" valign="middle">Synchrosqueezing of a Short-Time Fourier Transform</td></tr><tr><td align="left" valign="middle">LSTM</td><td align="left" valign="middle">Long Short-Term Memory</td></tr><tr><td align="left" valign="middle">GRU</td><td align="left" valign="middle">Gated Recurrent Unit</td></tr><tr><td align="left" valign="middle">ELBO</td><td align="left" valign="middle">Evidence Lower Bound</td></tr><tr><td align="left" valign="middle">MAE</td><td align="left" valign="middle">Mean Absolute Error</td></tr><tr><td align="left" valign="middle">ReLU</td><td align="left" valign="middle">Rectified Linear Unit</td></tr></tbody></array></p>
+    </glossary>
+    <ref-list>
+      <title>References</title>
+      <ref id="B1-machines-13-00139">
+        <label>1.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mol&#x119;da</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Ma&#x142;ysiak-Mrozek</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Ding</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Sunderam</surname>
+              <given-names>V.</given-names>
+            </name>
+            <name>
+              <surname>Mrozek</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>From Corrective to Predictive Maintenance&#x2014;A Review of Maintenance Approaches for the Power Industry</article-title>
+          <source>Sensors</source>
+          <year>2023</year>
+          <volume>23</volume>
+          <elocation-id>5970</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/s23135970</pub-id>
+          <pub-id pub-id-type="pmid">37447820</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B2-machines-13-00139">
+        <label>2.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yang</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>A condition-based failure-prediction and processing-scheme for preventive maintenance</article-title>
+          <source>IEEE Trans. Reliab.</source>
+          <year>2003</year>
+          <volume>52</volume>
+          <fpage>373</fpage>
+          <lpage>383</lpage>
+          <pub-id pub-id-type="doi">10.1109/TR.2003.816402</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B3-machines-13-00139">
+        <label>3.</label>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Rytter</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Vibrational Based Inspection of Civil Engineering Structures</article-title>
+          <source>Ph.D. Thesis</source>
+          <publisher-name>University of Aalborg</publisher-name>
+          <publisher-loc>Aalborg, Denmark</publisher-loc>
+          <year>1993</year>
+          <fpage>206</fpage>
+        </element-citation>
+      </ref>
+      <ref id="B4-machines-13-00139">
+        <label>4.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Worden</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Dulieu-Barton</surname>
+              <given-names>J.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>An overview of intelligent fault detection in systems and structures</article-title>
+          <source>Struct. Health Monit.</source>
+          <year>2004</year>
+          <volume>3</volume>
+          <fpage>85</fpage>
+          <lpage>98</lpage>
+          <pub-id pub-id-type="doi">10.1177/1475921704041866</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B5-machines-13-00139">
+        <label>5.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bruwer</surname>
+              <given-names>M.J.</given-names>
+            </name>
+            <name>
+              <surname>MacGregor</surname>
+              <given-names>J.F.</given-names>
+            </name>
+            <name>
+              <surname>Bourg</surname>
+              <given-names>W.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Soft sensor for snack food textural properties using on-line vibrational measurements</article-title>
+          <source>Ind. Eng. Chem. Res.</source>
+          <year>2007</year>
+          <volume>46</volume>
+          <fpage>864</fpage>
+          <lpage>870</lpage>
+          <pub-id pub-id-type="doi">10.1021/ie060832r</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6-machines-13-00139">
+        <label>6.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bono</surname>
+              <given-names>F.M.</given-names>
+            </name>
+            <name>
+              <surname>Radicioni</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Cinquemani</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>A novel approach for quality control of automated production lines working under highly inconsistent conditions</article-title>
+          <source>Eng. Appl. Artif. Intell.</source>
+          <year>2023</year>
+          <volume>122</volume>
+          <fpage>106149</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.engappai.2023.106149</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B7-machines-13-00139">
+        <label>7.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Randall</surname>
+              <given-names>R.B.</given-names>
+            </name>
+          </person-group>
+          <source>Vibration-Based Condition Monitoring: Industrial, Automotive and Aerospace Applications</source>
+          <publisher-name>John Wiley &amp; Sons</publisher-name>
+          <publisher-loc>Hoboken, NJ, USA</publisher-loc>
+          <year>2021</year>
+        </element-citation>
+      </ref>
+      <ref id="B8-machines-13-00139">
+        <label>8.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Matania</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Bachar</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Bechhoefer</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Bortman</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Signal Processing for the Condition-Based Maintenance of Rotating Machines via Vibration Analysis: A Tutorial</article-title>
+          <source>Sensors</source>
+          <year>2024</year>
+          <volume>24</volume>
+          <elocation-id>454</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/s24020454</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9-machines-13-00139">
+        <label>9.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Stelter</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Nonlinear vibrations of structures induced by dry friction</article-title>
+          <source>Nonlinear Dyn.</source>
+          <year>1992</year>
+          <volume>3</volume>
+          <fpage>329</fpage>
+          <lpage>345</lpage>
+          <pub-id pub-id-type="doi">10.1007/BF00045070</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B10-machines-13-00139">
+        <label>10.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brunton</surname>
+              <given-names>S.L.</given-names>
+            </name>
+            <name>
+              <surname>Kutz</surname>
+              <given-names>J.N.</given-names>
+            </name>
+          </person-group>
+          <source>Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control</source>
+          <publisher-name>Cambridge University Press</publisher-name>
+          <publisher-loc>Cambridge, UK</publisher-loc>
+          <year>2022</year>
+        </element-citation>
+      </ref>
+      <ref id="B11-machines-13-00139">
+        <label>11.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ge</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Song</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Ding</surname>
+              <given-names>S.X.</given-names>
+            </name>
+            <name>
+              <surname>Huang</surname>
+              <given-names>B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Data mining and analytics in the process industry: The role of machine learning</article-title>
+          <source>IEEE Access</source>
+          <year>2017</year>
+          <volume>5</volume>
+          <fpage>20590</fpage>
+          <lpage>20616</lpage>
+          <pub-id pub-id-type="doi">10.1109/ACCESS.2017.2756872</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B12-machines-13-00139">
+        <label>12.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Eltouny</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Gomaa</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Liang</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised learning methods for data-driven vibration-based structural health monitoring: A review</article-title>
+          <source>Sensors</source>
+          <year>2023</year>
+          <volume>23</volume>
+          <elocation-id>3290</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/s23063290</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B13-machines-13-00139">
+        <label>13.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wang</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Bovik</surname>
+              <given-names>A.C.</given-names>
+            </name>
+            <name>
+              <surname>Sheikh</surname>
+              <given-names>H.R.</given-names>
+            </name>
+            <name>
+              <surname>Simoncelli</surname>
+              <given-names>E.P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Image quality assessment: From error visibility to structural similarity</article-title>
+          <source>IEEE Trans. Image Process.</source>
+          <year>2004</year>
+          <volume>13</volume>
+          <fpage>600</fpage>
+          <lpage>612</lpage>
+          <pub-id pub-id-type="doi">10.1109/TIP.2003.819861</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B14-machines-13-00139">
+        <label>14.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Selvaraju</surname>
+              <given-names>R.R.</given-names>
+            </name>
+            <name>
+              <surname>Cogswell</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Das</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Vedantam</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Parikh</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Batra</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Grad-cam: Visual explanations from deep networks via gradient-based localization</article-title>
+          <source>Proceedings of the IEEE International Conference on Computer Vision</source>
+          <conf-loc>Venice, Italy</conf-loc>
+          <conf-date>22&#x2013;29 October 2017</conf-date>
+          <fpage>618</fpage>
+          <lpage>626</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B15-machines-13-00139">
+        <label>15.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Qian</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Song</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Yao</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Zhu</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>A review on autoencoder based representation learning for fault detection and diagnosis in industrial processes</article-title>
+          <source>Chemom. Intell. Lab. Syst.</source>
+          <year>2022</year>
+          <volume>231</volume>
+          <fpage>104711</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.chemolab.2022.104711</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B16-machines-13-00139">
+        <label>16.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Baur</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Wiestler</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Albarqouni</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Navab</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Deep autoencoding models for unsupervised anomaly segmentation in brain MR images</article-title>
+          <source>Brainlesion: Glioma, Multiple Sclerosis, Stroke and Traumatic Brain Injuries: 4th International Workshop, BrainLes 2018, Held in Conjunction with MICCAI 2018, Granada, Spain, September 16, 2018, Revised Selected Papers, Part I</source>
+          <publisher-name>Springer</publisher-name>
+          <publisher-loc>Cham, Switzerland</publisher-loc>
+          <year>2019</year>
+          <fpage>161</fpage>
+          <lpage>169</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B17-machines-13-00139">
+        <label>17.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bergmann</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Fauser</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Sattlegger</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Steger</surname>
+              <given-names>C.</given-names>
+            </name>
+          </person-group>
+          <article-title>MVTec AD&#x2014;A comprehensive real-world dataset for unsupervised anomaly detection</article-title>
+          <source>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</source>
+          <conf-loc>Long Beach, CA, USA</conf-loc>
+          <conf-date>15&#x2013;20 June 2019</conf-date>
+          <fpage>9592</fpage>
+          <lpage>9600</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B18-machines-13-00139">
+        <label>18.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Venkataramanan</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Peng</surname>
+              <given-names>K.C.</given-names>
+            </name>
+            <name>
+              <surname>Singh</surname>
+              <given-names>R.V.</given-names>
+            </name>
+            <name>
+              <surname>Mahalanobis</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Attention guided anomaly localization in images</article-title>
+          <source>Computer Vision&#x2014;ECCV 2020, 16th European Conference, Glasgow, UK, August 23&#x2013;28, 2020, Proceedings, Part XVII</source>
+          <publisher-name>Springer</publisher-name>
+          <publisher-loc>Cham, Switzerland</publisher-loc>
+          <year>2020</year>
+          <fpage>485</fpage>
+          <lpage>503</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B19-machines-13-00139">
+        <label>19.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Gangloff</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Pham</surname>
+              <given-names>M.T.</given-names>
+            </name>
+            <name>
+              <surname>Courtrai</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Lef&#xE8;vre</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised Anomaly Detection Using Variational Autoencoder with Gaussian Random Field Prior</article-title>
+          <source>Proceedings of the 2023 IEEE International Conference on Image Processing (ICIP)</source>
+          <conf-loc>Kuala Lumpur, Malaysia</conf-loc>
+          <conf-date>8&#x2013;11 October 2023</conf-date>
+          <fpage>1620</fpage>
+          <lpage>1624</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B20-machines-13-00139">
+        <label>20.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Nguyen</surname>
+              <given-names>H.H.</given-names>
+            </name>
+            <name>
+              <surname>Nguyen</surname>
+              <given-names>C.N.</given-names>
+            </name>
+            <name>
+              <surname>Dao</surname>
+              <given-names>X.T.</given-names>
+            </name>
+            <name>
+              <surname>Duong</surname>
+              <given-names>Q.T.</given-names>
+            </name>
+            <name>
+              <surname>Kim</surname>
+              <given-names>D.P.T.</given-names>
+            </name>
+            <name>
+              <surname>Pham</surname>
+              <given-names>M.T.</given-names>
+            </name>
+          </person-group>
+          <article-title>Variational Autoencoder for Anomaly Detection: A Comparative Study</article-title>
+          <source>arXiv</source>
+          <year>2024</year>
+          <pub-id pub-id-type="arxiv">2408.13561</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B21-machines-13-00139">
+        <label>21.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hu</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Xia</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Du</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>Y.</given-names>
+            </name>
+          </person-group>
+          <article-title>Railway switch machine fault diagnosis considering sensor abnormality scenarios</article-title>
+          <source>Proceedings of the 2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC)</source>
+          <conf-loc>Bilbao, Spain</conf-loc>
+          <conf-date>24&#x2013;28 September 2023</conf-date>
+          <fpage>4834</fpage>
+          <lpage>4839</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B22-machines-13-00139">
+        <label>22.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bono</surname>
+              <given-names>F.M.</given-names>
+            </name>
+            <name>
+              <surname>Radicioni</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Cinquemani</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Bombaci</surname>
+              <given-names>G.</given-names>
+            </name>
+          </person-group>
+          <article-title>A Comparison of Deep Learning Algorithms for Anomaly Detection in Discrete Mechanical Systems</article-title>
+          <source>Appl. Sci.</source>
+          <year>2023</year>
+          <volume>13</volume>
+          <elocation-id>5683</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/app13095683</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B23-machines-13-00139">
+        <label>23.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wang</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Gao</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Time-frequency analysis of seismic data using synchrosqueezing transform</article-title>
+          <source>IEEE Geosci. Remote Sens. Lett.</source>
+          <year>2014</year>
+          <volume>11</volume>
+          <fpage>2042</fpage>
+          <lpage>2044</lpage>
+          <pub-id pub-id-type="doi">10.1109/LGRS.2014.2317578</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B24-machines-13-00139">
+        <label>24.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hazra</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Pantula</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Narasimhan</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Novelty detection in airport baggage conveyor gear-motors using Synchro-squeezing transform and Self-organizing maps</article-title>
+          <source>Proceedings of the Annual Conference of the PHM Society</source>
+          <conf-loc>New Orleans, LA, USA</conf-loc>
+          <conf-date>14&#x2013;17 October 2013</conf-date>
+          <volume>Volume 5</volume>
+        </element-citation>
+      </ref>
+      <ref id="B25-machines-13-00139">
+        <label>25.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hazra</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Narasimhan</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Gearbox fault detection using synchro-squeezing transform</article-title>
+          <source>Procedia Eng.</source>
+          <year>2016</year>
+          <volume>144</volume>
+          <fpage>187</fpage>
+          <lpage>194</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.proeng.2016.05.023</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B26-machines-13-00139">
+        <label>26.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hazra</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Sadhu</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Narasimhan</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Fault detection of gearboxes using synchro-squeezing transform</article-title>
+          <source>J. Vib. Control</source>
+          <year>2017</year>
+          <volume>23</volume>
+          <fpage>3108</fpage>
+          <lpage>3127</lpage>
+          <pub-id pub-id-type="doi">10.1177/1077546315627242</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B27-machines-13-00139">
+        <label>27.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mao</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>A concentrated time-frequency method for reservoir detection using adaptive synchrosqueezing transform</article-title>
+          <source>IEEE Geosci. Remote Sens. Lett.</source>
+          <year>2022</year>
+          <volume>19</volume>
+          <fpage>1</fpage>
+          <lpage>5</lpage>
+          <pub-id pub-id-type="doi">10.1109/LGRS.2022.3160930</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B28-machines-13-00139">
+        <label>28.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tian</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Wen</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Ju</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Tang</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Xiong</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>PFMD: A power frequency magnetic anomaly signal detection scheme based on synchrosqueezed wavelet transform</article-title>
+          <source>Appl. Sci.</source>
+          <year>2022</year>
+          <volume>12</volume>
+          <elocation-id>10735</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/app122110735</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B29-machines-13-00139">
+        <label>29.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Rasul</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Kawashima</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Hoang</surname>
+              <given-names>K.T.</given-names>
+            </name>
+          </person-group>
+          <article-title>Development of a Deep Learning-Based Anomaly Detection System for Structures</article-title>
+          <source>Proceedings of the International Symposium of the International Federation for Structural Concrete</source>
+          <conf-loc>Istanbul, Turkey</conf-loc>
+          <conf-date>5&#x2013;7 June 2023</conf-date>
+          <fpage>1578</fpage>
+          <lpage>1588</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B30-machines-13-00139">
+        <label>30.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ruff</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Kauffmann</surname>
+              <given-names>J.R.</given-names>
+            </name>
+            <name>
+              <surname>Vandermeulen</surname>
+              <given-names>R.A.</given-names>
+            </name>
+            <name>
+              <surname>Montavon</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>Samek</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Kloft</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Dietterich</surname>
+              <given-names>T.G.</given-names>
+            </name>
+            <name>
+              <surname>M&#xFC;ller</surname>
+              <given-names>K.R.</given-names>
+            </name>
+          </person-group>
+          <article-title>A unifying review of deep and shallow anomaly detection</article-title>
+          <source>Proc. IEEE</source>
+          <year>2021</year>
+          <volume>109</volume>
+          <fpage>756</fpage>
+          <lpage>795</lpage>
+          <pub-id pub-id-type="doi">10.1109/JPROC.2021.3052449</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B31-machines-13-00139">
+        <label>31.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hatami</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Gavet</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Debayle</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Classification of time-series images using deep convolutional neural networks</article-title>
+          <source>Proceedings of the Tenth International Conference on Machine Vision (ICMV 2017)</source>
+          <conf-loc>Vienna, Austria</conf-loc>
+          <conf-date>13&#x2013;15 November 2017</conf-date>
+          <volume>Volume 10696</volume>
+          <fpage>242</fpage>
+          <lpage>249</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B32-machines-13-00139">
+        <label>32.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yang</surname>
+              <given-names>C.L.</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>C.Y.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>Z.X.</given-names>
+            </name>
+            <name>
+              <surname>Lo</surname>
+              <given-names>N.W.</given-names>
+            </name>
+          </person-group>
+          <article-title>Multivariate time series data transformation for convolutional neural network</article-title>
+          <source>Proceedings of the 2019 IEEE/SICE International Symposium on System Integration (SII)</source>
+          <conf-loc>Paris, France</conf-loc>
+          <conf-date>14&#x2013;16 January 2019</conf-date>
+          <fpage>188</fpage>
+          <lpage>192</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B33-machines-13-00139">
+        <label>33.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Daubechies</surname>
+              <given-names>I.</given-names>
+            </name>
+            <name>
+              <surname>Maes</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>A nonlinear squeezing of the continuous wavelet transform based on auditory nerve models</article-title>
+          <source>Wavelets in Medicine and Biology</source>
+          <publisher-name>Routledge</publisher-name>
+          <publisher-loc>London, UK</publisher-loc>
+          <year>2017</year>
+          <fpage>527</fpage>
+          <lpage>546</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B34-machines-13-00139">
+        <label>34.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Behera</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Meignen</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Oberlin</surname>
+              <given-names>T.</given-names>
+            </name>
+          </person-group>
+          <article-title>Theoretical analysis of the second-order synchrosqueezing transform</article-title>
+          <source>Appl. Comput. Harmon. Anal.</source>
+          <year>2018</year>
+          <volume>45</volume>
+          <fpage>379</fpage>
+          <lpage>404</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.acha.2016.11.001</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B35-machines-13-00139">
+        <label>35.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Radicioni</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Bono</surname>
+              <given-names>F.M.</given-names>
+            </name>
+            <name>
+              <surname>Cinquemani</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Application of synchrosqueezing transform and autoencoders for monitoring of production systems. A case study on plastic chain conveyor systems</article-title>
+          <source>Proceedings of the 2024 20th IEEE/ASME International Conference on Mechatronic and Embedded Systems and Applications (MESA)</source>
+          <conf-loc>Genova, Italy</conf-loc>
+          <conf-date>2&#x2013;4 September 2024</conf-date>
+          <fpage>1</fpage>
+          <lpage>7</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B36-machines-13-00139">
+        <label>36.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Asperti</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Trentin</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Balancing reconstruction error and kullback-leibler divergence in variational autoencoders</article-title>
+          <source>IEEE Access</source>
+          <year>2020</year>
+          <volume>8</volume>
+          <fpage>199440</fpage>
+          <lpage>199448</lpage>
+          <pub-id pub-id-type="doi">10.1109/ACCESS.2020.3034828</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B37-machines-13-00139">
+        <label>37.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kingma</surname>
+              <given-names>D.P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auto-encoding variational bayes</article-title>
+          <source>arXiv</source>
+          <year>2013</year>
+          <pub-id pub-id-type="arxiv">1312.6114</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B38-machines-13-00139">
+        <label>38.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Higgins</surname>
+              <given-names>I.</given-names>
+            </name>
+            <name>
+              <surname>Matthey</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Pal</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Burgess</surname>
+              <given-names>C.P.</given-names>
+            </name>
+            <name>
+              <surname>Glorot</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Botvinick</surname>
+              <given-names>M.M.</given-names>
+            </name>
+            <name>
+              <surname>Mohamed</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Lerchner</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>beta-vae: Learning basic visual concepts with a constrained variational framework</article-title>
+          <source>Proceedings of the 5th International Conference on Learning Representations, ICLR 2017</source>
+          <conf-loc>Toulon, France</conf-loc>
+          <conf-date>24&#x2013;26 April 2017</conf-date>
+        </element-citation>
+      </ref>
+      <ref id="B39-machines-13-00139">
+        <label>39.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Fu</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Gao</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Celikyilmaz</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Carin</surname>
+              <given-names>L.</given-names>
+            </name>
+          </person-group>
+          <article-title>Cyclical annealing schedule: A simple approach to mitigating kl vanishing</article-title>
+          <source>arXiv</source>
+          <year>2019</year>
+          <pub-id pub-id-type="arxiv">1903.10145</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B40-machines-13-00139">
+        <label>40.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bowman</surname>
+              <given-names>S.R.</given-names>
+            </name>
+            <name>
+              <surname>Vilnis</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Vinyals</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Dai</surname>
+              <given-names>A.M.</given-names>
+            </name>
+            <name>
+              <surname>Jozefowicz</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Bengio</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Generating sentences from a continuous space</article-title>
+          <source>arXiv</source>
+          <year>2015</year>
+          <pub-id pub-id-type="arxiv">1511.06349</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B41-machines-13-00139">
+        <label>41.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Radicioni</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Bono</surname>
+              <given-names>F.M.</given-names>
+            </name>
+            <name>
+              <surname>Cinquemani</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>On the use of vibrations and temperatures for the monitoring of plastic chain conveyor systems</article-title>
+          <source>Mech. Syst. Signal Process.</source>
+          <year>2025</year>
+          <volume>223</volume>
+          <fpage>111935</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ymssp.2024.111935</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B42-machines-13-00139">
+        <label>42.</label>
+        <element-citation publication-type="web">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mordvintsev</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Abid</surname>
+              <given-names>K.</given-names>
+            </name>
+          </person-group>
+          <article-title>Opencv-Python Tutorials Documentation</article-title>
+          <year>2014</year>
+          <comment>Available online: <ext-link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html" ext-link-type="uri">https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2025-02-09">(accessed on 9 February 2025)</date-in-citation>
+        </element-citation>
+      </ref>
+    </ref-list>
+    <sec sec-type="display-objects">
+      <title>Figures</title>
+      <fig id="machines-13-00139-f001" position="float">
+        <label>Figure 1</label>
+        <caption>
+          <p>Scheme that represents the training and monitoring phases for a generic industrial process, based on an unsupervised AD approach. The dashed boxes represent the only tasks that require human supervision.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g001.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f002" position="float">
+        <label>Figure 2</label>
+        <caption>
+          <p>Comparison of the STFT (<bold>a</bold>) and the FSST (<bold>b</bold>), applied to the same piece of acceleration signal. The SST approach promotes sparsity in the time&#x2013;frequency domain.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g002.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f003" position="float">
+        <label>Figure 3</label>
+        <caption>
+          <p>Graphical representation of a simple AE (<bold>a</bold>); the input element <italic>x</italic> is mapped into an <italic>n</italic>-dimensional latent space&#x2014;z&#x2014;and then mapped back into the original data space. Graphical representation of a CAE with a spatial latent space (<bold>b</bold>); the input image is elaborated through a fully convolutional architecture.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g003.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f004" position="float">
+        <label>Figure 4</label>
+        <caption>
+          <p>Example of a VAE with a dense latent space (<bold>a</bold>) and a spatial (sVAE) latent space (<bold>b</bold>).</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g004.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f005" position="float">
+        <label>Figure 5</label>
+        <caption>
+          <p>Example of a VAE&#x2019;s training process with different annealing strategies: monotonic annealing (<bold>a</bold>) and cycling annealing (<bold>b</bold>). The red curve refers to the product <inline-formula><mml:math id="mm53"><mml:semantics><mml:mrow><mml:mi>&#x3B2;</mml:mi><mml:mo>&#xB7;</mml:mo><mml:msub><mml:mi mathvariant="script">L</mml:mi><mml:mi>KL</mml:mi></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula>.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g005.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f006" position="float">
+        <label>Figure 6</label>
+        <caption>
+          <p>Photo of the piezoelectric accelerometer mounted on the platform of the conveyor (measuring axis oriented orthogonally to the platform surface).</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g006.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f007" position="float">
+        <label>Figure 7</label>
+        <caption>
+          <p>Visual representation of the dataset employed. The accelerations have been collected throughout 4 &#x201C;rounds&#x201D; for the machinery. Three more rounds have been generated synthetically.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g007.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f008" position="float">
+        <label>Figure 8</label>
+        <caption>
+          <p>Motor velocity normalization. Starting from the SST spectrogram (<bold>a</bold>), the frequency axis is normalized with respect to the motor velocity. Then, a linear interpolation of the frequency axis to a predefine normalized frequency vector is performed (<bold>b</bold>).</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g008.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f009" position="float">
+        <label>Figure 9</label>
+        <caption>
+          <p>Common structure shared by all the four models evaluated in this work. For 2-D convolutional layers, the first number refers to the number of filters, the value between parenthesis to the kernel size.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g009.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f010" position="float">
+        <label>Figure 10</label>
+        <caption>
+          <p>Results of CAE with dense latente space: (<bold>a</bold>) train and validation loss histories; (<bold>b</bold>) boxplots representing the distributions of the reconstruction losses (MAE and ReLU MAE) for each round.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g010.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f011" position="float">
+        <label>Figure 11</label>
+        <caption>
+          <p>Visualization of the results for the CAE with a dense latent space for a random spectrogram extracted from round 1 (<bold>a</bold>) and from round 2 modified (<bold>b</bold>). From top to bottom: original spectrogram, spectrogram reconstructed by the CAE, residual spectrogram, and ReLU residual.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g011.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f012" position="float">
+        <label>Figure 12</label>
+        <caption>
+          <p>Results of the CAE with a spatial latent space: (<bold>a</bold>) train and validation loss histories; (<bold>b</bold>) boxplots representing the distributions of the reconstruction losses (MAE and ReLU MAE) for each round.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g012.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f013" position="float">
+        <label>Figure 13</label>
+        <caption>
+          <p>Visualization of the results for the CAE with a spatial latent space, for a random spectrogram extracted from round 3 (<bold>a</bold>) and from round 2 modified (<bold>b</bold>). From top to bottom: original spectrogram, spectrogram reconstructed by the CAE, residual spectrogram, and ReLU residual.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g013.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f014" position="float">
+        <label>Figure 14</label>
+        <caption>
+          <p>Results of the VAE with a dense latente space: (<bold>a</bold>) reconstruction and KL loss histories in training; (<bold>b</bold>) boxplots representing the distributions of the reconstruction losses (KL divergence, MAE, and ReLU MAE) for each round.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g014.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f015" position="float">
+        <label>Figure 15</label>
+        <caption>
+          <p>Visualization of the results for the VAE with a dense latent space for a random spectrogram extracted from round 3 (<bold>a</bold>) and from round 2 modified (<bold>b</bold>). From top to bottom: original spectrogram, spectrogram reconstructed by the VAE, residual spectrogram, and ReLU residual.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g015.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f016" position="float">
+        <label>Figure 16</label>
+        <caption>
+          <p>Results of the VAE with a spatial latente space: (<bold>a</bold>) reconstruction and KL loss histories in training; (<bold>b</bold>) boxplots representing the distributions of the reconstruction losses (KL divergence, MAE, and ReLU MAE) for each round.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g016.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f017" position="float">
+        <label>Figure 17</label>
+        <caption>
+          <p>Original spectrogram from round 4, spectrogram reconstructed by the VAE with a spatial latent space, residual spectrogram, and ReLU residual.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g017.tif"/>
+      </fig>
+      <fig id="machines-13-00139-f018" position="float">
+        <label>Figure 18</label>
+        <caption>
+          <p>Original spectrogram from round 2 modified, spectrogram reconstructed by the VAE with a spatial latent space, residual spectrogram, and ReLU residual.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="machines-13-00139-g018.tif"/>
+      </fig>
+    </sec>
+    <fn-group>
+      <fn>
+        <p><bold>Disclaimer/Publisher&#x2019;s Note:</bold> The statements, opinions and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to people or property resulting from any ideas, methods, instructions or products referred to in the content.</p>
+      </fn>
+    </fn-group>
+  </back>
+</article>

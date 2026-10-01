@@ -1,0 +1,1639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.3 20210610//EN" "JATS-journalpublishing1-3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.3" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">mathematics</journal-id>
+      <journal-title-group>
+        <journal-title>Mathematics</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Mathematics</abbrev-journal-title>
+        <abbrev-journal-title abbrev-type="pubmed">Mathematics</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">2227-7390</issn>
+      <publisher>
+        <publisher-name>MDPI</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.3390/math13152445</article-id>
+      <article-id pub-id-type="publisher-id">mathematics-13-02445</article-id>
+      <article-categories>
+        <subj-group>
+          <subject>Article</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Anomaly Detection on Laminated Composite Plate Using Self-Attention Autoencoder and Gaussian Mixture Model</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-5082-8741</contrib-id>
+          <name>
+            <surname>Munyaneza</surname>
+            <given-names>Olivier</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">Writing &#x2013; original draft</role>
+          <xref rid="af1-mathematics-13-02445" ref-type="aff">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Sohn</surname>
+            <given-names>Jung Woo</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing &#x2013; review &amp; editing</role>
+          <xref rid="af2-mathematics-13-02445" ref-type="aff">2</xref>
+          <xref rid="c1-mathematics-13-02445" ref-type="corresp">*</xref>
+        </contrib>
+      </contrib-group>
+      <contrib-group>
+        <contrib contrib-type="editor">
+          <name>
+            <surname>Meng</surname>
+            <given-names>Debiao</given-names>
+          </name>
+          <role>Academic Editor</role>
+        </contrib>
+        <contrib contrib-type="editor">
+          <name>
+            <surname>Yu</surname>
+            <given-names>Shui</given-names>
+          </name>
+          <role>Academic Editor</role>
+        </contrib>
+      </contrib-group>
+      <aff id="af1-mathematics-13-02445"><label>1</label>Department of Aeronautics, Mechanical and Electronic Convergence Engineering, Graduated School, Kumoh National Institute of Technology, Daehak-ro 61, Gumi 39177, Republic of Korea; <email>olivis@kumoh.ac.kr</email></aff>
+      <aff id="af2-mathematics-13-02445"><label>2</label>School of Mechanical Engineering, Kumoh National Institute of Technology, Daehak-ro 61, Gumi 39177, Republic of Korea</aff>
+      <author-notes>
+        <corresp id="c1-mathematics-13-02445"><label>*</label>Correspondence: <email>jwsohn@kumoh.ac.kr</email></corresp>
+      </author-notes>
+      <pub-date pub-type="epub">
+        <day>29</day>
+        <month>07</month>
+        <year>2025</year>
+      </pub-date>
+      <pub-date pub-type="collection">
+        <month>08</month>
+        <year>2025</year>
+      </pub-date>
+      <volume>13</volume>
+      <issue>15</issue>
+      <elocation-id>2445</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>02</day>
+          <month>07</month>
+          <year>2025</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>25</day>
+          <month>07</month>
+          <year>2025</year>
+        </date>
+        <date date-type="accepted">
+          <day>27</day>
+          <month>07</month>
+          <year>2025</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>&#xA9; 2025 by the authors.</copyright-statement>
+        <copyright-year>2025</copyright-year>
+        <license license-type="open-access">
+          <license-p>Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (<ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</ext-link>).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>Composite laminates are widely used in aerospace, automotive, construction, and luxury industries, owing to their superior mechanical properties and design flexibility. However, detecting manufacturing defects and in-service damage remains a vital challenge for structural safety. While traditional unsupervised machine learning methods have been used in structural health monitoring (SHM), their high false positive rates limit their reliability in real-world applications. This issue is mostly inherited from their limited ability to capture small temporal variations in Lamb wave signals and their dependence on shallow architectures that suffer with complex signal distributions, causing the misclassification of damaged signals as healthy data. To address this, we suggested an unsupervised anomaly detection framework that integrates a self-attention autoencoder with a Gaussian mixture model (SAE-GMM). The model is solely trained on healthy Lamb wave signals, including high-quality synthetic data generated via a generative adversarial network (GAN). Damages are detected through reconstruction errors and probabilistic clustering in the latent space. The self-attention mechanism enhances feature representation by capturing subtle temporal dependencies, while the GMM enables a solid separation among signals. Experimental results demonstrated that the proposed model (SAE-GMM) achieves high detection accuracy, a low false positive rate, and strong generalization under varying noise conditions, outperforming traditional and deep learning baselines.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>composite laminates</kwd>
+        <kwd>unsupervised machine learning</kwd>
+        <kwd>structural healthy monitoring</kwd>
+        <kwd>self-attention</kwd>
+        <kwd>Gaussian mixture model</kwd>
+        <kwd>generative adversarial network</kwd>
+        <kwd>Lamb waves</kwd>
+      </kwd-group>
+      <kwd-group kwd-group-type="MSC">
+        <title>MSC</title>
+        <kwd>68T01</kwd>
+      </kwd-group>
+      <funding-group>
+        <award-group>
+          <funding-source>National Research Foundation of Korea (NRF)</funding-source>
+          <funding-source>The Korean Government (Ministry of Science and ICT, MSIT)</funding-source>
+          <award-id>RS-2023-NR076925</award-id>
+        </award-group>
+        <award-group>
+          <funding-source>The Korea Government (MSIT)</funding-source>
+          <award-id>IITP-2025-RS-2020-II201612</award-id>
+        </award-group>
+        <funding-statement>This work was supported by a National Research Foundation of Korea (NRF) grant funded by the Korean Government (Ministry of Science and ICT, MSIT) (No. RS-2023-NR076925, 50%). This work was partly supported by the Institute of Information &amp; Communications Technology Planning &amp; Evaluation (IITP)&#x2019;s Innovative Human Resource Development for Local Intellectualization program grant funded by the Korea government (MSIT) (IITP-2025-RS-2020-II201612, 50%).</funding-statement>
+      </funding-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec1-mathematics-13-02445" sec-type="intro">
+      <title>1. Introduction</title>
+      <p>The need for composite laminates has gradually increased in the automotive, aerospace, naval, and energy fields due to their unique properties, such as high specific strength, high toughness, high flexibility, and low density [<xref ref-type="bibr" rid="B1-mathematics-13-02445">1</xref>,<xref ref-type="bibr" rid="B2-mathematics-13-02445">2</xref>]. Composite materials are prone to intricate flaws during manufacturing and assembly processes. Moreover, they are subjected to harsh environmental conditions and various cyclic loadings, which adversely affect their performance and can lead to structural integrity failure [<xref ref-type="bibr" rid="B3-mathematics-13-02445">3</xref>,<xref ref-type="bibr" rid="B4-mathematics-13-02445">4</xref>]. To detect flaws in composite materials, nondestructive testing using ultrasonic guided waves, also known as Lamb waves, has been used in the past decades because of their ability to propagate over long distances with minimal attenuation, a larger inspection range, and high sensitivity to small damages [<xref ref-type="bibr" rid="B5-mathematics-13-02445">5</xref>].</p>
+      <p>The basic principle of NDT-based structural health monitoring (SHM) is to assess the condition of a structure by collecting signal responses from multiple sensor networks, analyzing them, and determining whether the structure is healthy or damaged, using either a physics-based (model-driven) or data-driven approach. Physics-based models typically rely on mathematical formulations and physical principles to define structural characteristics and predict damage. However, owing to their computational intensity, reliance on accurate material properties and boundary conditions, and limited adaptability to real-world uncertainties, the quantitative analysis of the physical behavior of guided waves remains challenging [<xref ref-type="bibr" rid="B6-mathematics-13-02445">6</xref>]. On the contrary, data-driven approaches utilize machine learning and artificial intelligence to learn complex patterns from collected time-series data without requiring expert knowledge or exact structural information [<xref ref-type="bibr" rid="B2-mathematics-13-02445">2</xref>,<xref ref-type="bibr" rid="B7-mathematics-13-02445">7</xref>]. Supervised data-driven approaches have been extensively used for Lamb wave-based damage detection in SHM, achieving good performance for both image and time-series datasets. However, supervised learning relies on labeled data from both healthy and damaged states of a structure, which can be time-consuming, labor-intensive, and sometimes impractical to obtain in real-life scenarios. To tackle this problem, unsupervised approaches have been successful in detecting abnormalities at an early stage before catastrophic failure occurs. Unsupervised anomaly detection for SHM does not require damaged data to train the model. Instead, the model only requires normal data, and it solely uses a small portion of the damaged data for testing [<xref ref-type="bibr" rid="B8-mathematics-13-02445">8</xref>]. Khan et al. [<xref ref-type="bibr" rid="B9-mathematics-13-02445">9</xref>] proposed the processing of guided waves using a sparse autoencoder to extract unsupervised autonomous damage features. The unsupervised features, when applied in supervised learning, demonstrated that the sparse autoencoder (SAE) could distinguish between pristine and damaged conditions with 99% accuracy. Abbassi et al. [<xref ref-type="bibr" rid="B10-mathematics-13-02445">10</xref>] evaluated four unsupervised dimensionality reduction methods (PCA, KPCA, t-SNE, and AE) for detecting and localizing damage under varying temperature conditions. Through the dimensionality reduction strategy, the AE outperformed the other models in detecting and localizing damage, whereas the others succeeded in detecting damage at low temperatures. Additionally, using the strategy involving the Q and T<sup>2</sup> indices, all the methods successfully detected damage across all temperature ranges. The effectiveness of the unsupervised autoencoder was also highlighted in [<xref ref-type="bibr" rid="B11-mathematics-13-02445">11</xref>], as it eliminated the use of labeled data by proposing a CNN autoencoder for damage localization. They validated their method using numerical and experimental datasets. The proposed method demonstrated excellent results compared to the tomography method.</p>
+      <p>Guided-wave-based SHM presents significant complexities and heterogeneity, which primarily affect models&#x2019; ability to extract meaningful features. To address this challenge, various deep learning models have been proposed for feature differentiation; however, these approaches require a substantial number of learning parameters in addition to the computational complexity of the task. Sawant et al. [<xref ref-type="bibr" rid="B4-mathematics-13-02445">4</xref>] utilized raw Lamb wave time-series data to identify and localize damage through unsupervised transfer learning using a convolutional autoencoder (TL-CAE). The proposed unsupervised model outperformed its supervised counterpart trained on the same dataset. In SHM, gathering a sufficient dataset to train deep learning models can be challenging, costly, and time-consuming, particularly for damage-related data. To minimize the negative impact of an imbalanced dataset on anomaly detection, Zhao et al. [<xref ref-type="bibr" rid="B12-mathematics-13-02445">12</xref>] proposed an SGAD-GAN model to perform data augmentation and anomaly detection simultaneously. The issue of data scarcity in SHM was also addressed by Furkan et al. [<xref ref-type="bibr" rid="B13-mathematics-13-02445">13</xref>] by employing a generative adversarial network with a gradient penalty to generate synthetic labeled acceleration data. The data generated were augmented using varying ratios and were used to train a 1D-CNN. Training GANs is not an effortless task, and it often produces misleading samples or fails to capture the important patterns in the signals. To identify and filter such low-quality samples, different clustering-based techniques have been employed, including DBSCAN [<xref ref-type="bibr" rid="B14-mathematics-13-02445">14</xref>], K-means [<xref ref-type="bibr" rid="B15-mathematics-13-02445">15</xref>], and discriminative fuzzy K-means [<xref ref-type="bibr" rid="B16-mathematics-13-02445">16</xref>].</p>
+      <p>In this study, a self-attention autoencoder combined with a Gaussian mixture model (SAE-GMM) for unsupervised anomaly detection in laminated composite plates was proposed. The model was trained exclusively on the original healthy data and synthetic data generated using a GAN. A deep autoencoder was employed to extract the low-dimensional latent features and compute the reconstruction errors for each input signal. Additionally, a self-attention mechanism was integrated to enhance the performance of the deep autoencoder by dynamically prioritizing the most relevant parts of the input signal. Finally, the extracted latent features and reconstruction error outputs from the AE were input into the estimation network for density estimation via a GMM. This combination provides a full anomaly detection model, capable of detecting damage with high accuracy and inference time compared to conventional models. The key contributions of this study are summarized as follows:<list list-type="bullet"><list-item><p>The developed SAE-GMM architecture was trained solely on healthy Lamb wave data, enabling reliable damage detection without requiring labeled damage samples.</p></list-item><list-item><p>The proposed unsupervised framework was specifically designed to minimize false positive rates, thereby improving the robustness and reliability of damage detection.</p></list-item><list-item><p>A GAN was employed to generate high-fidelity synthetic signals, filtered via K-means clustering, to enrich healthy training data and overcome data shortage issue in SHM.</p></list-item><list-item><p>The self-attention mechanism was integrated into the encoded network, enhancing sensitivity to subtle signal distortions, improving representation quality and reconstruction fidelity.</p></list-item><list-item><p>Leveraged Gaussian mixture modeling combined latent features and reconstruction errors to effectively separate healthy and damaged signals.</p></list-item><list-item><p>We achieved state-of-the-art anomaly detection performance on an experimental composite plate, with validated generalization under varied Gaussian noise levels.</p></list-item></list></p>
+    </sec>
+    <sec id="sec2-mathematics-13-02445">
+      <title>2. The Proposed Framework</title>
+      <sec id="sec2dot1-mathematics-13-02445">
+        <title>2.1. Overview</title>
+        <p>The proposed framework comprises of three main components: (1) an experimental setup and data acquisition, (2) a GAN for generating synthetic data, and (3) a self-attention autoencoder (SAE) with a Gaussian Mixture Model (GMM) for anomaly detection. <xref ref-type="fig" rid="mathematics-13-02445-f001">Figure 1</xref> shows the architecture of the SAE-GMM framework. First, a composite plate was fabricated, and Lamb wave-based experiments were conducted to collect both healthy and damaged signals. The GAN model was employed to generate synthetic healthy data that closely resembled the original healthy signals. To ensure data quality, the K-means algorithm was applied to filter out the most realistic synthetic samples before incorporating them into the dataset for augmentation. The autoencoder was trained exclusively on healthy data using a self-attention module integrated into the encoder to enhance feature extraction. The reconstruction error and latent vector were then combined to form a new input vector for density estimation using the GMM, enabling effective anomaly detection.</p>
+      </sec>
+      <sec id="sec2dot2-mathematics-13-02445">
+        <title>2.2. GAN Model for Data Augmentation</title>
+        <p>The GAN consists of two key components: a generator network (G) and a discriminator network (D). As shown in Step 2 of <xref ref-type="fig" rid="mathematics-13-02445-f001">Figure 1</xref>, the generator network converts Gaussian noise into synthetic data that closely resembles the original data distribution, aiming to deceive the discriminator. The discriminator network is responsible for distinguishing between fake and real data. Through an adversarial process, the two networks engage in a competitive game: the generator continuously improves to produce more realistic data, whereas the discriminator enhances its ability to detect fake data. During training, the objective function follows a minimax strategy [<xref ref-type="bibr" rid="B17-mathematics-13-02445">17</xref>,<xref ref-type="bibr" rid="B18-mathematics-13-02445">18</xref>]:<disp-formula id="FD1-mathematics-13-02445"><label>(1)</label><mml:math id="mm1" display="block"><mml:semantics><mml:mrow><mml:mi>V</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:mi>D</mml:mi><mml:mo>,</mml:mo><mml:mi>G</mml:mi></mml:mrow></mml:mfenced><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="double-struck">E</mml:mi></mml:mrow><mml:mrow><mml:mi>x</mml:mi><mml:mo>~</mml:mo><mml:mi>P</mml:mi><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mrow><mml:mrow><mml:mi mathvariant="italic">log</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="double-struck">E</mml:mi></mml:mrow><mml:mrow><mml:mi>x</mml:mi><mml:mo>~</mml:mo><mml:mi>P</mml:mi><mml:mo>(</mml:mo><mml:mi>Z</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mrow><mml:mrow><mml:mi mathvariant="italic">log</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>1</mml:mn><mml:mo>&#x2212;</mml:mo><mml:mi>D</mml:mi><mml:mo>(</mml:mo><mml:mi>G</mml:mi><mml:mo>(</mml:mo><mml:mi>Z</mml:mi><mml:mo>)</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:mfenced></mml:mrow></mml:mrow></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm2"><mml:semantics><mml:mrow><mml:mi>P</mml:mi><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> represents the distribution of the original data and <italic>P</italic>(<italic>Z</italic>) denotes the distribution of the synthetic data generated by the model. The first term, <inline-formula><mml:math id="mm3"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="double-struck">E</mml:mi></mml:mrow><mml:mrow><mml:mi>x</mml:mi><mml:mo>~</mml:mo><mml:mi>P</mml:mi><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mrow><mml:mrow><mml:mi mathvariant="normal">log</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mo>(</mml:mo><mml:mi>x</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></inline-formula>, represents the discriminator&#x2019;s goal of maximizing its ability to classify real samples. Simultaneously, the generator minimizes the discriminator&#x2019;s success in distinguishing fake data through the second term, <inline-formula><mml:math id="mm4"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="double-struck">E</mml:mi></mml:mrow><mml:mrow><mml:mi>x</mml:mi><mml:mo>~</mml:mo><mml:mi>P</mml:mi><mml:mo>(</mml:mo><mml:mi>Z</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:msub><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mrow><mml:mrow><mml:mi mathvariant="normal">log</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>1</mml:mn><mml:mo>&#x2212;</mml:mo><mml:mi>D</mml:mi><mml:mo>(</mml:mo><mml:mi>G</mml:mi><mml:mo>(</mml:mo><mml:mi>Z</mml:mi><mml:mo>)</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:mfenced></mml:mrow></mml:mrow></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></inline-formula>. This process continues until the generator reaches the stage of generating samples that are closely related to real data, and the discriminator&#x2019;s accuracy can no longer be improved further.</p>
+        <p>The generator maps a 150-dimensional latent vector to a 1500-point time-domain signal. Both the generator and discriminator consist of three fully connected layers with 64, 128, and 256 neurons, each followed by LeakyReLU activation functions. To improve training stability, batch normalization and dropout were applied. The models were optimized using the Adam optimizer with a learning rate of 2 &#xD7; 10<sup>&#x2212;4</sup> and a momentum coefficient &#x3B2;<sub>1</sub> = 0.5. Binary cross-entropy was used as the loss function. The training process was carried out over 5000 epochs with a batch size of 32 to ensure stable convergence.</p>
+        <p>After training the model, 5000 synthetic data samples were generated. However, some of the synthetic signals were of poor quality. To ensure the quality of the samples generated, K-means clustering was used to distinguish between high- and low-quality signals. Additionally, this algorithm is simple to implement and efficient for large datasets. First, the mean square error (MSE) was calculated and stored for each synthetic signal in comparison with all the original data as follows:<disp-formula id="FD2-mathematics-13-02445"><label>(2)</label><mml:math id="mm5" display="block"><mml:semantics><mml:mrow><mml:mi>M</mml:mi><mml:mi>S</mml:mi><mml:mi>E</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>d</mml:mi></mml:mrow><mml:mrow><mml:mi>s</mml:mi><mml:mi>y</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mrow><mml:mi>d</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:mfrac></mml:mstyle><mml:mrow><mml:munderover><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:munderover><mml:mrow><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>d</mml:mi></mml:mrow><mml:mrow><mml:mi>s</mml:mi><mml:mi>y</mml:mi><mml:mi>n</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mi>d</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm6"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>d</mml:mi></mml:mrow><mml:mrow><mml:mi>s</mml:mi><mml:mi>y</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm7"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>d</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> are synthetic data and real data, respectively.</p>
+        <p>After storing all the MSE values as <inline-formula><mml:math id="mm8"><mml:semantics><mml:mrow><mml:mfenced open="{" close="}" separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>,</mml:mo><mml:mo>&#xA0;</mml:mo><mml:msub><mml:mrow><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msub><mml:mo>,</mml:mo><mml:mo>&#xA0;</mml:mo><mml:msub><mml:mrow><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msub><mml:mo>,</mml:mo><mml:mo>&#x2026;</mml:mo><mml:mo>,</mml:mo><mml:mo>&#xA0;</mml:mo><mml:msub><mml:mrow><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></inline-formula>, K-means clustering was initialized with two clusters, and the two centroids <inline-formula><mml:math id="mm9"><mml:semantics><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>,</mml:mo><mml:mo>&#xA0;</mml:mo><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></inline-formula> were assigned randomly. Each value in the MSE set was assigned to the closest centroid as follows:<disp-formula id="FD3-mathematics-13-02445"><label>(3)</label><mml:math id="mm10" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>K</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mfenced open="{" close="}" separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>m</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mfenced open="|" close="|" separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>a</mml:mi><mml:mi>r</mml:mi><mml:mi>g</mml:mi><mml:mi>m</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub><mml:mfenced open="|" close="|" separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow></mml:mfenced></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm11"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>K</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> is the cluster set, and the updated centroid <inline-formula><mml:math id="mm12"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> is calculated as <inline-formula><mml:math id="mm13"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mfenced open="|" close="|" separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>K</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow></mml:mfrac></mml:mstyle><mml:mrow><mml:munder><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mo>&#x2208;</mml:mo><mml:msub><mml:mrow><mml:mi>K</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:munder><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi>n</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:mrow></mml:semantics></mml:math></inline-formula>. The centroids are continuously updated until convergence is achieved. To select the highest-quality synthetic signals, the threshold was determined as <inline-formula><mml:math id="mm14"><mml:semantics><mml:mrow><mml:mi>T</mml:mi><mml:mi>h</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>s</mml:mi><mml:mi>h</mml:mi><mml:mi>o</mml:mi><mml:mi>l</mml:mi><mml:mi>d</mml:mi><mml:mo>&#xA0;</mml:mo><mml:mo>=</mml:mo><mml:mo>&#xA0;</mml:mo><mml:mi>m</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mo>&#xA0;</mml:mo><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>,</mml:mo><mml:mo>&#xA0;</mml:mo><mml:msub><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>. Finally, only 3270 quality signals fell below the threshold.</p>
+      </sec>
+      <sec id="sec2dot3-mathematics-13-02445">
+        <title>2.3. Self-Attention Autoencoder with GMM</title>
+        <p>The self-attention autoencoder with Gaussian mixture model (SAE-GMM) consists of two main components, as shown in <xref ref-type="fig" rid="mathematics-13-02445-f001">Figure 1</xref>. The first is a self-attention autoencoder, which functions as a compression network to reduce input dimensionality into a lower-dimensional representation while simultaneously computing reconstruction errors. In the second stage, both the low-dimensional latent features and their corresponding reconstruction errors are concatenated and fed into an estimation network, which performs density estimation and maximizes the likelihood of the input samples using a Gaussian mixture model.</p>
+        <sec id="sec2dot3dot1-mathematics-13-02445">
+          <title>2.3.1. The Encoder</title>
+          <p>One key component of the compression network is the encoder, which transforms a sequence of input data <inline-formula><mml:math id="mm15"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:mi>X</mml:mi><mml:mo>&#x2208;</mml:mo><mml:msup><mml:mrow><mml:mi mathvariant="double-struck">R</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:msup><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> from a high-dimensional space into a lower-dimensional latent representation <inline-formula><mml:math id="mm16"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2208;</mml:mo><mml:msup><mml:mrow><mml:mi mathvariant="double-struck">R</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi></mml:mrow></mml:msup><mml:mo>,</mml:mo><mml:mo>&#xA0;</mml:mo><mml:mi>t</mml:mi><mml:mo>&lt;</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>. This compression process is accomplished by extracting and encoding essential features from the input data. In the proposed model, the encoder consists of two stacked layers with 128 and 64 neurons. Each layer employs a Rectified Linear Unit (ReLu) activation function. The encoding process that maps the input data <inline-formula><mml:math id="mm17"><mml:semantics><mml:mrow><mml:mi>X</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> to the low-dimensional latent space <inline-formula><mml:math id="mm18"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> is formulated as follows:<disp-formula id="FD4-mathematics-13-02445"><label>(4)</label><mml:math id="mm19" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>f</mml:mi></mml:mrow><mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:mrow></mml:msub><mml:mo>(</mml:mo><mml:mi>X</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></disp-formula>
+          where <inline-formula><mml:math id="mm20"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>f</mml:mi></mml:mrow><mml:mrow><mml:mi>&#x3B8;</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> represents the fully connected layers of the encoder part.<disp-formula id="FD5-mathematics-13-02445"><label>(5)</label><mml:math id="mm21" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>&#x3C1;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msub><mml:mo>&#x2217;</mml:mo><mml:mi>&#x3B4;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msub><mml:mo>&#x2217;</mml:mo><mml:mi>&#x3B4;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>&#x2217;</mml:mo><mml:mi>X</mml:mi><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula>
+          where <inline-formula><mml:math id="mm22"><mml:semantics><mml:mrow><mml:mi>X</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> is the input data, <inline-formula><mml:math id="mm23"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm24"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> are weight and bias, respectively, and <inline-formula><mml:math id="mm25"><mml:semantics><mml:mrow><mml:mi>&#x3C1;</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> is the activation function.</p>
+        </sec>
+        <sec id="sec2dot3dot2-mathematics-13-02445">
+          <title>2.3.2. The Attention Mechanism</title>
+          <p>The attention block in the autoencoder enhances the encoder&#x2019;s ability to focus on the most salient features of the input data while suppressing less important features. The mechanism computes attention weights by evaluating the relative importance of each input element, measuring their similarities, and normalizing these values to form a weighted representation [<xref ref-type="bibr" rid="B19-mathematics-13-02445">19</xref>]. The self-attention mechanism computes three matrices, namely query <inline-formula><mml:math id="mm26"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:mi>Q</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>, key <inline-formula><mml:math id="mm27"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:mi>K</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>, and value <inline-formula><mml:math id="mm28"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:mi>V</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> from the hidden states, and they are calculated as follows:<disp-formula id="FD6-mathematics-13-02445"><label>(6)</label><mml:math id="mm29" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>Q</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>Q</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula><disp-formula id="FD7-mathematics-13-02445"><label>(7)</label><mml:math id="mm30" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>K</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>K</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula><disp-formula id="FD8-mathematics-13-02445"><label>(8)</label><mml:math id="mm31" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>V</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>V</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula>
+          where <inline-formula><mml:math id="mm32"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> denotes the <italic>i</italic>th feature sliding window matrix of a low-dimensional latent space. <inline-formula><mml:math id="mm33"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>Q</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula>, <inline-formula><mml:math id="mm34"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>K</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula>, and <inline-formula><mml:math id="mm35"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>V</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> are the weight matrices corresponding to query, key, and value, respectively. The attention function is calculated as follows [<xref ref-type="bibr" rid="B20-mathematics-13-02445">20</xref>]:<disp-formula id="FD9-mathematics-13-02445"><label>(9)</label><mml:math id="mm36" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>A</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi mathvariant="normal">S</mml:mi><mml:mi mathvariant="normal">o</mml:mi><mml:mi mathvariant="normal">f</mml:mi><mml:mi mathvariant="normal">t</mml:mi><mml:mi mathvariant="normal">m</mml:mi><mml:mi mathvariant="normal">a</mml:mi><mml:mi mathvariant="normal">x</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac bevelled="true"><mml:mrow><mml:msubsup><mml:mrow><mml:msub><mml:mrow><mml:mi>Q</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mi>K</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow><mml:mrow><mml:mi>T</mml:mi></mml:mrow></mml:msubsup></mml:mrow><mml:mrow><mml:msqrt><mml:mi>d</mml:mi></mml:msqrt></mml:mrow></mml:mfrac></mml:mstyle></mml:mrow></mml:mfenced><mml:mo>.</mml:mo><mml:msub><mml:mrow><mml:mi>V</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula>
+          where <inline-formula><mml:math id="mm37"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>A</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> is the attention coefficient of matrix <inline-formula><mml:math id="mm38"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula>, and <inline-formula><mml:math id="mm39"><mml:semantics><mml:mrow><mml:mi>d</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> represents the scaling factor. The output from the attention layer is obtained by applying attention weights to the input sequences.<disp-formula id="FD10-mathematics-13-02445"><label>(10)</label><mml:math id="mm40" display="block"><mml:semantics><mml:mrow><mml:msubsup><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow><mml:mrow><mml:mo>&#x2032;</mml:mo></mml:mrow></mml:msubsup><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2A00;</mml:mo><mml:msub><mml:mrow><mml:mi>A</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+          <p>During implementation, the attention module was constructed using the Dot-product attention layer from TensorFlow-Keras. The encoded feature tensor is passed simultaneously as both the query and value inputs to this layer, enabling self-attention across all steps. The resulting attention scores highlight interdependence within the sequence and are used to compute a weighted representation of the input. This attention-enhanced output is combined with the original encoded features via elementwise multiplication before further transformation through dense layers.</p>
+        </sec>
+        <sec id="sec2dot3dot3-mathematics-13-02445">
+          <title>2.3.3. The Decoder</title>
+          <p>The decoder typically consists of hidden layers with an increasing number of nodes and gradually decompresses the low-dimensional features from the encoder. Its primary goal is to reconstruct <inline-formula><mml:math id="mm41"><mml:semantics><mml:mrow><mml:mi>X</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> from the latent features <inline-formula><mml:math id="mm42"><mml:semantics><mml:mrow><mml:msubsup><mml:mrow><mml:mi>z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow><mml:mrow><mml:mo>&#x2032;</mml:mo></mml:mrow></mml:msubsup></mml:mrow></mml:semantics></mml:math></inline-formula>, with minimal loss. The last layer of the decoder network can be mathematically expressed as follows:<disp-formula id="FD11-mathematics-13-02445"><label>(11)</label><mml:math id="mm43" display="block"><mml:semantics><mml:mrow><mml:mover accent="true"><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mo stretchy="false">^</mml:mo></mml:mover><mml:mo>=</mml:mo><mml:mi>&#x3C1;</mml:mi><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2217;</mml:mo><mml:mi>&#x3B4;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>b</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2217;</mml:mo><mml:mi>&#x3B4;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mi>a</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2217;</mml:mo><mml:msubsup><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>C</mml:mi></mml:mrow><mml:mrow><mml:mo>&#x2032;</mml:mo></mml:mrow></mml:msubsup><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mi>a</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mi>b</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></disp-formula>
+          where <inline-formula><mml:math id="mm44"><mml:semantics><mml:mrow><mml:mover accent="true"><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mo stretchy="false">^</mml:mo></mml:mover></mml:mrow></mml:semantics></mml:math></inline-formula> is the reconstructed output from the decoder and <inline-formula><mml:math id="mm45"><mml:semantics><mml:mrow><mml:mi>W</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm46"><mml:semantics><mml:mrow><mml:mi>b</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> are the weight and bias of the decoder network, respectively. The reconstruction loss of the compression network is computed as follows:<disp-formula id="FD12-mathematics-13-02445"><label>(12)</label><mml:math id="mm47" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="script">L</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:mfrac></mml:mstyle><mml:mrow><mml:munderover><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:munderover><mml:mrow><mml:msup><mml:mrow><mml:mfenced open="&#x2016;" close="&#x2016;" separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mover accent="true"><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mo stretchy="false">^</mml:mo></mml:mover></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        </sec>
+      </sec>
+      <sec id="sec2dot4-mathematics-13-02445">
+        <title>2.4. Estimation Network and Anomaly Score</title>
+        <p>The estimation network computes density estimation of the input data <inline-formula><mml:math id="mm48"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:mi>Z</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> by leveraging concatenation of the reconstruction error <inline-formula><mml:math id="mm49"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> and low-dimension latent vector <inline-formula><mml:math id="mm50"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:msubsup><mml:mrow><mml:mi>z</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow><mml:mrow><mml:mo>&#x2032;</mml:mo></mml:mrow></mml:msubsup><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula>. This enables the model to estimate the likelihood of a sample belonging to either the healthy or damaged class. The process was performed within the framework of the Gaussian mixture model (GMM). In this study, a multilayer perceptron (MLP) with three hidden layers consisting of 16, 8, and 4 neurons was employed to estimate the parameters of the GMM. This classifier can learn efficiently the complex relationships between construction error, latent features, and output probabilities [<xref ref-type="bibr" rid="B21-mathematics-13-02445">21</xref>]. The mathematical formulation of this process is as follows [<xref ref-type="bibr" rid="B22-mathematics-13-02445">22</xref>]:<disp-formula id="FD13-mathematics-13-02445"><label>(13)</label><mml:math id="mm51" display="block"><mml:semantics><mml:mrow><mml:mi>h</mml:mi><mml:mo>=</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mi>Z</mml:mi><mml:mo>,</mml:mo><mml:mfenced open="|" close="|" separators="|"><mml:mrow><mml:mi>X</mml:mi><mml:mo>&#x2212;</mml:mo><mml:mover accent="true"><mml:mrow><mml:mi>X</mml:mi></mml:mrow><mml:mo stretchy="false">^</mml:mo></mml:mover></mml:mrow></mml:mfenced></mml:mrow></mml:mfenced></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>The final layer of the MLP is obtained as follows:<disp-formula id="FD14-mathematics-13-02445"><label>(14)</label><mml:math id="mm52" display="block"><mml:semantics><mml:mrow><mml:msup><mml:mrow><mml:mi>h</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>3</mml:mn><mml:mo>)</mml:mo></mml:mrow></mml:msup><mml:mo>=</mml:mo><mml:mi>&#x3C1;</mml:mi><mml:mo>(</mml:mo><mml:msup><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:mfenced></mml:mrow></mml:msup><mml:mo>&#x2217;</mml:mo><mml:mi>&#x3C1;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msup><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfenced></mml:mrow></mml:msup><mml:mo>&#x2217;</mml:mo><mml:mi>&#x3C1;</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msup><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:mfenced></mml:mrow></mml:msup><mml:mo>&#x2217;</mml:mo><mml:mi>h</mml:mi><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:mfenced></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfenced></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>3</mml:mn><mml:mo>)</mml:mo></mml:mrow></mml:msup><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm53"><mml:semantics><mml:mrow><mml:msup><mml:mrow><mml:mi>h</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>3</mml:mn><mml:mo>)</mml:mo></mml:mrow></mml:msup></mml:mrow></mml:semantics></mml:math></inline-formula> represents the output feature vector of the MLP, <inline-formula><mml:math id="mm54"><mml:semantics><mml:mrow><mml:mi>&#x3C1;</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> is the activation function (ReLU), and <inline-formula><mml:math id="mm55"><mml:semantics><mml:mrow><mml:msup><mml:mrow><mml:mi>W</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:mfenced></mml:mrow></mml:msup></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm56"><mml:semantics><mml:mrow><mml:msup><mml:mrow><mml:mi>b</mml:mi></mml:mrow><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:mfenced></mml:mrow></mml:msup></mml:mrow></mml:semantics></mml:math></inline-formula> represent the weight matrices and bias for the <italic>i</italic>th layer, respectively. To estimate the probabilities of each GMM component, the last layer of the MLP passes through SoftMax activation and is expressed as follows:<disp-formula id="FD15-mathematics-13-02445"><label>(15)</label><mml:math id="mm57" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3B3;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mi>e</mml:mi><mml:mi>x</mml:mi><mml:mi>p</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msubsup><mml:mrow><mml:mi>h</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>3</mml:mn><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mrow><mml:msubsup><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>j</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>K</mml:mi></mml:mrow></mml:msubsup><mml:mrow><mml:mi>e</mml:mi><mml:mi>x</mml:mi><mml:mi>p</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:msubsup><mml:mrow><mml:mi>h</mml:mi></mml:mrow><mml:mrow><mml:mi>j</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>3</mml:mn><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:mrow></mml:mfenced></mml:mrow></mml:mrow></mml:mrow></mml:mfrac></mml:mstyle></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>Here, <inline-formula><mml:math id="mm58"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3B3;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> represents the probability of data belonging to the <italic>k</italic>th Gaussian component, <italic>K</italic> is the total number of Gaussian components, and <inline-formula><mml:math id="mm59"><mml:semantics><mml:mrow><mml:msubsup><mml:mrow><mml:mi>h</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>3</mml:mn><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:mrow></mml:semantics></mml:math></inline-formula> is the output of the final MLP layer corresponding to the <italic>k</italic>th component. Furthermore, to maximize the likelihood of the input samples, the mean <inline-formula><mml:math id="mm60"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi>&#x3BC;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> and variance <inline-formula><mml:math id="mm61"><mml:semantics><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mo>&#x2211;</mml:mo></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> parameters of the GMM can be estimated as follows [<xref ref-type="bibr" rid="B23-mathematics-13-02445">23</xref>]:<disp-formula id="FD16-mathematics-13-02445"><label>(16)</label><mml:math id="mm62" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3BC;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mrow><mml:msubsup><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:msubsup><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3B3;</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mrow></mml:mrow><mml:mrow><mml:mrow><mml:msubsup><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:msubsup><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3B3;</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mrow></mml:mrow></mml:mfrac></mml:mstyle></mml:mrow></mml:semantics></mml:math></disp-formula><disp-formula id="FD17-mathematics-13-02445"><label>(17)</label><mml:math id="mm63" display="block"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mo>&#x2211;</mml:mo></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mrow><mml:msubsup><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:msubsup><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3B3;</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mi>&#x3BC;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:msub><mml:mrow><mml:mi>Z</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mi>&#x3BC;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mi>T</mml:mi></mml:mrow></mml:msup></mml:mrow></mml:mrow></mml:mrow><mml:mrow><mml:mrow><mml:msubsup><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:msubsup><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3B3;</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mrow></mml:mrow></mml:mfrac></mml:mstyle></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm64"><mml:semantics><mml:mrow><mml:mi>N</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> denotes the total number of samples. With the estimated parameters, the likelihood of each sample being computed using the energy function is as follows:<disp-formula id="FD18-mathematics-13-02445"><label>(18)</label><mml:math id="mm65" display="block"><mml:semantics><mml:mrow><mml:mi>E</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:mi>Z</mml:mi></mml:mrow></mml:mfenced><mml:mo>=</mml:mo><mml:mo>&#x2212;</mml:mo><mml:mrow><mml:mrow><mml:mi mathvariant="normal">log</mml:mi></mml:mrow><mml:mrow><mml:mrow><mml:msubsup><mml:mo stretchy="false">&#x2211;</mml:mo><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>K</mml:mi></mml:mrow></mml:msubsup><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3C0;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub><mml:mstyle scriptlevel="0" displaystyle="true"><mml:mfrac><mml:mrow><mml:mi>e</mml:mi><mml:mi>x</mml:mi><mml:mi>p</mml:mi><mml:mfenced separators="|"><mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mi>Z</mml:mi><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mi>&#x3BC;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mi>T</mml:mi></mml:mrow></mml:msup><mml:msubsup><mml:mrow><mml:mo>&#x2211;</mml:mo></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mo>&#x2212;</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msubsup><mml:mfenced separators="|"><mml:mrow><mml:mi>Z</mml:mi><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mrow><mml:mi>&#x3BC;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfenced></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:msqrt><mml:mo stretchy="false">|</mml:mo><mml:mrow><mml:mn>2</mml:mn><mml:mi>&#x3C0;</mml:mi><mml:msub><mml:mrow><mml:mo>&#x2211;</mml:mo></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo stretchy="false">|</mml:mo></mml:msqrt></mml:mrow></mml:mfrac></mml:mstyle></mml:mrow></mml:mrow></mml:mrow></mml:mrow></mml:mrow></mml:semantics></mml:math></disp-formula>
+        where <inline-formula><mml:math id="mm66"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mi>&#x3C0;</mml:mi></mml:mrow><mml:mrow><mml:mi>k</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula> is the mixture probability of the <italic>k</italic>th component and <inline-formula><mml:math id="mm67"><mml:semantics><mml:mrow><mml:mo stretchy="false">|</mml:mo><mml:mrow><mml:mo>.</mml:mo></mml:mrow><mml:mo stretchy="false">|</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> represents the matrix determinant. Based on Equation (18), samples with higher energy values are more likely to correspond to the damaged cases. In this study, the threshold was set at the 95th percentile of the healthy samples, meaning that any sample exceeding this threshold was classified as damaged.</p>
+      </sec>
+    </sec>
+    <sec id="sec3-mathematics-13-02445">
+      <title>3. Experiments and Analysis</title>
+      <sec id="sec3dot1-mathematics-13-02445">
+        <title>3.1. Experimental Verification on Laminated Composite Plate</title>
+        <p>To validate the proposed model, a laminated composite plate with dimensions of <inline-formula><mml:math id="mm68"><mml:semantics><mml:mrow><mml:mn>300</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">m</mml:mi><mml:mi mathvariant="normal">m</mml:mi><mml:mo>&#xD7;</mml:mo><mml:mn>300</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">m</mml:mi><mml:mi mathvariant="normal">m</mml:mi><mml:mo>&#xD7;</mml:mo><mml:mn>1</mml:mn><mml:mi mathvariant="normal">m</mml:mi><mml:mi mathvariant="normal">m</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> was fabricated using an epoxy-based carbon fiber prepreg with a cross-ply orientation of <inline-formula><mml:math id="mm69"><mml:semantics><mml:mrow><mml:msub><mml:mrow><mml:mo>[</mml:mo><mml:mn>0</mml:mn><mml:mo>/</mml:mo><mml:mn>90</mml:mn><mml:mo>/</mml:mo><mml:mn>0</mml:mn><mml:mo>/</mml:mo><mml:mn>90</mml:mn><mml:mo>]</mml:mo></mml:mrow><mml:mrow><mml:mi>S</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:semantics></mml:math></inline-formula>. The composite laminates were manufactured using a hot-press machine and carefully cured to achieve the desired mechanical properties: a tensile strength of <inline-formula><mml:math id="mm70"><mml:semantics><mml:mrow><mml:mn>4900</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">M</mml:mi><mml:mi mathvariant="normal">P</mml:mi><mml:mi mathvariant="normal">a</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula>, tensile modulus of <inline-formula><mml:math id="mm71"><mml:semantics><mml:mrow><mml:mn>230</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">G</mml:mi><mml:mi mathvariant="normal">P</mml:mi><mml:mi mathvariant="normal">a</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula>, thermal conductivity of <inline-formula><mml:math id="mm72"><mml:semantics><mml:mrow><mml:mn>9.4</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">W</mml:mi><mml:mo>/</mml:mo><mml:mi mathvariant="normal">m</mml:mi><mml:mo>.</mml:mo><mml:mi mathvariant="normal">k</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula>, and density of <inline-formula><mml:math id="mm73"><mml:semantics><mml:mrow><mml:mn>1.8</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">g</mml:mi><mml:mo>/</mml:mo><mml:msup><mml:mrow><mml:mi mathvariant="normal">c</mml:mi><mml:mi mathvariant="normal">m</mml:mi></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:semantics></mml:math></inline-formula>. After trimming the composite plate to its final dimensions, four piezoelectric transducers (PZTs) from the PI ceramics were mounted diagonally at the four corners of the laminate plate using Loctite 401 adhesive to monitor the structure. Each PZT had a diameter of <inline-formula><mml:math id="mm74"><mml:semantics><mml:mrow><mml:mn>10</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">m</mml:mi><mml:mi mathvariant="normal">m</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> and thickness of <inline-formula><mml:math id="mm75"><mml:semantics><mml:mrow><mml:mn>0.5</mml:mn><mml:mo>&#xA0;</mml:mo><mml:mi mathvariant="normal">m</mml:mi><mml:mi mathvariant="normal">m</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula>.</p>
+      </sec>
+      <sec id="sec3dot2-mathematics-13-02445">
+        <title>3.2. Data Acquisition</title>
+        <p>The configuration consisting of four piezoelectric transducers, each with the dual functions of actuation and sensing, attached to a laminated plate is presented in <xref ref-type="fig" rid="mathematics-13-02445-f002">Figure 2</xref>a. Twelve sensing paths (P1&#x2013;P12) were used for data acquisition. The composite plate was segmented into nine grid zones, each measuring 90 mm &#xD7; 90 mm. To simulate varying damage severity levels, as presented in <xref ref-type="fig" rid="mathematics-13-02445-f002">Figure 2</xref>b, three distinct masses (13 g, 16 g, and 20 g) were simultaneously placed at the center of each grid zone. A disk magnet was chosen to simulate the damage because it was non-destructive, easy to position, and capable of altering the local stiffness and acoustic impedance of the laminate, thereby affecting the propagation of Lamb waves. This approach also allowed for a reversible process that enabled the collection of both healthy and damaged data under controlled conditions. The experimental setup, as shown in <xref ref-type="fig" rid="mathematics-13-02445-f002">Figure 2</xref>c, comprised an NI-USB 6341 series data acquisition system, a dual-channel PZT amplifier, and a LabVIEW-controlled PC for signal generation and data acquisition.</p>
+        <p>The excitation signal and measured Lamb wave signals are presented in <xref ref-type="fig" rid="mathematics-13-02445-f003">Figure 3</xref>. As shown in <xref ref-type="fig" rid="mathematics-13-02445-f003">Figure 3</xref>a, a five-cycle sinusoidal tone burst, modulated by a Hanning window and centered at 150 kHz, was employed as the excitation signal. Signals were transmitted and recorded at a sampling rate of 500 kHz per sample. As shown in <xref ref-type="fig" rid="mathematics-13-02445-f003">Figure 3</xref>b&#x2013;f, healthy and damaged responses (D1&#x2013;D3) were acquired sequentially using the pitch&#x2013;catch method. The signals were collected along path 3 between PZT-1 and PZT-3, with all damage cases introduced simultaneously at the center of the plate. The influence of the damage was evident in the direct-wave packet region (index 0&#x2013;400), where noticeable amplitude reductions and signal distortions were observed in the damaged signal compared to the healthy one (see <xref ref-type="fig" rid="mathematics-13-02445-f003">Figure 3</xref>c&#x2013;e). The damaged responses exhibited reduced amplitudes owing to the scattering effects induced by the defects. Subtle differences were observed among the three damage cases. As shown in <xref ref-type="fig" rid="mathematics-13-02445-f003">Figure 3</xref>f, damage case D3 resulted in greater energy loss than D1 and D2, indicating more severe disruptions.</p>
+        <p>To ensure experimental repeatability, each test cycle was repeated ten times. A total of 3240 damaged signals (12 paths &#xD7; 10 repetitions &#xD7; 9 locations &#xD7; 3 damage levels) and 600 healthy signals (12 paths &#xD7; 10 repetitions &#xD7; 5 trials) were collected. Due to the limited quantity of healthy signals and the risk of overfitting, a generative adversarial network (GAN), described in <xref ref-type="sec" rid="sec2dot2-mathematics-13-02445">Section 2.2</xref>, was employed to generate new high-fidelity samples rather than simply replicating the existing data patterns. Moreover, to ensure the quality of the generated signals, K-means clustering was used to distinguish between high- and low-quality synthetic samples.</p>
+        <p>Specifically, the root mean square (RMS) of each generated signal was compared with that of the original healthy signal. A threshold was established based on the minimum distance between the centroids of two clusters. Synthetic signals with mean squared error (MSE) values below this threshold were classified as high-quality, as shown in <xref ref-type="fig" rid="mathematics-13-02445-f004">Figure 4</xref>a. A representative comparison between a generated signal and an original healthy signal is shown in <xref ref-type="fig" rid="mathematics-13-02445-f004">Figure 4</xref>b, demonstrating a close resemblance in both amplitude and temporal structure, with only minor deviations observed in the second-wave packet. In total, 3270 high-quality synthetic signals were generated and combined with the original healthy data, yielding a final dataset comprising 3870 samples.</p>
+      </sec>
+      <sec id="sec3dot3-mathematics-13-02445">
+        <title>3.3. Baseline Methods and Evaluation Metrics</title>
+        <p>To demonstrate the effectiveness of our model, we compared it with various state-of-the-art models that are widely used for anomaly detection. These include shallow machine learning and deep learning approaches. Some of the models evaluated were the One-Class Support Vector Machine (Oc-SVM) [<xref ref-type="bibr" rid="B24-mathematics-13-02445">24</xref>], IsoForest [<xref ref-type="bibr" rid="B25-mathematics-13-02445">25</xref>], Local Outlier Factor (LOF) [<xref ref-type="bibr" rid="B26-mathematics-13-02445">26</xref>], and K-nearest neighbor (KNN) [<xref ref-type="bibr" rid="B27-mathematics-13-02445">27</xref>]. To ensure a fair comparison, latent features from the pretrained autoencoder were extracted and used to train the selected shallow models. Although shallow machine learning algorithms have demonstrated effectiveness in certain tasks, they often struggle with complex datasets. Therefore, in this study, we considered several deep learning models as the baseline for our proposed approach. These deep models include the Variational Autoencoder (VAE) [<xref ref-type="bibr" rid="B28-mathematics-13-02445">28</xref>], Invariant Representation Anomaly Detection (IRAD) [<xref ref-type="bibr" rid="B29-mathematics-13-02445">29</xref>], Deep support vector data description (Deep-SVDD) [<xref ref-type="bibr" rid="B30-mathematics-13-02445">30</xref>], and the transformer autoencoder (TAE) [<xref ref-type="bibr" rid="B31-mathematics-13-02445">31</xref>].</p>
+      </sec>
+      <sec id="sec3dot4-mathematics-13-02445">
+        <title>3.4. Implementation Details</title>
+        <p>To ensure a fair comparison between shallow machine learning and deep learning models, features were extracted using an autoencoder to train the KNN, IsoForest, Oc-SVM, and LOF models. The autoencoder, with an input shape of 1500 and a 64-dimensional latent representation, was trained exclusively on healthy data. All experiments were conducted on a workstation equipped with an NVIDIA GeForce RTX 3060 GPU, an Intel Core i7-10700F CPU, and 32 GB of RAM. All models were trained using the same hyperparameters: the Adam optimizer, a batch size of 32, and 50 training epochs. For KNN and LOF, the neighborhood size was set to five based on trial-and-error experimentation. In contrast, the number of estimators for IsoForest was set to 30, and the radial basis function (RBF) kernel was selected for Oc-SVM. Fully connected layers were used to construct deep learning-based models such as VAE, IRAD, and Deep-SVDD, all trained exclusively on healthy data with identical training parameters. Anomaly detection in both the VAE and IRAD models is based on reconstruction errors, which serve as the anomaly score via the mean squared error (MSE). In the case of VAE, Kullback&#x2013;Leibler (KL) divergence is added to the loss function to enforce a standard normal distribution in the latent space, whereas Deep-SVDD initializes its center point based on features extracted from healthy data. The transformer autoencoder model was constructed with a dense layer of 64 units, two attention heads, a feed-forward network with a hidden size of 128 and dropout rate of 0.25.</p>
+        <p>The proposed model, summarized in <xref ref-type="table" rid="mathematics-13-02445-t001">Table 1</xref>, identified abnormalities by initially training an attention-enhanced autoencoder solely on healthy data. This allowed the model to learn a compact latent representation and accurately reconstruct normal signal patterns. Subsequently, a Gaussian mixture model (GMM) with four components was then fitted to the latent features extracted from the healthy data. The number of components was selected based on a trial-and-error approach rather than exhaustive parameter optimization. Anomaly scores were then computed using the negative log-likelihood of each sample under the GMM. Samples with scores exceeding 95th percentile of the healthy data were classified as having anomalies, indicating potential damage.</p>
+        <p>To assess the contribution of the attention mechanism to our proposed model, we conducted a comparative experiment by retraining the SAE-GMM model with the attention module excluding from the encoder section. The modified model (AE-GMM) was evaluated under similar conditions, and its performance metrics were compared to those of the original architecture.</p>
+      </sec>
+      <sec id="sec3dot5-mathematics-13-02445">
+        <title>3.5. Evaluation Metrics</title>
+        <p>To evaluate the performance of the proposed model, four key metrics were selected: the F1-score, recall (R), the false positive rate (FPR), and inference time. According to [<xref ref-type="bibr" rid="B25-mathematics-13-02445">25</xref>], recall indicates the proportion of correctly classified damaged instances, whereas the FPR assesses the model&#x2019;s reliability by measuring how often healthy data are misclassified as damaged. Inference time tells how long it takes for a trained model to analyze new data.</p>
+      </sec>
+    </sec>
+    <sec id="sec4-mathematics-13-02445">
+      <title>4. Experimental Results</title>
+      <sec id="sec4dot1-mathematics-13-02445">
+        <title>4.1. Influence of Synthetic GAN Data on Proposed Model&#x2019;s Performance</title>
+        <p>To evaluate the influence of synthetic data on our model&#x2019;s performance, we designed four different scenarios, as summarized in <xref ref-type="table" rid="mathematics-13-02445-t002">Table 2</xref>. The first scenario is composed exclusively of real data (100% real samples). The second scenario includes a balanced mix of real and synthetic samples, consisting of 100% real and 20% synthetic data. The third scenario features a complete mix of real and synthetic data. Lastly, the fourth scenario consists solely of synthetic data (100% synthetic samples). Each scenario was evaluated using the same set of 1080 damaged samples.</p>
+        <p>From <xref ref-type="table" rid="mathematics-13-02445-t002">Table 2</xref>, it is clearly seen that the model trained solely on real data achieved low accuracy and a high false positive rate. This suggests that the model struggles to generalize well to unseen datasets due to the scarcity of real samples.</p>
+        <p>In contrast, the inclusion of synthetic data on real samples (scenario 3) demonstrated the best F1-score and the lowest false positive rate, highlighting the quality of the synthetic signals filtered by K-means clustering. Finally, the fourth scenario showed also strong anomaly detection; however, it suffered from low precision and an increased FPR, likely due to the absence of real data during training. Overall, the results indicate that synthetic data enhanced our model&#x2019;s performance, with scenario 3 exhibiting optimal performance.</p>
+      </sec>
+      <sec id="sec4dot2-mathematics-13-02445">
+        <title>4.2. Anomaly Detection Results</title>
+        <p>To train the proposed and baseline models, 5-fold cross-validation was employed to split the healthy data into training and validation sets. For each damage category, 35% of the corresponding data were randomly selected to minimize imbalances during the testing phase. The selected samples from the three damage severities were concatenated to construct the damage dataset. Subsequently, the damaged dataset was combined with validation healthy dataset to form the testing dataset.</p>
+        <p><xref ref-type="table" rid="mathematics-13-02445-t003">Table 3</xref> lists the average performance metrics of the proposed and baseline models. For each metric, the highest score is indicated in bold, and the second-highest score is underlined. Among traditional models, Isolation Forest delivered the best performance with an F1-score of 91.4% and a recall of 93.8%, though it suffered from a relatively high false positive rate (FPR) of 11.3%. The K-nearest neighbor (KNN) model achieved an almost perfect recall (99.4%) but was undermined by the highest FPR (31.8%), indicating poor discrimination of healthy signals. Both One-Class SVM and Local Outlier Factor (LOF) performed poorly across all metrics. These findings suggest that while traditional machine learning models offer faster inference, they lack the feature extraction capacity required for complex signals such as Lamb waves. In contrast, deep learning models demonstrated superior feature extraction capabilities. The Variational Autoencoder (VAE) stood out among the baselines, achieving an F1-score of 96.1%, a recall of 98.3%, and a moderate FPR of 5.16%. However, its inference time (0.75 s)&#x2014;nearly double that of the proposed model&#x2014;limits its practicality in real-time settings. The transformer autoencoder (TAE) attained a moderate F1-score of 90.0% and a recall of 94.0% but exhibited the longest inference time (5.56 s), reflecting high computational demand despite decent detection performance. Both Deep-SVDD and IRAD failed to strike a balance across metrics. Deep-SVDD achieved the lowest FPR (0.8%) but suffered from extremely low recall (44.0%) and a corresponding F1-score of 60.6%, indicating severe overfitting and poor anomaly detection capability.</p>
+        <p>The proposed SAE-GMM model outperformed all baselines, achieving the highest F1-score (97.1%), nearly perfect recall (99.9%), and the lowest FPR (4.99%). Additionally, it maintained a fast inference time of 0.37 s, offering an ideal balance between speed and accuracy. The trained model without the self-attention module (AE-GMM) achieved perfect recall but suffered from a higher FPR (7.01%). In addition, SAE-GMM provides a clear balance between recall and false alarms. These results clearly demonstrate that integrating self-attention improves robustness and reduces false positives, with only a slight increase in runtime.</p>
+        <p><xref ref-type="fig" rid="mathematics-13-02445-f005">Figure 5</xref> shows the confusion matrices for all baseline models and the proposed model, highlighting the effectiveness of each in distinguishing between healthy and damaged samples. The Oc-SVM and Deep-SVDD models exhibited limited capabilities, misclassifying nearly half of the damaged samples. Although Deep-SVDD achieved the lowest FPR, its overall detection performance was inadequate for practical applications. Models such as IsoForest, LOF, and IRAD demonstrated moderate performance in detecting true positives.</p>
+        <p>The KNN model achieved the second-highest number of true positives, correctly identifying 1074 out of 1080 damaged samples; however, it suffered from a high false positive rate, misclassifying 33.6% of the healthy signals. The VAE also performed well, misclassifying only 29 damaged samples and yielding a low FPR of 5.04%. The transformer autoencoder (TAE) achieved decent classification performance, correctly identifying 1013 damaged samples (93.8% recall) and 1207 healthy samples (90.01%). However, it misclassified 67 damaged and 134 healthy instances, indicating a moderate trade-off between detection and precision.</p>
+        <p>In contrast, the proposed SAE-GMM model outperformed all baselines, achieving the highest number of true positives&#x2014;correctly classifying 1079 out of 1080 damaged samples and misclassifying only one sample. This highlights its robustness in differentiating between healthy and damaged signals. These results demonstrate that the superior performance of the proposed model stems from its ability to effectively capture the underlying structure of healthy data through a combination of deep representation learning, self-attention mechanisms, and GMM-based clustering in the latent space.</p>
+      </sec>
+      <sec id="sec4dot3-mathematics-13-02445">
+        <title>4.3. Visualization of the Results</title>
+        <p>To further evaluate the separation capabilities of the proposed model relative to baseline approaches, we employed t-distributed Stochastic Neighbor Embedding (t-SNE) and Kernel Density Estimation (KDE) visualizations. As shown on the left side of <xref ref-type="fig" rid="mathematics-13-02445-f006">Figure 6</xref>, the t-SNE results indicate that both Deep-SVDD and Oc-SVM exhibited a limited ability to discriminate between healthy (blue) and damaged (red) samples in the latent space. A significant portion of the damaged samples were incorrectly clustered with healthy samples, reflecting suboptimal separation. In contrast, the KNN model tended to misclassify a large number of healthy samples as damaged. Deep learning-based models, including the VAE, IRAD, and LOF demonstrated improved class separation with reduced overlap between healthy and damaged sample distributions compared with shallow machine learning methods. Among these, the proposed model achieved the most distinct separation, followed by the VAE model. In the t-SNE plot, the healthy samples form a compact cluster, whereas the damaged samples are more widely distributed and separated. This clear delineation suggests that the proposed model is more effective in learning discriminative features, thereby enhancing its capacity for reliable and accurate damage detection. Additionally, the KDE plots shown on the right side of <xref ref-type="fig" rid="mathematics-13-02445-f006">Figure 6</xref> are used to illustrate the distribution of anomaly scores and reconstruction errors for the two classes. Note that the Oc-SVM achieved the worst separation between healthy and damaged samples, whereas the proposed model exhibited the best separation. The healthy (green) and damaged samples (red) show a clearer overlap around the decision threshold at zero, suggesting the limited ability of the Oc-SVM model to separate false positives and false negatives.</p>
+        <p>To highlight the impact of the attention mechanism on the proposed model, the feature distributions before and after applying attention are shown in <xref ref-type="fig" rid="mathematics-13-02445-f007">Figure 7</xref>. <xref ref-type="fig" rid="mathematics-13-02445-f007">Figure 7</xref>a shows the t-SNE plot of the features before the implementation of the attention mechanism, where a significant overlap between healthy and damaged samples is observed, indicating a poor class distribution. By contrast, <xref ref-type="fig" rid="mathematics-13-02445-f007">Figure 7</xref>b shows the feature distribution after applying attention, demonstrating an improved separation between the two classes with a distinct gap. This indicates that the attention mechanism effectively enhances the feature representation for the proposed SAE-GMM model, resulting in better class separation compared to other models that do not utilize attention.</p>
+        <p>The proposed model outperformed all baseline models, with a much more distinct separation between the samples. It is evident that the healthy samples were concentrated near very low anomaly scores, whereas the damaged samples were spread over a broader range of high anomaly scores. The 95% threshold determined from healthy samples cleanly separated the most damaged samples with a small overlap. Overall, the SAE-GMM model achieved superior class separability and a more reliable threshold margin for identifying structural damage.</p>
+      </sec>
+      <sec id="sec4dot4-mathematics-13-02445">
+        <title>4.4. Robust Analysis Under Varying Gaussian Noise Levels</title>
+        <p>To evaluate the generalization capability of the proposed SAE-GMM model under noisy conditions, Gaussian noise with three standard deviations (&#x3C3; = 0.05, 0.075, 0.1) was added to training data. Rather than augmenting the dataset with additional noisy samples, 50% of the original training data were perturbed to mitigate computational overhead. The model&#x2019;s performance under each noise condition was evaluated and compared to its baseline performance on clean data, as summarized in <xref ref-type="table" rid="mathematics-13-02445-t004">Table 4</xref>. Under moderate noise levels (&#x3C3; = 0.05 and &#x3C3; = 0.075), the model retained stable F-1 scores of 0.97 and 0.96 with strong recall values of 97% and 95%, respectively. At the highest noise level (&#x3C3; = 0.1), the model demonstrated notable resilience, achieving an F1-score of 0.93 and recall of 90%, highlighting its effectiveness in anomaly detection. The false positive rate (FPR) experienced a steady increase with noise level, from 4.99% (clean data) to 6.10% (<italic>&#x3C3;</italic> = 0.1), yet remained within an acceptable range. These results validate the robustness of the proposed model under realistic signal perturbations.</p>
+      </sec>
+    </sec>
+    <sec id="sec5-mathematics-13-02445" sec-type="conclusions">
+      <title>5. Conclusions</title>
+      <p>This study presents a robust unsupervised anomaly detection framework for laminated composite plates, combining GAN-based data augmentation, a self-attention autoencoder, and Gaussian mixture modeling. The proposed model successfully captures complex signal patterns and separates damaged signals with high metric scores. Compared to traditional and deep learning baseline models, SAE-GMM achieves high detection accuracy, low false positive rates, low computational time, and strong generalization under noisy conditions. The attention mechanism enriches the model&#x2019;s capability of separating features, while the Gaussian mixture model (GMM) provides a reliable decision boundary. These obtained results emphasize the proposed model&#x2019;s potential for real-world structural health monitoring applications. For the future, we plan to explore cross-plate validation and real-time deployment further to evaluate scalability and adaptability across diverse composite structures.</p>
+    </sec>
+  </body>
+  <back>
+    <notes>
+      <title>Author Contributions</title>
+      <p>Conceptualization, J.W.S.; methodology, O.M.; writing&#x2014;original draft preparation, O.M.; writing&#x2014;review and editing, O.M. and J.W.S.; supervision, J.W.S. All authors have read and agreed to the published version of the manuscript.</p>
+    </notes>
+    <notes>
+      <title>Data Availability Statement</title>
+      <p>The original contributions presented in this study are included in the article. Further inquiries can be directed to the corresponding author.</p>
+    </notes>
+    <notes notes-type="COI-statement">
+      <title>Conflicts of Interest</title>
+      <p>The authors declare no conflicts of interest.</p>
+    </notes>
+    <ref-list>
+      <title>References</title>
+      <ref id="B1-mathematics-13-02445">
+        <label>1.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Liew</surname>
+              <given-names>K.M.</given-names>
+            </name>
+            <name>
+              <surname>Pan</surname>
+              <given-names>Z.Z.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>L.W.</given-names>
+            </name>
+          </person-group>
+          <article-title>An overview of layerwise theories for composite laminates and structures: Development, numerical implementation and application</article-title>
+          <source>Compos. Struct.</source>
+          <year>2019</year>
+          <volume>216</volume>
+          <fpage>240</fpage>
+          <lpage>259</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.compstruct.2019.02.074</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B2-mathematics-13-02445">
+        <label>2.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Munyaneza</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Yuk</surname>
+              <given-names>D.-G.</given-names>
+            </name>
+            <name>
+              <surname>Sohn</surname>
+              <given-names>J.W.</given-names>
+            </name>
+          </person-group>
+          <article-title>A State-of-art on Damage Detection of Composite Structure Using Lamb Wave and Deep Learning Techniques</article-title>
+          <source>Int. J. Precis. Eng. Manuf.-Smart Technol.</source>
+          <year>2025</year>
+          <volume>3</volume>
+          <fpage>65</fpage>
+          <lpage>82</lpage>
+          <pub-id pub-id-type="doi">10.57062/ijpem-st.2024.00185</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B3-mathematics-13-02445">
+        <label>3.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ahmed</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Tran</surname>
+              <given-names>M.-V.</given-names>
+            </name>
+            <name>
+              <surname>Ismadi</surname>
+              <given-names>M.-Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Advancements in fiber-reinforced polymer composite materials damage detection methods: Towards achieving energy-efficient SHM systems</article-title>
+          <source>Compos. Part B Eng.</source>
+          <year>2021</year>
+          <volume>223</volume>
+          <fpage>109136</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.compositesb.2021.109136</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B4-mathematics-13-02445">
+        <label>4.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Sawant</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Sethi</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Banerjee</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Tallur</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised learning framework for temperature compensated damage identification and localization in ultrasonic guided wave SHM with transfer learning</article-title>
+          <source>Ultrasonics</source>
+          <year>2023</year>
+          <volume>130</volume>
+          <fpage>106931</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ultras.2023.106931</pub-id>
+          <pub-id pub-id-type="pmid">36681008</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B5-mathematics-13-02445">
+        <label>5.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yang</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Xu</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Ma</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Wu</surname>
+              <given-names>Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Phased Array System for Damage Detection in Plate-Like Structures Based on Single Lamb Wave Mode Extraction</article-title>
+          <source>J. Aerosp. Eng.</source>
+          <year>2023</year>
+          <volume>36</volume>
+          <fpage>04023004</fpage>
+          <pub-id pub-id-type="doi">10.1061/JAEEEZ.ASENG-4543</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6-mathematics-13-02445">
+        <label>6.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mariani</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Kalantari</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Kromanis</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Marzani</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Data-driven modeling of long temperature time-series to capture the thermal behavior of bridges for SHM purposes</article-title>
+          <source>Mech. Syst. Signal Process.</source>
+          <year>2024</year>
+          <volume>206</volume>
+          <fpage>110934</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ymssp.2023.110934</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B7-mathematics-13-02445">
+        <label>7.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yang</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Tian</surname>
+              <given-names>T.</given-names>
+            </name>
+            <name>
+              <surname>Deng</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Hu</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Ma</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Gao</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Ma</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>L.</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>A review on guided-ultrasonic-wave-based structural health monitoring: From fundamental theory to machine learning techniques</article-title>
+          <source>Ultrasonics</source>
+          <year>2023</year>
+          <volume>133</volume>
+          <fpage>107014</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ultras.2023.107014</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B8-mathematics-13-02445">
+        <label>8.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Eltouny</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Gomaa</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Liang</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised Learning Methods for Data-Driven Vibration-Based Structural Health Monitoring: A Review</article-title>
+          <source>Sensors</source>
+          <year>2023</year>
+          <volume>23</volume>
+          <elocation-id>3290</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/s23063290</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9-mathematics-13-02445">
+        <label>9.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Khan</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Kim</surname>
+              <given-names>H.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Damage assessment of laminated composites using unsupervised autonomous features</article-title>
+          <source>J. Thermoplast. Compos. Mater.</source>
+          <year>2024</year>
+          <volume>37</volume>
+          <fpage>2123</fpage>
+          <lpage>2148</lpage>
+          <pub-id pub-id-type="doi">10.1177/08927057231208970</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B10-mathematics-13-02445">
+        <label>10.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Abbassi</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>R&#xF6;mgens</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Tritschel</surname>
+              <given-names>F.F.</given-names>
+            </name>
+            <name>
+              <surname>Penner</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Rolfes</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Evaluation of machine learning techniques for structural health monitoring using ultrasonic guided waves under varying temperature conditions</article-title>
+          <source>Struct. Health Monit.</source>
+          <year>2023</year>
+          <volume>22</volume>
+          <fpage>1308</fpage>
+          <lpage>1325</lpage>
+          <pub-id pub-id-type="doi">10.1177/14759217221107566</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B11-mathematics-13-02445">
+        <label>11.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Junges</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Rastin</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Lomazzi</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Giglio</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Cadini</surname>
+              <given-names>F.</given-names>
+            </name>
+          </person-group>
+          <article-title>Convolutional autoencoders and CGANs for unsupervised structural damage localization</article-title>
+          <source>Mech. Syst. Signal Process.</source>
+          <year>2024</year>
+          <volume>220</volume>
+          <fpage>111645</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ymssp.2024.111645</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B12-mathematics-13-02445">
+        <label>12.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zhao</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Ding</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Zhao</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>Y.</given-names>
+            </name>
+          </person-group>
+          <article-title>SGAD-GAN: Simultaneous Generation and Anomaly Detection for time-series sensor data with Generative Adversarial Networks</article-title>
+          <source>Mech. Syst. Signal Process.</source>
+          <year>2024</year>
+          <volume>210</volume>
+          <fpage>111141</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ymssp.2024.111141</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B13-mathematics-13-02445">
+        <label>13.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Luleci</surname>
+              <given-names>F.</given-names>
+            </name>
+            <name>
+              <surname>Catbas</surname>
+              <given-names>F.N.</given-names>
+            </name>
+            <name>
+              <surname>Avci</surname>
+              <given-names>O.</given-names>
+            </name>
+          </person-group>
+          <article-title>Generative adversarial networks for labeled acceleration data augmentation for structural damage detection</article-title>
+          <source>J. Civ. Struct. Health Monit.</source>
+          <year>2023</year>
+          <volume>13</volume>
+          <fpage>181</fpage>
+          <lpage>198</lpage>
+          <pub-id pub-id-type="doi">10.1007/s13349-022-00627-8</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B14-mathematics-13-02445">
+        <label>14.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Msigwa</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>Ntambala</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Yun</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Enhancing atrial fibrillation classification from single-lead electrocardiogram signals using attention-based networks and generative adversarial networks with density-based clustering</article-title>
+          <source>Eng. Appl. Artif. Intell.</source>
+          <year>2024</year>
+          <volume>133</volume>
+          <fpage>108607</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.engappai.2024.108607</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B15-mathematics-13-02445">
+        <label>15.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Dreher</surname>
+              <given-names>N.R.</given-names>
+            </name>
+            <name>
+              <surname>Storti</surname>
+              <given-names>G.C.</given-names>
+            </name>
+            <name>
+              <surname>Machado</surname>
+              <given-names>T.H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Machado. Vibration Signal Evaluation Based on K-Means Clustering as a Pre-Stage of Operational Modal Analysis for Structural Health Monitoring of Rotating Machines</article-title>
+          <source>Energies</source>
+          <year>2023</year>
+          <volume>16</volume>
+          <elocation-id>7848</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/en16237848</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B16-mathematics-13-02445">
+        <label>16.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yu</surname>
+              <given-names>Y.-F.</given-names>
+            </name>
+            <name>
+              <surname>Wei</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Wu</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Feng</surname>
+              <given-names>Q.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Discriminative fuzzy K-means clustering with local structure preservation for high-dimensional data</article-title>
+          <source>Knowl.-Based Syst.</source>
+          <year>2024</year>
+          <volume>304</volume>
+          <fpage>112537</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.knosys.2024.112537</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B17-mathematics-13-02445">
+        <label>17.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>He</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Miao</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Qin</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Du</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Lu</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Graph-enhanced anomaly detection framework in multivariate time series using Graph Attention and Enhanced Generative Adversarial Networks</article-title>
+          <source>Expert Syst. Appl.</source>
+          <year>2025</year>
+          <volume>271</volume>
+          <fpage>126667</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.eswa.2025.126667</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B18-mathematics-13-02445">
+        <label>18.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Chen</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Jiang</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Yu</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Shen</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Du</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Generative adversarial synthetic neighbors-based unsupervised anomaly detection</article-title>
+          <source>Sci. Rep.</source>
+          <year>2025</year>
+          <volume>15</volume>
+          <elocation-id>16</elocation-id>
+          <pub-id pub-id-type="doi">10.1038/s41598-024-84863-6</pub-id>
+          <pub-id pub-id-type="pmid">39747674</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B19-mathematics-13-02445">
+        <label>19.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ma</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>F.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Edalatpanah</surname>
+              <given-names>S.A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Constructing Attention-LSTM-VAE Power Load Model Based on Multiple Features</article-title>
+          <source>Adv. Math. Phys.</source>
+          <year>2024</year>
+          <volume>2024</volume>
+          <fpage>1041791</fpage>
+          <pub-id pub-id-type="doi">10.1155/2024/1041791</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B20-mathematics-13-02445">
+        <label>20.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Roy</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Halder</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Majumder</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Biswas</surname>
+              <given-names>U.</given-names>
+            </name>
+          </person-group>
+          <article-title>AttentivECGRU: GRU based autoencoder with attention mechanism and automated fuzzy thresholding for ECG arrhythmia detection</article-title>
+          <source>Appl. Soft Comput.</source>
+          <year>2024</year>
+          <volume>167</volume>
+          <fpage>112337</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.asoc.2024.112337</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B21-mathematics-13-02445">
+        <label>21.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zong</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Song</surname>
+              <given-names>Q.</given-names>
+            </name>
+            <name>
+              <surname>Min</surname>
+              <given-names>M.R.</given-names>
+            </name>
+            <name>
+              <surname>Cheng</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Lumezanu</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Cho</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Deep autoencoding gaussian mixture model for unsupervised anomaly detection</article-title>
+          <source>Proceedings of the 6th International Conference on Learning Representations (ICLR 2018)</source>
+          <conf-loc>Vancouver, BC, Canada</conf-loc>
+          <conf-date>30 April&#x2013;3 May 2018</conf-date>
+        </element-citation>
+      </ref>
+      <ref id="B22-mathematics-13-02445">
+        <label>22.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Khan</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Khan</surname>
+              <given-names>A.N.</given-names>
+            </name>
+            <name>
+              <surname>Hasan</surname>
+              <given-names>M.K.</given-names>
+            </name>
+            <name>
+              <surname>Khan</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Mokhtar</surname>
+              <given-names>U.A.</given-names>
+            </name>
+            <name>
+              <surname>Islam</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>DVAEGMM: Dual Variational Autoencoder with Gaussian Mixture Model for Anomaly Detection on Attributed Networks</article-title>
+          <source>IEEE Access</source>
+          <year>2022</year>
+          <volume>10</volume>
+          <fpage>91160</fpage>
+          <lpage>91176</lpage>
+          <pub-id pub-id-type="doi">10.1109/ACCESS.2022.3201332</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B23-mathematics-13-02445">
+        <label>23.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zhou</surname>
+              <given-names>Y.-C.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>M.-Q.</given-names>
+            </name>
+            <name>
+              <surname>Ji</surname>
+              <given-names>L.-B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Denoising Deep Autoencoder Gaussian Mixture Model and Its Application for Robust Nonlinear Industrial Process Monitoring</article-title>
+          <source>Proceedings of the 2021 International Conference on Computer Information Science and Artificial Intelligence (CISAI)</source>
+          <conf-loc>Kunming, China</conf-loc>
+          <conf-date>17&#x2013;19 September 2021</conf-date>
+          <publisher-name>IEEE</publisher-name>
+          <publisher-loc>New York, NY, USA</publisher-loc>
+          <fpage>67</fpage>
+          <lpage>73</lpage>
+          <pub-id pub-id-type="doi">10.1109/CISAI54367.2021.00021</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B24-mathematics-13-02445">
+        <label>24.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bigoni</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Hesthaven</surname>
+              <given-names>J.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Simulation-based Anomaly Detection and Damage Localization: An application to Structural Health Monitoring</article-title>
+          <source>Comput. Methods Appl. Mech. Eng.</source>
+          <year>2020</year>
+          <volume>363</volume>
+          <fpage>112896</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.cma.2020.112896</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B25-mathematics-13-02445">
+        <label>25.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Li</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Guo</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Gao</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>Y.</given-names>
+            </name>
+          </person-group>
+          <article-title>Similarity-Measured Isolation Forest: Anomaly Detection Method for Machine Monitoring Data</article-title>
+          <source>IEEE Trans. Instrum. Meas.</source>
+          <year>2021</year>
+          <volume>70</volume>
+          <fpage>1</fpage>
+          <lpage>12</lpage>
+          <pub-id pub-id-type="doi">10.1109/TIM.2021.3062684</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B26-mathematics-13-02445">
+        <label>26.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Swana</surname>
+              <given-names>E.F.</given-names>
+            </name>
+            <name>
+              <surname>Bokoro</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Doorsamy</surname>
+              <given-names>W.</given-names>
+            </name>
+          </person-group>
+          <article-title>Isolation Forest and Local Outlier Factor-Based Anomaly Detection on an Induction Machine</article-title>
+          <source>Proceedings of the 2024 IEEE PES/IAS PowerAfrica</source>
+          <conf-loc>Johannesburg, South Africa</conf-loc>
+          <conf-date>7&#x2013;11 October 2024</conf-date>
+          <publisher-name>IEEE</publisher-name>
+          <publisher-loc>New York, NY, USA</publisher-loc>
+          <fpage>1</fpage>
+          <lpage>5</lpage>
+          <pub-id pub-id-type="doi">10.1109/PowerAfrica61624.2024.10759503</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B27-mathematics-13-02445">
+        <label>27.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Nizan</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Tal</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>k-NNN: Nearest Neighbors of Neighbors for Anomaly Detection</article-title>
+          <source>arXiv</source>
+          <year>2023</year>
+          <pub-id pub-id-type="arxiv">2305.17695</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B28-mathematics-13-02445">
+        <label>28.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Komorska</surname>
+              <given-names>I.</given-names>
+            </name>
+            <name>
+              <surname>Puchalski</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Condition Monitoring Using a Latent Space of Variational Autoencoder Trained Only on a Healthy Machine</article-title>
+          <source>Sensors</source>
+          <year>2024</year>
+          <volume>24</volume>
+          <elocation-id>6825</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/s24216825</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B29-mathematics-13-02445">
+        <label>29.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yang</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Bozchalooi</surname>
+              <given-names>I.S.</given-names>
+            </name>
+            <name>
+              <surname>Darve</surname>
+              <given-names>E.</given-names>
+            </name>
+          </person-group>
+          <article-title>Anomaly Detection with Domain Adaptation</article-title>
+          <source>arXiv</source>
+          <year>2020</year>
+          <pub-id pub-id-type="arxiv">2006.03689</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B30-mathematics-13-02445">
+        <label>30.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ruff</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Vandermeulen</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Goernitz</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Deecke</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Siddiqui</surname>
+              <given-names>S.A.</given-names>
+            </name>
+            <name>
+              <surname>Binder</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>M&#xFC;ller</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Kloft</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Deep One-Class Classification</article-title>
+          <source>Proceedings of the 35th International Conference on Machine Learning</source>
+          <conf-loc>Stockholm, Sweden</conf-loc>
+          <conf-date>10&#x2013;15 July 2018</conf-date>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Dy</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Krause</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <volume>Volume 80</volume>
+          <fpage>4393</fpage>
+          <lpage>4402</lpage>
+          <comment>Available online: <ext-link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://proceedings.mlr.press/v80/ruff18a.html" ext-link-type="uri">https://proceedings.mlr.press/v80/ruff18a.html</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2025-02-05">(accessed on 5 February 2025)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B31-mathematics-13-02445">
+        <label>31.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tuli</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Casale</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>Jennings</surname>
+              <given-names>N.R.</given-names>
+            </name>
+          </person-group>
+          <article-title>TranAD: Deep Transformer Networks for Anomaly Detection in Multivariate Time Series Data</article-title>
+          <source>arXiv</source>
+          <year>2022</year>
+          <pub-id pub-id-type="arxiv">2201.07284</pub-id>
+          <pub-id pub-id-type="doi">10.14778/3514061.3514067</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+    <sec sec-type="display-objects">
+      <title>Figures and Tables</title>
+      <fig id="mathematics-13-02445-f001" position="float">
+        <label>Figure 1</label>
+        <caption>
+          <p>The flowchart of the proposed model, SAE-GMM. The proposed framework comprises of three main components: (1) an experimental setup and data acquisition, (2) a GAN for generating synthetic data, and (3) a self-attention autoencoder (SAE) with a Gaussian Mixture Model (GMM) for anomaly detection.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g001.tif"/>
+      </fig>
+      <fig id="mathematics-13-02445-f002" position="float">
+        <label>Figure 2</label>
+        <caption>
+          <p>Data acquisition setup: (<bold>a</bold>) laminated composite with PZT layout and sensing paths; (<bold>b</bold>) different masses used to simulate artificial damage; (<bold>c</bold>) experimental setup.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g002.tif"/>
+      </fig>
+      <fig id="mathematics-13-02445-f003" position="float">
+        <label>Figure 3</label>
+        <caption>
+          <p>Measured Lamb wave signals along path 3: (<bold>a</bold>) excitation signal; (<bold>b</bold>) response under healthy conditions; (<bold>c</bold>) comparison between healthy and damaged case D1; (<bold>d</bold>) comparison between healthy and damaged case D2; (<bold>e</bold>) comparison between healthy and damaged case D3; (<bold>f</bold>) comparison of all damage cases (D1&#x2013;D3).</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g003.tif"/>
+      </fig>
+      <fig id="mathematics-13-02445-f004" position="float">
+        <label>Figure 4</label>
+        <caption>
+          <p>Augmented Lamb wave data: (<bold>a</bold>) K-means clustering of synthetic signals based on mean squared error (MSE) values; (<bold>b</bold>) comparison between the original and the generated healthy Lamb wave signals.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g004.tif"/>
+      </fig>
+      <fig id="mathematics-13-02445-f005" position="float">
+        <label>Figure 5</label>
+        <caption>
+          <p>Confusion matrices for baselines and proposed model: (<bold>a</bold>) Oc-SVM; (<bold>b</bold>) IsoForest; (<bold>c</bold>) KNN; (<bold>d</bold>) LOF; (<bold>e</bold>) IRAD; (<bold>f</bold>) Deep-SVDD; (<bold>g</bold>) VAE; (<bold>h</bold>) SAE-GMM; (<bold>i</bold>) TAE.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g005.tif"/>
+      </fig>
+      <fig id="mathematics-13-02445-f006" position="float">
+        <label>Figure 6</label>
+        <caption>
+          <p>t-SNE visualizations and KDE plots: (<bold>a</bold>) Oc-SVM; (<bold>b</bold>) IsoForest; (<bold>c</bold>) KNN; (<bold>d</bold>) LOF; (<bold>e</bold>) IRAD; (<bold>f</bold>) Deep-SVDD; (<bold>g</bold>) VAE; (<bold>h</bold>) SAE-GMM.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g006.tif"/>
+      </fig>
+      <fig id="mathematics-13-02445-f007" position="float">
+        <label>Figure 7</label>
+        <caption>
+          <p>Comparison of feature distribution using t-SNE plots: (<bold>a</bold>) pre-attention; (<bold>b</bold>) post-attention.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mathematics-13-02445-g007.tif"/>
+      </fig>
+      <table-wrap id="mathematics-13-02445-t001" position="float">
+        <object-id pub-id-type="pii">mathematics-13-02445-t001_Table 1</object-id>
+        <label>Table 1</label>
+        <caption>
+          <p>Detailed architecture of the proposed SAE-GMM model.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="left" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Layers</th>
+              <th align="left" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Output Shape</th>
+              <th align="left" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Parameters</th>
+              <th align="left" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Hyperparameters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="left" valign="middle">Input layer</td>
+              <td align="left" valign="middle">(None, 1500)</td>
+              <td align="left" valign="middle">0</td>
+              <td align="left" valign="middle">input shape = 1500</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense</td>
+              <td align="left" valign="middle">(None, 128)</td>
+              <td align="left" valign="middle">192,128</td>
+              <td align="left" valign="middle">units = 128; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense</td>
+              <td align="left" valign="middle">(None, 64)</td>
+              <td align="left" valign="middle">8256</td>
+              <td align="left" valign="middle">units = 64; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Attention (encoder)</td>
+              <td align="left" valign="middle">(None, 64)</td>
+              <td align="left" valign="middle">0</td>
+              <td align="left" valign="middle">self-attention over 64-d latent space.</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Multiply</td>
+              <td align="left" valign="middle">(None, 64)</td>
+              <td align="left" valign="middle">0</td>
+              <td align="left" valign="middle"><inline-formula><mml:math id="mm77"><mml:semantics><mml:mrow><mml:mi>encoded</mml:mi><mml:mo>&#xA0;</mml:mo><mml:mo>&#x2A00;</mml:mo></mml:mrow></mml:semantics></mml:math></inline-formula> attention output</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense (latent)</td>
+              <td align="left" valign="middle">(None, 32)</td>
+              <td align="left" valign="middle">2080</td>
+              <td align="left" valign="middle">units = 32; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense</td>
+              <td align="left" valign="middle">(None, 64)</td>
+              <td align="left" valign="middle">2112</td>
+              <td align="left" valign="middle">units = 64; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense</td>
+              <td align="left" valign="middle">(None, 128)</td>
+              <td align="left" valign="middle">8320</td>
+              <td align="left" valign="middle">units = 128; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense (reconstruction)</td>
+              <td align="left" valign="middle">(None, 1500)</td>
+              <td align="left" valign="middle">193,500</td>
+              <td align="left" valign="middle">units = 1500; activation = sigmoid</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Concatenate</td>
+              <td align="left" valign="middle">(None, 1532)</td>
+              <td align="left" valign="middle">0</td>
+              <td align="left" valign="middle">combined latent (32) + abs (1500)</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense</td>
+              <td align="left" valign="middle">(None, 16)</td>
+              <td align="left" valign="middle">24,528</td>
+              <td align="left" valign="middle">units = 16; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense</td>
+              <td align="left" valign="middle">(None, 8)</td>
+              <td align="left" valign="middle">136</td>
+              <td align="left" valign="middle">units = 8; activation = ReLu</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Dense (GMM output)</td>
+              <td align="left" valign="middle">(None, 4)</td>
+              <td align="left" valign="middle">36</td>
+              <td align="left" valign="middle">units = 4; activation = SoftMax</td>
+            </tr>
+            <tr>
+              <td colspan="4" align="left" valign="middle" style="border-bottom:solid thin">Total params: 431,096</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="mathematics-13-02445-t002" position="float">
+        <object-id pub-id-type="pii">mathematics-13-02445-t002_Table 2</object-id>
+        <label>Table 2</label>
+        <caption>
+          <p>Performance of SAE-GMM under various real&#x2013;synthetic data configurations.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="left" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Scenario</th>
+              <th align="left" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Real Samples</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Synthetic Samples</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Accuracy</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Precision</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Recall</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">F1-Score</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">FPR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle">1</td>
+              <td align="center" valign="middle">600</td>
+              <td align="center" valign="middle">0</td>
+              <td align="center" valign="middle">0.92</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">0.93</td>
+              <td align="center" valign="middle">0.95</td>
+              <td align="center" valign="middle">9.50</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">2</td>
+              <td align="center" valign="middle">600</td>
+              <td align="center" valign="middle">654</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">0.96</td>
+              <td align="center" valign="middle">1.0</td>
+              <td align="center" valign="middle">0.96</td>
+              <td align="center" valign="middle">5.06</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">3</td>
+              <td align="center" valign="middle">600</td>
+              <td align="center" valign="middle">3270</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">0.98</td>
+              <td align="center" valign="middle">1.0</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">5.02</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">4</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">3270</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.97</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.94</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">1.0</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.96</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">6.40</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="mathematics-13-02445-t003" position="float">
+        <object-id pub-id-type="pii">mathematics-13-02445-t003_Table 3</object-id>
+        <label>Table 3</label>
+        <caption>
+          <p>Anomaly detection performance for baselines and our proposed model. For each metric, the highest score is indicated in bold, and the second-highest score is underlined.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Models</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">F1-Score</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Recall</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">False Positive Rate</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Inference Time (s)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle">Oc-SVM</td>
+              <td align="center" valign="middle">60.0 &#xB1; 0.1</td>
+              <td align="center" valign="middle">51.1 &#xB1; 0.22</td>
+              <td align="center" valign="middle">11.0 &#xB1; 18</td>
+              <td align="center" valign="middle">0.09</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">IsoForest</td>
+              <td align="center" valign="middle">91.4 &#xB1; 0.1</td>
+              <td align="center" valign="middle">93.8 &#xB1; 0.03</td>
+              <td align="center" valign="middle">11.3 &#xB1; 21</td>
+              <td align="center" valign="middle">0.01</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">KNN</td>
+              <td align="center" valign="middle">83.8 &#xB1; 0.2</td>
+              <td align="center" valign="middle">99.4 &#xB1; 0.01</td>
+              <td align="center" valign="middle">31.8 &#xB1; 15</td>
+              <td align="center" valign="middle">0.03</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">LOF</td>
+              <td align="center" valign="middle">78.8 &#xB1; 0.3</td>
+              <td align="center" valign="middle">80.1 &#xB1; 0.34</td>
+              <td align="center" valign="middle">8.5 &#xB1; 0.01</td>
+              <td align="center" valign="middle">0.02</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">IRAD</td>
+              <td align="center" valign="middle">88.7 &#xB1; 0.1</td>
+              <td align="center" valign="middle">88.7 &#xB1; 0.09</td>
+              <td align="center" valign="middle">8.2 &#xB1; 0.04</td>
+              <td align="center" valign="middle">2.3 &#xD7; 10<sup>&#x2212;3</sup></td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Deep-SVDD</td>
+              <td align="center" valign="middle">60.6 &#xB1; 0.0</td>
+              <td align="center" valign="middle">44.0 &#xB1; 0.01</td>
+              <td align="center" valign="middle">
+                <bold>0.8 &#xB1; 0.33</bold>
+              </td>
+              <td align="center" valign="middle">0.93</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">TAE</td>
+              <td align="center" valign="middle">90.0 &#xB1; 0.4</td>
+              <td align="center" valign="middle">94.0 &#xB1; 0.06</td>
+              <td align="center" valign="middle">10.0 &#xB1; 0.03</td>
+              <td align="center" valign="middle">5.56</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">VAE</td>
+              <td align="center" valign="middle">
+                <bold>
+                  <underline>96.1 </underline>
+                  <underline>&#xB1;</underline>
+                  <underline> 0.1</underline>
+                </bold>
+              </td>
+              <td align="center" valign="middle">98.3 &#xB1; 0.03</td>
+              <td align="center" valign="middle">5.16 &#xB1; 0.09</td>
+              <td align="center" valign="middle">0.75</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">AE-GMM</td>
+              <td align="center" valign="middle">95.8 &#xB1; 0.3</td>
+              <td align="center" valign="middle">
+                <bold>100 &#xB1; 0.0</bold>
+              </td>
+              <td align="center" valign="middle">7.01 &#xB1; 0.01</td>
+              <td align="center" valign="middle">
+                <bold>0.32</bold>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">
+                <bold>SAE-GMM</bold>
+              </td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">
+                <bold>97.1 &#xB1; 0.0</bold>
+              </td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">
+                <bold>
+                  <underline>99.9 </underline>
+                  <underline>&#xB1;</underline>
+                  <underline> 0.05</underline>
+                </bold>
+              </td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">
+                <bold>
+                  <underline>4.99 </underline>
+                  <underline>&#xB1;</underline>
+                  <underline> 0.03</underline>
+                </bold>
+              </td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">
+                <bold>
+                  <underline>0.37</underline>
+                </bold>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="mathematics-13-02445-t004" position="float">
+        <object-id pub-id-type="pii">mathematics-13-02445-t004_Table 4</object-id>
+        <label>Table 4</label>
+        <caption>
+          <p>Proposed model performance under varying noise levels.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin"> </th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Noise Level</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Accuracy</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Precision</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">Recall</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">F1-Score</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">FPR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4" align="center" valign="middle" style="border-bottom:solid thin">SAE-GMM</td>
+              <td align="center" valign="middle">clean</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">0.96</td>
+              <td align="center" valign="middle">99.9</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">4.99%</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">&#x3C3; = 0.05</td>
+              <td align="center" valign="middle">0.95</td>
+              <td align="center" valign="middle">0.94</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">0.97</td>
+              <td align="center" valign="middle">5.15%</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">&#x3C3; = 0.075</td>
+              <td align="center" valign="middle">0.95</td>
+              <td align="center" valign="middle">0.94</td>
+              <td align="center" valign="middle">0.95</td>
+              <td align="center" valign="middle">0.96</td>
+              <td align="center" valign="middle">5.54%</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">&#x3C3; = 0.1</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.92</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.94</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.90</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.93</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">6.10%</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+    </sec>
+    <fn-group>
+      <fn>
+        <p><bold>Disclaimer/Publisher&#x2019;s Note:</bold> The statements, opinions and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to people or property resulting from any ideas, methods, instructions or products referred to in the content.</p>
+      </fn>
+    </fn-group>
+  </back>
+</article>

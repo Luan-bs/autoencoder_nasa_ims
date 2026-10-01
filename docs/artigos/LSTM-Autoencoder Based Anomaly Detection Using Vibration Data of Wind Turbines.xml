@@ -1,0 +1,2029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.3 20210610//EN" "JATS-journalpublishing1-3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.3" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">sensors</journal-id>
+      <journal-title-group>
+        <journal-title>Sensors</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Sensors</abbrev-journal-title>
+        <abbrev-journal-title abbrev-type="pubmed">Sensors</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1424-8220</issn>
+      <publisher>
+        <publisher-name>MDPI</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.3390/s24092833</article-id>
+      <article-id pub-id-type="publisher-id">sensors-24-02833</article-id>
+      <article-categories>
+        <subj-group>
+          <subject>Article</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>LSTM-Autoencoder Based Anomaly Detection Using Vibration Data of Wind Turbines</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0009-0007-7180-5876</contrib-id>
+          <name>
+            <surname>Lee</surname>
+            <given-names>Younjeong</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">Conceptualization</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">Software</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Validation" vocab-term-identifier="https://credit.niso.org/contributor-roles/validation/">Validation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Resources" vocab-term-identifier="https://credit.niso.org/contributor-roles/resources/">Resources</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">Writing &#x2013; original draft</role>
+          <xref rid="af1-sensors-24-02833" ref-type="aff">1</xref>
+          <xref rid="af2-sensors-24-02833" ref-type="aff">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0001-8811-5619</contrib-id>
+          <name>
+            <surname>Park</surname>
+            <given-names>Chanho</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Data curation" vocab-term-identifier="https://credit.niso.org/contributor-roles/data-curation/">Data curation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">Writing &#x2013; original draft</role>
+          <xref rid="af1-sensors-24-02833" ref-type="aff">1</xref>
+          <xref rid="af2-sensors-24-02833" ref-type="aff">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0009-0009-9401-254X</contrib-id>
+          <name>
+            <surname>Kim</surname>
+            <given-names>Namji</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">Methodology</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">Visualization</role>
+          <xref rid="af1-sensors-24-02833" ref-type="aff">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0009-0004-9910-4412</contrib-id>
+          <name>
+            <surname>Ahn</surname>
+            <given-names>Jisu</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Formal analysis" vocab-term-identifier="https://credit.niso.org/contributor-roles/formal-analysis/">Formal analysis</role>
+          <xref rid="af1-sensors-24-02833" ref-type="aff">1</xref>
+          <xref rid="af2-sensors-24-02833" ref-type="aff">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-4061-9532</contrib-id>
+          <name>
+            <surname>Jeong</surname>
+            <given-names>Jongpil</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing &#x2013; review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing &#x2013; review &amp; editing</role>
+          <xref rid="af1-sensors-24-02833" ref-type="aff">1</xref>
+          <xref rid="c1-sensors-24-02833" ref-type="corresp">*</xref>
+        </contrib>
+      </contrib-group>
+      <contrib-group>
+        <contrib contrib-type="editor">
+          <name>
+            <surname>Cataldo</surname>
+            <given-names>Andrea</given-names>
+          </name>
+          <role>Academic Editor</role>
+        </contrib>
+      </contrib-group>
+      <aff id="af1-sensors-24-02833"><label>1</label>Department of Smart Factory Convergence, Sungkyunkwan University, 2066 Seobu-ro, Jangan-gu, Suwon-si 16419, Republic of Korea; <email>ioioiiopop@g.skku.edu</email> (Y.L.); <email>chanho124@g.skku.edu</email> (C.P.); <email>namji@skku.edu</email> (N.K.); <email>js3053@skku.edu</email> (J.A.)</aff>
+      <aff id="af2-sensors-24-02833"><label>2</label>AI Research Center, 20 Pangyo-ro, Bundang-gu, Gfyhealth, Seongnam-si 13488, Republic of Korea</aff>
+      <author-notes>
+        <corresp id="c1-sensors-24-02833"><label>*</label>Correspondence: <email>jpjeong@skku.edu</email>; Tel.: +82-10-9700-6284 or +82-31-299-4267</corresp>
+      </author-notes>
+      <pub-date pub-type="epub">
+        <day>29</day>
+        <month>04</month>
+        <year>2024</year>
+      </pub-date>
+      <pub-date pub-type="collection">
+        <month>05</month>
+        <year>2024</year>
+      </pub-date>
+      <volume>24</volume>
+      <issue>9</issue>
+      <elocation-id>2833</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>22</day>
+          <month>03</month>
+          <year>2024</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>25</day>
+          <month>04</month>
+          <year>2024</year>
+        </date>
+        <date date-type="accepted">
+          <day>28</day>
+          <month>04</month>
+          <year>2024</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>&#xA9; 2024 by the authors.</copyright-statement>
+        <copyright-year>2024</copyright-year>
+        <license license-type="open-access">
+          <license-p>Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (<ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</ext-link>).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>The problem of energy depletion has brought wind energy under consideration to replace oil- or chemical-based energy. However, the breakdown of wind turbines is a major concern. Accordingly, unsupervised learning was performed using the vibration signal of a wind power generator to achieve an outlier detection performance of 97%. We analyzed the vibration data through wavelet packet conversion and identified a specific frequency band that showed a large difference between the normal and abnormal data. To emphasize these specific frequency bands, high-pass filters were applied to maximize the difference. Subsequently, the dimensions of the data were reduced through principal component analysis, giving unique characteristics to the data preprocessing process. Normal data collected from a wind farm located in northern Sweden was first preprocessed and trained using a long short-term memory (LSTM) autoencoder to perform outlier detection. The LSTM Autoencoder is a model specialized for time-series data that learns the patterns of normal data and detects other data as outliers. Therefore, we propose a method for outlier detection through data preprocessing and unsupervised learning, utilizing the vibration signals from wind generators. This will facilitate the quick and accurate detection of wind power generator failures and provide alternatives to the problem of energy depletion.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>wavelet packet transform</kwd>
+        <kwd>high pass filter</kwd>
+        <kwd>principal component analysis</kwd>
+        <kwd>LSTM Autoencoder</kwd>
+        <kwd>unsupervised learning</kwd>
+      </kwd-group>
+      <funding-group>
+        <award-group>
+          <funding-source>Ministry of Education (MOE, Korea)</funding-source>
+        </award-group>
+        <award-group>
+          <funding-source>National Research Foundation of Korea (NRF)</funding-source>
+        </award-group>
+        <funding-statement>This research was supported by the SungKyunKwan University and the BK21 FOUR (Graduate School Innovation) funded by the Ministry of Education (MOE, Korea) and National Research Foundation of Korea (NRF).</funding-statement>
+      </funding-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro" id="sec1-sensors-24-02833">
+      <title>1. Introduction</title>
+      <p>At present, mankind is facing environmental and energy issues, of which the shortage in energy supply due to climate change has emerged as a serious problem. Meanwhile, countries worldwide have continued to increase their energy production and use to meet their economic and social demands. Moreover, while traditional non-renewable energy sources, such as oil and coal are being depleted, global countries are facing a decline in energy supply due to increasing energy demands [<xref ref-type="bibr" rid="B1-sensors-24-02833">1</xref>]. Accordingly, renewable energy has attracted attention as an alternative energy source to solve these problems [<xref ref-type="bibr" rid="B2-sensors-24-02833">2</xref>]. Renewable energy sources are advantageous because they release less carbon dioxide emissions than fossil fuels. In addition, renewable energy as a relatively new industry could create a positive effect on society by providing continuous job opportunities and aiding in economic development [<xref ref-type="bibr" rid="B3-sensors-24-02833">3</xref>]. Moreover, with increasing interest in environmental and energy issues, the renewable energy industry is growing rapidly and is attracting global attention from numerous governments and companies that are expanding research, development, and investment in this sector [<xref ref-type="bibr" rid="B4-sensors-24-02833">4</xref>].</p>
+      <p>Wind power generators are a representative means of renewable energy generation and are attracting attention as alternatives to global warming and energy resource depletion [<xref ref-type="bibr" rid="B5-sensors-24-02833">5</xref>]. The advantages of wind power generators are as follows. Clean energy production is possible, and wind power generators do not generate air pollutants because they use wind to generate electricity without combustion reactions [<xref ref-type="bibr" rid="B6-sensors-24-02833">6</xref>]. Thus, the depletion of energy resources is expected to be alleviated. Unlike energy generation by conventional fossil fuels, wind power generates electricity from natural energy sources. Thus, the problem of energy resource depletion can be alleviated. They can also be used to produce electricity sustainably. Wind power generators generate electricity using wind, which is constantly present on Earth; therefore, sustainable electricity production is possible. In the future, wind generators are expected to develop further and power generation will increase further. Existing wind power plants contain large machines with high power generation capacities and many restrictions on installation sites, but wind power generation is expected to become more efficient because of various technologies, such as miniaturization, advancement, and wind power as a medium [<xref ref-type="bibr" rid="B7-sensors-24-02833">7</xref>].</p>
+      <p>Additionally, wind power generation will play an important role as an environmentally friendly means of power production, even in the face of increasing power demands. However, the availability, reliability, and turbine life of wind energy must be improved to compete with other energy sources. Organizational dynamics require strict cost management as the industry grows [<xref ref-type="bibr" rid="B8-sensors-24-02833">8</xref>]. Currently, the problem of wind energy generation failure detection is largely divided into two. The first is accuracy and reliability, and the second is cost. First, it is difficult to measure the sensor due to the vibrations or noise generated by wind power generators, and accurate failure detection is difficult due to a lot of noise. In addition, wind generators must accurately classify each failure situation because various failure phenomena can occur depending on the environmental conditions. Second, for fault detection, many sensors must be installed, data must be collected, and complex algorithms are required. This is expensive for large-scale wind power plants and is difficult to apply in small-scale power plants. The larger the motor, the more frequent the failure; therefore, more attention is required. As the size and number of wind power generators increase, reducing monitoring and repair costs has become increasingly important [<xref ref-type="bibr" rid="B9-sensors-24-02833">9</xref>].</p>
+      <p>Recent work on outlier detection includes [<xref ref-type="bibr" rid="B10-sensors-24-02833">10</xref>] used a Kalman filter to generate appropriate residuals evaluated with a predetermined threshold and proposed an adaptive system. Deep learning networks such as data-driven convolutional neural networks (CNN) and stacked denoising autoencoders (SDAE) were also used but did not consider the hidden temporal dependencies of each parameter [<xref ref-type="bibr" rid="B11-sensors-24-02833">11</xref>]. Reference [<xref ref-type="bibr" rid="B12-sensors-24-02833">12</xref>] proposed an anomaly detection model combining long short-term memory (LSTM) and bidirectional long short term memory (BLSTM) to prevent failures caused by resource contention in cloud environments and demonstrated good experimental results. While existing anomaly detection methods require human intervention and computational complexity, making it difficult to apply in real-world scenarios, [<xref ref-type="bibr" rid="B13-sensors-24-02833">13</xref>] showed a lightweight algorithm that can detect anomalies in real time and respond immediately. In [<xref ref-type="bibr" rid="B14-sensors-24-02833">14</xref>], the maintenance mode of high-speed rail power equipment is updated with a predictive and proactive approach to accurately predict future maintenance times and solve the problem of data shortage. On the vision side, proactive anomaly detection (PAAD) based on planned movements and current observations is proposed to proactively detect anomalous behaviors in the navigation of mobile robots [<xref ref-type="bibr" rid="B15-sensors-24-02833">15</xref>]. A mission-critical services (MCS) overload detection architecture is proposed to improve reliability and self-configuration by predicting service requirements and providing overload notifications in real-time through intelligent connectivity with 5G core networks [<xref ref-type="bibr" rid="B16-sensors-24-02833">16</xref>]. In this study, we performed unsupervised learning using a long short-term memory autoencoder (LSTM-AE) with temporal characteristics considering only the normal vibration data of wind turbines. We compared the unsupervised learning methods of isolated forests and LSTM-AE to determine which model is better suited for unsupervised learning outlier detection.</p>
+      <p>The contributions of this study are as follows:<list list-type="bullet"><list-item><p>The objective of this study was to diagnose faults using unsupervised learning based on time series vibration data in a noisy environment.</p></list-item><list-item><p>In this study, we used wavelet packet decomposition to decompose one signal into multiple bandwidth signals and used a high-frequency filter to emphasize the high-frequency part. We used the filtered signal through principal component analysis to benefit from computing resources and analysis through dimensionality reduction.</p></list-item><list-item><p>When applying the preprocessing method proposed in this study, the reconstruction error of learning and predicting the data by unsupervised learning was about 97%, which was better than the reconstruction error (about 94%) when no preprocessing method was previously applied.</p></list-item><list-item><p>The preprocessing method proposed in this study has shown that it improves performance even for simple models. The results of this study are expected to be useful in signal and speech processing and will be helpful for new preprocessing methods.</p></list-item></list></p>
+      <p>The remainder of this paper is organized as follows: in <xref ref-type="sec" rid="sec2-sensors-24-02833">Section 2</xref>, we introduce the technology used for the proposed data preprocessing. <xref ref-type="sec" rid="sec3-sensors-24-02833">Section 3</xref> includes the model structure of the anomaly detection proposed in this study. In <xref ref-type="sec" rid="sec4-sensors-24-02833">Section 4</xref>, we describe the experimental results and evaluate the methods used. In <xref ref-type="sec" rid="sec5-sensors-24-02833">Section 5</xref>, we conclude and outline implications for follow-up studies.</p>
+    </sec>
+    <sec id="sec2-sensors-24-02833">
+      <title>2. Related Work</title>
+      <sec id="sec2dot1-sensors-24-02833">
+        <title>2.1. Wind Power Generators</title>
+        <p>Wind power generators typically operate in complex environments. The collected vibration signals are typically mixed with non-fixed strong background noise. Therefore, it is difficult to extract useful features from the raw vibration signals. Additionally, the gearbox is combined with other mechanical parts of the wind turbine, which inevitably results in various inherent vibration modes, and the vibration signal exhibits multi-scale characteristics [<xref ref-type="bibr" rid="B17-sensors-24-02833">17</xref>]. Wind power generators change their rotational speeds rapidly under changing weather conditions and complex industrial environments [<xref ref-type="bibr" rid="B18-sensors-24-02833">18</xref>]. Therefore, the gearbox of a wind power generator is an important component [<xref ref-type="bibr" rid="B19-sensors-24-02833">19</xref>]. The gearbox in the wind generator changes the direction and speed of the rotational motion and transmits it to the generator. However, the gearbox, which is the core of a wind power generator, is a component that can frequently fail due to fatigue and wear. Therefore, abnormality detection in gearboxes is essential for the safe and efficient operation of wind power generators [<xref ref-type="bibr" rid="B11-sensors-24-02833">11</xref>]. Abnormality detection can prevent failures or accidents by monitoring various conditions inside the gearbox, such as vibration, temperature, current, and noise, and through quick response, can extend the life of the wind generator; thus, reducing maintenance costs.</p>
+      </sec>
+      <sec id="sec2dot2-sensors-24-02833">
+        <title>2.2. Preprocessing Methods</title>
+        <p>The wavelet packet transform (WPT) shown in <xref ref-type="fig" rid="sensors-24-02833-f001">Figure 1</xref> allows the signal to be decomposed and reconstructed into several signal components with the same bandwidth but different center frequencies. Using the characteristics of wavelet transmission has the advantage of providing higher accuracy in the high-frequency part of the signal and having no reconnection or missing information. WPT is suitable for handling non-fixed mechanical vibration signals with high-frequency characteristics and strong background noise in complex industrial environments. WPT is frequently used in feature extraction steps, which focus on manually extracting more useful features [<xref ref-type="bibr" rid="B20-sensors-24-02833">20</xref>]. WPT can obtain multiscale signals by decomposing non-fixed signals, which is insufficient for CNN [<xref ref-type="bibr" rid="B17-sensors-24-02833">17</xref>]. WPT has excellent positional properties in both the time and frequency domains and is suitable for compression. Furthermore, proper selection of the wavelet function allows the same signal to be represented with smaller errors [<xref ref-type="bibr" rid="B21-sensors-24-02833">21</xref>]. WPT is a well-known mathematical tool that has special advantages over the Fourier transformation in the analysis of unfixed signals because it provides an arbitrary time-frequency resolution with redundant base features. Moreover, WPT is a more advanced version of the continuous wavelet transformation that can create a suitable level of resolution for each signal. Wavelet packets divide the frequency axis into finer pixel parts than the discrete wavelet transform (DWT). In wavelet packet decomposition, the discrete signal passes through a larger number of filters than in DWT [<xref ref-type="bibr" rid="B22-sensors-24-02833">22</xref>].</p>
+        <p>In the wavelet analysis, signals are divided into detailed and approximate information. However, in wavelet packet analysis, we can distinguish the details and approximations that provide a good range for signal processing. Wavelet decomposition is used to solve the high-frequency components in a short time, whereas the low-frequency components require a significant amount of time. Here, low-frequency components consume large time intervals, whereas high-frequency components circulate at much shorter intervals [<xref ref-type="bibr" rid="B23-sensors-24-02833">23</xref>]. Therefore, slowly changing components can only be identified at long time intervals, whereas rapidly changing components can be identified at short time intervals. Wavelet decomposition can be treated as a continuous-time wavelet decomposition sampled at different frequencies at each level or scale.</p>
+        <p>Principal component analysis (PCA) performs a dimensionality reduction on the input dataset while maintaining the characteristics of the dataset that contribute the most to the variance. PCA identifies patterns in data and expresses them in a new form by highlighting similarities and differences. PCA is used to find patterns in high-dimensional data and to overcome the limitations of visualization. Therefore, the PCA is a powerful tool for data analysis. The mathematical technique used in PCA is known as intrinsic analysis which calculates the eigenvalues and eigenvectors of the square-symmetric matrix using the sum of the squares and externalities. The eigenvectors associated with the largest eigenvalues correspond to the orientation of the first principal component, and those associated with the second-largest eigenvalues determine the orientation of the second principal component. The sum of the eigenvalues is the same as the trace of the matrix, and the maximum number of eigenvectors is the same as the number of rows (or columns) of the matrix. PCA is one of the simplest multivariate analysis methods that reveal the internal structure of data in a manner that best describes their variance [<xref ref-type="bibr" rid="B24-sensors-24-02833">24</xref>]. When a multivariate data set is visualized as a coordinate set along each variable in a high-dimensional data space, the PCA can provide the user with a &#x201C;shadow&#x201D; of the data converted into a low-dimensional picture. This is the most useful way to express the core perspective of the data.</p>
+        <p>PCA is performed in a way that reduces the dimensions of the converted data using only a few main components. As PCA extracts the main components that best represent the characteristics of the data, the converted data are expressed in low dimensions while preserving the information of the original data as much as possible. Thus, PCA greatly aids in data analysis and visualization by reducing the dimensions of the data. In addition, PCA helps understand the structure of data by considering the correlations between variables [<xref ref-type="bibr" rid="B25-sensors-24-02833">25</xref>]. Overall, PCA is a powerful tool for identifying patterns in data and highlighting similarities and differences to represent data in new forms. Therefore, it was used to reduce the dimensions of the data and to reveal its internal structure. PCA plays an important role in data analysis and visualization and provides meaningful information by extracting key data characteristics.</p>
+        <p>A high-pass filter (HPF) is one of the filters used in signal processing to block signals in the low-frequency region [<xref ref-type="bibr" rid="B26-sensors-24-02833">26</xref>]. HPF is used to highlight or analyze high-frequency signals. Through this, the frequency area of the desired signal can be selected, and unnecessary low-frequency components removed. The operation source of HPF is small, and the signal of the low-frequency area is preserved. HPF is used in various applications, for example, in music and audio processing, or in image processing where it is used to extract high-frequency information such as boundary detection. In addition, signal processing may analyze the signal of the desired frequency band. There are several types of HPF, and various forms depending on the frequency response characteristics or design methods. HPF is one of the important filters used to analyze high-frequency signals. In the process of removing other components, the characteristics of the original signal are removed [<xref ref-type="bibr" rid="B27-sensors-24-02833">27</xref>].</p>
+      </sec>
+      <sec id="sec2dot3-sensors-24-02833">
+        <title>2.3. LSTM</title>
+        <p>LSTM is one kind of recurrent neural network (RNN) that has been widely used for time-series predictions and has been proven to perform well for long-term and short-term predictions. The LSTM network includes several gates for tracking the sequence of information and as shown in <xref ref-type="fig" rid="sensors-24-02833-f002">Figure 2</xref> it comprises three gates: an input, a forgetting, and an output gate. The input gate selects the data to be stored for subsequent calculations. The forgetting gate selects data that are not stored in the state data. For example, a calculation result of zero indicates that information is fully preserved, whereas a calculation result of 1 indicates that the information was completely discarded. The output gate determines the state information to be routed to the output. <italic>C</italic> indicates the following conditions [<xref ref-type="bibr" rid="B28-sensors-24-02833">28</xref>]. The LSTM cells use gate mechanisms to learn long-term dependencies. This mechanism adjusts the state of the memory through the input and deletes gates to ensure that important information can be maintained for a long time. This allows LSTM to learn and remember meaningful patterns, even in long sequences. LSTM has been used in various applications. Natural language processing uses it for sentence generation, machine translation, and emotion analysis. LSTM identifies long dependencies within sentences, helps to understand the context, and generates natural sentences. LSTM is also used to process time-series data such as speech recognition, music generation, and stock price prediction. In summary, the LSTM cells are a type of RNN, which is a proposed model for learning long-term dependencies. LSTM controls the flow of information through input, deletion, and output gates, and processes sequence data by maintaining a memory state. This allows the LSTM to perform well on data with long dependencies and is utilized in a variety of applications [<xref ref-type="bibr" rid="B29-sensors-24-02833">29</xref>].</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f003">Figure 3</xref> is the LSTM-AE model. LSTM-AE compresses and reconstructs the input data using LSTM cells. An autoencoder is an unsupervised learning model that learns the compression representations of the input data and reconstructs the input data based on them [<xref ref-type="bibr" rid="B30-sensors-24-02833">30</xref>]. The LSTM-AE consists of an encoder and a decoder for the LSTM cell. The input data are compressed by the encoder and converted into a representation of the latent space. The decoder then receives a representation of the latent space as the input and reconstructs the original data [<xref ref-type="bibr" rid="B31-sensors-24-02833">31</xref>]. The LSTM-AE learns to minimize the difference between the reconstructed and original data. Because LSTM cells can learn long-term dependencies, they can efficiently compress and reconstruct data by considering time flows [<xref ref-type="bibr" rid="B30-sensors-24-02833">30</xref>]. This allows the LSTM-AE to extract important characteristics of the data and improve the reconstruction of noisy data. The LSTM-AE can be used in various applications, such as the dimension reduction of data, characteristic extraction, and anomaly detection. For example, using an LSTM-AE for anomaly detection in time-series data can detect strange behaviors or events using models that have learned normal patterns. Therefore, the LSTM-AE is an autoencoder based on LSTM cells that can be used in various applications by compressing and reconstructing time-series data. The LSTM-AE was utilized for anomaly detection using the reconstruction error by calculating the difference from the original data when the LSTM-AE reconstructed the input data and considered this large difference as an outlier [<xref ref-type="bibr" rid="B29-sensors-24-02833">29</xref>]. The LSTM-AE performed model learning using only normal data during the learning stage.</p>
+        <p>The model learned normal patterns and adjusted the parameters to minimize reconstruction errors. Subsequently, the reconstruction error was calculated by inputting new data into the model. When the reconstruction error was high, it could be determined that the corresponding data showed an operation different from the normal pattern learned by the model [<xref ref-type="bibr" rid="B32-sensors-24-02833">32</xref>]. These data could be considered as outliers. The reconstruction error was calculated by measuring the difference between the original and reconstructed data [<xref ref-type="bibr" rid="B33-sensors-24-02833">33</xref>]. Generally, it is calculated using the square or absolute value of the error. When the error value was greater than a predefined threshold, the corresponding data were classified as outliers [<xref ref-type="bibr" rid="B34-sensors-24-02833">34</xref>]. For outlier detection, the LSTM-AE utilized the time-series characteristics of the data. The LSTM cells could learn temporal dependencies and detect outliers through reconstruction errors. Accordingly, the LSTM-AE could detect outliers in the time-series data and nonlinear characteristics. Therefore, the LSTM-AE can be used to detect outliers using reconstruction errors and to detect and analyze outliers in time-series data by utilizing the ability of LSTM cells.</p>
+      </sec>
+      <sec id="sec2dot4-sensors-24-02833">
+        <title>2.4. Anomaly Detection</title>
+        <p>Anomaly detection typically involves learning normal patterns from a given dataset using machine learning algorithms, and detecting strange behaviors or abnormal patterns in new data based on this learned pattern [<xref ref-type="bibr" rid="B35-sensors-24-02833">35</xref>]. Anomaly detection is used in several areas, for example, in industrial areas to detect anomalies occurring in manufacturing processes and in security areas to detect malicious behavior such as intrusion or fraud. Anomaly detection typically involves the classification of new data by using models learned using only normal data. Models that learn from normal data typically identify the distribution of normal patterns and consider the data divided from this distribution as outliers [<xref ref-type="bibr" rid="B36-sensors-24-02833">36</xref>]. Therefore, anomaly detection focuses on detecting outliers in data. Anomaly detection can be categorized into three types: supervised, semi-supervised, and unsupervised [<xref ref-type="bibr" rid="B37-sensors-24-02833">37</xref>]. Supervised Anomaly Detection uses both labeled normal and abnormal data during learning, which requires an intuitive model of performance evaluation, solves class imbalance problems, and is more accurate than other methods [<xref ref-type="bibr" rid="B38-sensors-24-02833">38</xref>]. Therefore, it is primarily used when high accuracy is required, and the more diverse the abnormal samples, the higher the performance. However, because of the nature of the manufacturing industry, abnormal data are not generated. Therefore, class imbalance problems are frequently encountered, and various studies, such as data augmentation, loss function redesign, and batch sampling, are being conducted to solve this problem [<xref ref-type="bibr" rid="B39-sensors-24-02833">39</xref>]. Considering the high cost and lengthy time in obtaining these abnormal samples, if the class imbalance is severe Semi-Supervised Anomaly Detection is utilized to use only labeled normal data for learning. This can be attempted in situations in which it is difficult to collect abnormal data [<xref ref-type="bibr" rid="B40-sensors-24-02833">40</xref>].</p>
+        <p>The key to this methodology is to establish a discriminant boundary surrounding the normal samples and narrow this boundary as much as possible to regard all samples outside the boundary as abnormal. One-class SVM is a representative methodology that uses one-class classification [<xref ref-type="bibr" rid="B41-sensors-24-02833">41</xref>]. Unsupervised Anomaly Detection assumes that most of the data are normal when learning. This is easy when there is no definite normal labeling in the data, and a threshold setting for the distinction between the normal and abnormal data may be required after model learning. The simplest way to achieve this is to perform PCA on a given dataset to detect abnormal samples by reducing and restoring the dimensions. An autoencoder-based methodology is mainly used as a neural network-based methodology. The autoencoder proceeds with encoding, which compresses the input into code or late variables, and decoding, which restores it close to the original, allowing only important information of the data to be compressed [<xref ref-type="bibr" rid="B42-sensors-24-02833">42</xref>].</p>
+      </sec>
+      <sec id="sec2dot5-sensors-24-02833">
+        <title>2.5. Isolation Forest</title>
+        <p>Isolation forest is one of the algorithms for anomaly detection. This algorithm uses a tree-based segmentation method to detect outliers in the data [<xref ref-type="bibr" rid="B43-sensors-24-02833">43</xref>]. The Isolation Forest operates as follows. First, an attribute is randomly selected from the dataset, and an arbitrary division value is selected between the minimum and maximum values of the attribute. The data are divided into two subgroups based on the selected segmentation value. The same segmentation process is repeated recursively for each subgroup. This process is repeated until the tree reaches the appropriate size, and outliers are detected using the finally configured tree. The Isolation Forest is a simple and computationally efficient, and that can quickly detect anomalies, even in large datasets. The proposed method can be applied to various types of data. An Isolation Tree can be applied to numerical and categorical data and to calculate outlier scores. The Isolation Tree calculates the outlier score for each data point, thereby measuring the degree of the outliers. However, Isolation Forests have certain drawbacks. The deeper the tree, the greater the likelihood of overfitting. The higher the density of the dataset, the lower the performance of the Isolation Tree. An Isolation Forest is primarily used to detect outliers and data showing unusual patterns. The performance of the outlier score calculation is used by the Isolation Forest to measure the degree of outliers because it can calculate the outlier score of each data point. This facilitates determining which data are most ideal in the dataset. Therefore, an Isolation Forest is used as a simple and efficient outlier detection algorithm that applies to various data types [<xref ref-type="bibr" rid="B44-sensors-24-02833">44</xref>].</p>
+      </sec>
+    </sec>
+    <sec id="sec3-sensors-24-02833">
+      <title>3. LSTM Autoencoder Based Anomaly Detection</title>
+      <sec id="sec3dot1-sensors-24-02833">
+        <title>3.1. Model Structure</title>
+        <p>As shown in <xref ref-type="fig" rid="sensors-24-02833-f004">Figure 4</xref>, PCA is a multivariate method based on quadratic statistical characteristics that convert a high-dimensional space into a low-dimensional space using coordinate transformation. PCA efficiently performs information compression and data correlation elimination [<xref ref-type="bibr" rid="B45-sensors-24-02833">45</xref>]. Furthermore, reducing three-dimensional data to two dimensions simplifies the visualization of data and makes it easy to grasp the structure and pattern of data, because they can be visualized on two-dimensional planes. This helps in reducing data complexity and computational costs because it extracts the principal components that best preserve the characteristics of the data through dimension reduction. As the principal components are selected based on data variance, the reduction to two dimensions can represent the distribution of the original data. This makes it easier to understand trends and patterns in the data. After performing the process on both normal and abnormal data, autoencoder learning was performed using only the normal data.</p>
+        <p>The LSTM-AE was used to detect outliers in the time series data. The model compressed the input data into a low-dimensional latent space and reconstructed the original input data. In this case, the reconstruction loss between the reconstructed and the original data was calculated. The reconstruction loss is a value representing the difference between the input data and reconstructed data; the smaller the loss, the more accurate the reconstruction of the input data. These LSTM-AE models learn normal data, identify patterns in the corresponding data, and detect data with different patterns as abnormal values. Data with large reconstruction losses are classified as outliers because of the large differences between the original and reconstructed data. During model learning, the LSTM-AE was trained using only normal data, and the threshold for reconstruction loss was set. This threshold was set based on the distribution of reconstruction losses for normal data. The test data were evaluated using learned models and thresholds, and data with reconstruction losses greater than these thresholds were judged as outliers. The reconstruction loss of the LSTM-AE was used for outlier detection because the model was trained based on normal data. After the LSTM-AE learned the pattern of the normal data, the outliers had a different pattern from the corresponding pattern; thus, the reconstruction loss was large. Therefore, it is possible to detect outliers through the reconstruction loss, and the careful coordination of outlier detection is possible by adjusting the reconstruction loss threshold.</p>
+      </sec>
+      <sec id="sec3dot2-sensors-24-02833">
+        <title>3.2. Anomaly Detector</title>
+        <p>The Isolation Forest and Autoencoder algorithms are used for outlier detection in unsupervised learning. These two algorithms focus on identifying and isolating outliers from the unlabeled data. The Isolation Forest uses data distribution to identify outliers. The algorithm assumes that outliers are rare and independent. The Isolation Forest operates by cutting the data, constructing a tree, and calculating an outlier score by measuring the length of the path in which each sample reaches the terminal node. This algorithm is faster than the autoencoder and has the advantage of being less affected by data dimensions. An autoencoder is a neural network-based algorithm that detects anomalies by minimizing reconstruction errors in the data. The autoencoder compresses the input data into a low-dimensional latent space and reconstructs the original input data. In this case, data with large reconstruction errors were considered as outliers. The autoencoder performed well in learning complex patterns of data and detecting outliers based on them and could be used more effectively to detect outliers by automatically adjusting the thresholds. LSTM-AE is a neural network-based algorithm suitable for time series or sequential data. LSTM is a type of RNN that can learn long-term dependencies [<xref ref-type="bibr" rid="B46-sensors-24-02833">46</xref>].</p>
+        <p>The LSTM-AE uses LSTM cells to learn the complex patterns of the sequence data and because it can detect and remember long-term dependencies of sequential data, it is effective in detecting outliers in sequential data, such as time-series data or natural language processing. For outlier detection, the Isolation Forest and LSTM-AE use their respective methods to analyze the patterns and distributions of the data and identify outliers. Thus, they can be used to detect outliers and improve the data quality in unsupervised learning. LSTM-AE is a type of RNN that can learn long-term dependency, compress input data into a low- dimensional latent space, and then reconstruct the original input data. In this case, data with large reconstruction errors were considered as outliers. LSTM can detect and remember the long-term dependencies of sequential data. Therefore, the LSTM-AE is effective in detecting outliers in sequential data, such as time-series data or natural language processing [<xref ref-type="bibr" rid="B47-sensors-24-02833">47</xref>].</p>
+        <p>The anomaly detector is judged based on the threshold set by the normal data of LSTM-AE, and if the calculated threshold of each data point is higher than the threshold of the normal data, the data point is judged as an anomaly.</p>
+      </sec>
+      <sec id="sec3dot3-sensors-24-02833">
+        <title>3.3. Loss Function</title>
+        <p>The proposed LSTM-AE model detects outliers that are outside the normal range. As we performed unsupervised training, we used only normal vibration data to train the autoencoder, which requires that the training data consist of normal data that does not contain outliers. When dimensionality reduction is performed, the reconstruction error is calculated, and in this study, we used the mean squared error (MSE) loss function [<xref ref-type="bibr" rid="B46-sensors-24-02833">46</xref>,<xref ref-type="bibr" rid="B48-sensors-24-02833">48</xref>]. MSE is defined as the average of the squared differences between the actual and predicted values. A smaller MSE value indicates a higher prediction accuracy of the model. The MSE used for reconstruction error is defined as follows.
+        <disp-formula id="FD1-sensors-24-02833"><label>(1)</label><mml:math id="mm1" display="block"><mml:semantics><mml:mrow><mml:mfrac><mml:mn>1</mml:mn><mml:mi>n</mml:mi></mml:mfrac><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mi>n</mml:mi></mml:munderover><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>X</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:msub><mml:mover accent="true"><mml:mi>X</mml:mi><mml:mo>^</mml:mo></mml:mover><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mn>2</mml:mn></mml:msup></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>The optimal threshold value is the point where the difference between precision and recall is minimized. There are several loss functions as evaluation indicators, and MSE squares the loss between the actual value and the predicted value and imposes a panel to enable the model to make accurate predictions. The receiver operating char curve (ROC) is used to evaluate the accuracy of outlier detection, visualize the performance of the binary classification models, and for outlier detection. The ROC curve has a True Positive rate (=sensitivity) on the y-axis and a False Positive rate (=1-specificity) on the <italic>x</italic>-axis. <inline-formula><mml:math id="mm2"><mml:semantics><mml:mrow><mml:mi>T</mml:mi><mml:mi>P</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> and <inline-formula><mml:math id="mm3"><mml:semantics><mml:mrow><mml:mi>F</mml:mi><mml:mi>P</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi></mml:mrow></mml:semantics></mml:math></inline-formula> are defined as follows [<xref ref-type="bibr" rid="B49-sensors-24-02833">49</xref>].
+        <disp-formula id="FD2-sensors-24-02833"><label>(2)</label><mml:math id="mm4" display="block"><mml:semantics><mml:mrow><mml:mi>T</mml:mi><mml:mi>P</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mi>T</mml:mi><mml:mi>P</mml:mi></mml:mrow><mml:mrow><mml:mi>A</mml:mi><mml:mi>P</mml:mi></mml:mrow></mml:mfrac><mml:mspace width="1.em"/><mml:mi>and</mml:mi><mml:mspace width="1.em"/><mml:mi>F</mml:mi><mml:mi>P</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mi>F</mml:mi><mml:mi>P</mml:mi></mml:mrow><mml:mrow><mml:mi>A</mml:mi><mml:mi>N</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:semantics></mml:math></disp-formula></p>
+        <p>The ROC curve represents the performance of the classification model at all thresholds and is a graph showing the change in the sensitivity and specificity of outlier detection when the threshold of reconstruction error changes. The closer the area under the ROC curve (AUC) value is to 1, the better the performance of the model. The minimum value of AUC is 0.5, which means that the model cannot classify classes. In this study, the AUC was calculated using an ROC curve to evaluate the outlier detection performance of the LSTM-AE model, and the accuracy of the model was confirmed [<xref ref-type="bibr" rid="B50-sensors-24-02833">50</xref>].</p>
+      </sec>
+    </sec>
+    <sec id="sec4-sensors-24-02833">
+      <title>4. Experiment and Results</title>
+      <sec id="sec4dot1-sensors-24-02833">
+        <title>4.1. Experiment Environments</title>
+        <p>The development environment of this study is as follows. OS: Mac OS v13.3.1; Python: Python v3.10.12; CPU: AMD EPYC 7B12; Memory: 13,294,252 kB.</p>
+        <p>Data were collected from a wind farm in Northern Sweden. The wind turbines were of the same model and included an integrated state-monitoring system that transmitted data to a state-monitoring database, from which the vibration data used in this study were accessed. Each wind turbine had a three-speed gearbox, including two sequential planetary gear stages and a helical gear stage. Each gearbox had four accelerators near the different gear stages. All measurement data corresponded to the axial direction of the accelerometer mounted on the output shaft bearing housing of each turbine. The sampling rate was 12.8 kHz, and the length of each signal segment was 1.28 s (16,384 samples). Signal segments were approximately 12 h apart for 46 consecutive months over the past 10 years [<xref ref-type="bibr" rid="B51-sensors-24-02833">51</xref>].</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f005">Figure 5</xref> shows the components of each stage, including the support bearing are shown. In this paper, data from one wind turbine with two bearing failures were used as fault data. The illustration highlights the position of the defective bearing.</p>
+      </sec>
+      <sec id="sec4dot2-sensors-24-02833">
+        <title>4.2. Parameter Setting</title>
+        <p>The number of units in the LSTM of the encoder portion was set to 515 and 256. Increasing the number of units in the LSTM model allowed it to learn more complex patterns. More units could be used to process more complex time-series data by increasing the capacity of the model. LSTM can learn long-term dependencies, and this model is used to perform reconstruction work on time-series data. Increasing the complexity of the time-series patterns learned makes the model more effective in identifying patterns in normal data and detecting outliers. The learning rate was set as 0.0001. The learning rate determines the rate at which the model updates its weights. Therefore, selecting an appropriate learning rate allows the model to converge quickly to the optimal solution, and determine the optimal loss value. The learning rate determines the weight update size. A learning rate that is too small can slow the learning speed, whereas a learning rate that is too large can make the learning unstable. Therefore, selecting an appropriate learning rate is important. The Adam optimizer combines the ideas of the momentum and RMSProp algorithms to automatically adjust the learning rate used for the weight updates. The Adam optimizer estimates the mean and variance of the gradient using the moving average and performs weight updates accordingly. Thus, the Adam optimizer performs well with various types of data and models. When the optimizer was set to Adam in the compilation step, the weight of the model was updated using the Adam optimizer generated above. In addition, when set to loss, the MSE was used as the loss function. The MSE is a value averaged by squaring the difference between the actual and predicted values and is used to measure the reconstruction loss of the model. The goal is to restore the input data as effectively as possible by minimizing the reconstruction loss [<xref ref-type="bibr" rid="B52-sensors-24-02833">52</xref>].</p>
+      </sec>
+      <sec id="sec4dot3-sensors-24-02833">
+        <title>4.3. Comparison of Normal and Abnormal Data</title>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f006">Figure 6</xref> and <xref ref-type="fig" rid="sensors-24-02833-f007">Figure 7</xref> represent the waveforms of the normal and abnormal data. Considering the raw signal alone, it was difficult to discern the differences between the two datasets. Thus, the waveform was analyzed by decomposing the signal using various frequency bands through the WPT.</p>
+        <p>Therefore, by examining the WPT results shown in <xref ref-type="fig" rid="sensors-24-02833-f008">Figure 8</xref> and <xref ref-type="fig" rid="sensors-24-02833-f009">Figure 9</xref>, the waveform in each frequency band and the difference in the frequency band between normal and abnormal data could be identified. Because the characteristics of the waveforms were different for each frequency band, abnormal data could be identified, or the cause could be inferred by analyzing the characteristics.</p>
+        <p>In WPT the sub-bands were generated for each level, and the decomposition at each level was performed using low- and high-pass filters. Each frequency band is represented by a sub-band and the waveform can be examined by selecting a sub-band of a specific frequency band from the given data. In this study, we analyzed the waveforms of the normal and abnormal data by selecting the eighth bandwidth that could be selected by analyzing the given data. This implies that the information related to the characteristics of the corresponding frequency bands must be obtained. When the waveforms of normal and abnormal data were analyzed at the eighth bandwidth, the characteristics and differences in the corresponding frequency bands were confirmed. This facilitated comprehending the difference in frequency bands between normal and abnormal data and discovering unusual patterns or abnormalities in the abnormal data.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f008">Figure 8</xref> Bandwidth of the eighth WPT at normal frequency. <xref ref-type="fig" rid="sensors-24-02833-f009">Figure 9</xref> Bandwidth of the eighth WPT with abnormal data. In this experiment, 16 waveforms of normal and abnormal data were visualized, which enabled us to visually identify the differences and the singularities between the two datasets. <xref ref-type="fig" rid="sensors-24-02833-f008">Figure 8</xref> and <xref ref-type="fig" rid="sensors-24-02833-f009">Figure 9</xref> show the normal and abnormal waveforms of the eighth bandwidth, respectively, that represented the characteristics of the data among the visualized waveforms.</p>
+        <p>When PCA was performed using the waveform data of the selected bandwidth, the distribution of the data and major fluctuation factors were confirmed. PCA helps highlight key patterns and differences in the data. Therefore, by comparing the PCA results of the normal and abnormal data, the difference and singularity between the two datasets were confirmed. The PCA results for the normal data showed the main patterns and characteristics of the waveform data for the corresponding bandwidth. This represented the consistent behavior of normal data that fits the bandwidth. However, the PCA results of abnormal data represented an outlier or a unique pattern. This indicated unexpected behavior or unusual characteristics in the waveform data of the corresponding bandwidth. Accordingly, data with a singularity were identified by comparing the PCA results of normal and abnormal data. Subsequently, abnormal values or operations occurring in the waveform data of the corresponding bandwidth may be detected. Because PCA is a powerful tool for performing dimensionality reduction and characteristic extraction of data, it facilitated the identification of singularities in data related to bandwidth.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f010">Figure 10</xref> is normal data after HPF and <xref ref-type="fig" rid="sensors-24-02833-f011">Figure 11</xref> is abnormal data HPF. The HPF enhances the high-frequency signals of normal and abnormal data, removes the low-frequency components from the frequency domain making the components of the signal clearer, and emphasizes the high-frequency components to achieve clearer results. HPF is mainly used in signal or image processing and is useful only when observing components above a specific frequency. HPF can be applied to extract and analyze the desired frequency band. This helps in identifying important frequency components of the data. In addition, removing low-frequency components from the image and highlighting high-frequency components allows for better observation of the details, boundaries, and noise in the image. HPF performs filtering on a given signal or image in the frequency domain; therefore, any component below that frequency is removed and any component above that frequency remains highlighted. This allows the analysis of the frequency characteristics of the data or the extraction of information contained in a specific frequency band.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f012">Figure 12</xref> shows a visualization of the bandwidth of normal vibration eighth. <xref ref-type="fig" rid="sensors-24-02833-f013">Figure 13</xref> shows a visualization of the bandwidth of abnormal vibration eighth. A three-dimensional space was established for the data visualization of a specific bandwidth obtained by performing WPT. First, the variables used for visualization were selected from the dataset to be analyzed. The selected variable corresponds to the axis of the three-dimensional space. The range of each axis was set according to the selected variables. This was determined by considering the minimum and maximum values of the selected variables. Three-dimensional space was used to visualize data based on selected variables. Each data instance was mapped to a specific coordinate in space according to the selected variables. Through this, the distribution and pattern of the data were understood intuitively and analyzed. <xref ref-type="fig" rid="sensors-24-02833-f012">Figure 12</xref> and <xref ref-type="fig" rid="sensors-24-02833-f013">Figure 13</xref> are the visualization data mapped onto 3D data with the time and amplitude of each data point.</p>
+        <p><xref ref-type="table" rid="sensors-24-02833-t001">Table 1</xref> shows the variance of the data when the dimensions are reduced by the number of corresponding main components. Normal data accounted for 98.9% of the total distribution of data, and abnormal data accounted for 98.5% of the total distribution of data. This ratio aided in selecting the main ingredient. If the principal components were selected in the order in which the Explained Variation Ratio of the principal components was large, the upper principal components that explain most of the variance in the data could be selected. This allowed us to preserve the important features of the data even if the dimensions were reduced. Checking the Explained Variation Ratio from the principal component analysis results helped us evaluate how well we described the variance of the dataset and determined the appropriate level of dimensionality reduction.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f014">Figure 14</xref> and <xref ref-type="fig" rid="sensors-24-02833-f015">Figure 15</xref> are visualization graphs that confirm the distribution of data by performing PCA. This process facilitated a better understanding of the trends and patterns in data, and it could be observed that normal and abnormal data have different characteristics and patterns.</p>
+        <p>By representing data in low dimensions using PCA, the distribution and clustering of normal and abnormal data were visually understood. Normal data formed denser clusters, while abnormal data appeared as distinct clusters or isolated data points. The main component obtained from the PCA was the axis that best described the variability of the original data. Therefore, the important data characteristics could be identified through the main components, and the differences between normal and abnormal data could be visualized and confirmed. Based on the value of the main component or projection value of the data, abnormal data were interpreted as deviating from a general pattern.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f016">Figure 16</xref> and <xref ref-type="fig" rid="sensors-24-02833-f017">Figure 17</xref> are the visualization results of dimension reduction with the main components obtained through the Explained Variation Ratio. Notably, the number of vibration components decreased because dimensional reduction was performed. Compared with <xref ref-type="fig" rid="sensors-24-02833-f010">Figure 10</xref> and <xref ref-type="fig" rid="sensors-24-02833-f011">Figure 11</xref>, it can be seen that the characteristics of the data are alive.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f018">Figure 18</xref> and <xref ref-type="fig" rid="sensors-24-02833-f019">Figure 19</xref> show the results of detecting outliers and applying the Isolation Forest using the preprocessed data in unsupervised learning. Although there was a difference in the three-dimensional distributions of <xref ref-type="fig" rid="sensors-24-02833-f018">Figure 18</xref> and <xref ref-type="fig" rid="sensors-24-02833-f019">Figure 19</xref> with abnormal data, an accurate classification was not made in terms of the number.</p>
+        <p>The Isolation Forest works by cutting off the data. The data were divided using a randomly selected segmentation plane, which was repeated to measure the path length through which each data point reached the terminal node of the tree. Outliers tended to have short path lengths, and the outlier score was calculated based on the path length. Because outliers have paths that differ from the general data, they were relatively more likely to have shorter paths. Therefore, even if an Isolation Forest was used in a dataset composed only of normal data, data with a shorter path than the main component were classified as abnormal values. Isolation Forest, which detected anomalies based on the length of the data path, classified anomalies even in datasets composed of only normal vibration data; therefore, it could be used in combination with other anomaly detection algorithms or other techniques, or additional preprocessing or feature extraction methods. In addition, the performance of the algorithm could be evaluated and improved by checking the evaluation index of the classification results.</p>
+      </sec>
+      <sec sec-type="results" id="sec4dot4-sensors-24-02833">
+        <title>4.4. Results</title>
+        <p>We conducted outlier detection using an LSTM-AE to utilize more sophisticated artificial intelligence models. <xref ref-type="fig" rid="sensors-24-02833-f003">Figure 3</xref> shows the LSTM was compressed with a model in which only normal data were learned and then reconstructed into the form of the original data. When compressed, the data characteristics were extracted, and the loss rate was the reconstruction error rate. An outlier was detected by the difference between the input and output data, and if the reconstruction error rate exceeded the threshold calculated by the model, it was considered an outlier. There were two layers of LSTM in the encoder and two layers in the decoder.</p>
+        <p>Considering visualization, <xref ref-type="fig" rid="sensors-24-02833-f020">Figure 20</xref> shows that data processing using the method proposed in this paper makes good use of the characteristics of the most original sound. It was performed in three order: the method of implementing only PCA in the original data, the method of implementing PCA after performing HPF, and the method of implementing PCA through WPT and HPF.</p>
+        <p>Detailed descriptions of each figure are as follows: (a) Only by PCA on the original raw data, (b) PCA-only data into the LSTM-AE in the original raw data, (c) HPF on the original data and then PCA, (d) HPF on the original data and then PCA performed data into the LSTM-AE, (e) data performed by performing WPT on the source data, HPF at a specific bandwidth, and then PCA, (f) data regenerated by performing WPT on the original data, performing HPF at a specific bandwidth, and then putting the PCA data into the LSTM-AE.</p>
+        <p><xref ref-type="table" rid="sensors-24-02833-t002">Table 2</xref> shows the model loss based on MSE for each epoch from a minimum of 30 to a maximum of 150 epochs. It can be seen that the WPT-HPF-PCA method, which is the preprocessing method proposed in this study, has the lowest loss.</p>
+        <p><xref ref-type="fig" rid="sensors-24-02833-f021">Figure 21</xref> shows the results of the experiments using models of the same structure. Notably, the more preprocessed the data were, the closer the AUC was to 1.</p>
+        <p>Detailed descriptions of each figure are as follows: (a) Only by PCA on the original raw data, (b) PCA-only data into the LSTM-AE in the original raw data, and (c) HPF on the original data and then PCA.</p>
+        <p>The dataset preprocessing method proposed in this paper showed substantially better results than the raw data. Abnormal detection was performed using raw data. It can be seen that an accuracy of 94.10% was obtained from <xref ref-type="table" rid="sensors-24-02833-t003">Table 3</xref>, and a higher accuracy of 97.44% was achieved when the pretreatment method proposed in this study was applied. Based on these results, we observed the effect of maximizing the difference between normal and abnormal data in the process of extracting and strengthening data characteristics using WPT and HPF. Through WPT, the data was decomposed into various frequency bands so that the characteristics of the data could be better understood. Afterward, HPF was applied to maximize the difference while strengthening the characteristics of the data. Finally, through principal component analysis, computing could be efficiently performed, and outliers could be identified and classified. Therefore, the dataset preprocessing method proposed in this study shows a higher performance than with raw data, which could substantially improve the accuracy of anomaly detection by extracting and strengthening the characteristics of the data.</p>
+        <p>In <xref ref-type="fig" rid="sensors-24-02833-f022">Figure 22</xref>, (a) is a visualization of the distribution of the raw data based on the thresholds set by the model trained on the raw data; (b) is a visualization of the distribution of the data that performed WPT-PCA based on the thresholds set by the model trained on the data that performed WPT-PCA; (c) is a visualization of the distribution of data that performed WPT-HPF-PCA based on the thresholds set by the model trained on the data that performed WPT-HPF-PCA.</p>
+        <p>The thresholds shown in <xref ref-type="fig" rid="sensors-24-02833-f022">Figure 22</xref> have different values. This is because the model calculated the optimal thresholds with data processed by different preprocessing methods; (a) shows that there is a relatively large mix of normal and abnormal data within the thresholds, but (c) shows that the abnormal data within the thresholds has decreased significantly compared to (a); (c) shows that the WPT-HPF-PCA performed as the final preprocessing in this study resulted in almost no abnormal data entering the thresholds. This visualization of the data distribution indicates that the model has a good understanding of the reconstruction loss rate threshold for normal data.</p>
+      </sec>
+      <sec sec-type="discussion" id="sec4dot5-sensors-24-02833">
+        <title>4.5. Discussion</title>
+        <p>The outlier detection performed after the proposed preprocessing method outperformed the outlier detection performed with conventional data. Preprocessing techniques that combine WPT, HPF, and PCA are useful in a variety of data analysis and signal processing applications. Each technique contributes to extracting important characteristics from the data, reducing noise, and reducing dimensionality to facilitate the interpretation of the data. WPT can analyze signals in both the time and frequency domains, allowing important characteristics to be extracted from even complex nonlinear signals. This allows it to better capture information occurring in different frequency bands of the signal. HPF allows you to remove low-frequency noise. This helps to emphasize the high-frequency components of the data, the parts of the data that have the most variation. As mentioned above, both WPT and HPF contribute to reducing noise, and HPF, in particular, can improve the quality of your data by effectively removing low-frequency noise. PCA reduces the dimensionality of the data, preserving key characteristics that are less sensitive to noise. In the process, unnecessary information is removed, improving the signal-to-noise ratio of the data. By reducing the dimensionality of the data with PCA, the amount of computation required for analysis or modeling is reduced. This can save time and resources, especially when dealing with large datasets. Combining these three techniques highlights important characteristics in the data, reduces noise, and reduces dimensionality. As a result, the structure of the data becomes clearer and it becomes easier to identify important patterns or relationships. LSTM, the model used for outlier detection, is very effective at learning long-term dependencies in time series data. By capturing important temporal patterns and dynamic changes in preprocessed data, they can learn temporal characteristics that are essential for outlier detection. The autoencoder (AE) have the ability to efficiently compress (encoder) and reconstruct (decoder) input data. By combining with LSTMs, AEs can learn complex patterns in time series data and reconstruct the structure of normal data based on them. Outliers are characterized by large differences between the normal data structure and the reconstructed data, and this difference can be used to detect outliers. The use of LSTM-AE models for outlier detection provides a powerful way to understand complex data structures, including temporal patterns, based on high-quality preprocessed data, and to effectively identify data points that fall outside the normal range.</p>
+        <p>Previous studies have required human intervention or had high computational complexity, making them difficult to apply to real-world scenarios. However, the LSTM-AE model used in this study presents a lightweight algorithm that can detect anomalies in real-time and respond immediately. This is a great advantage, especially for preventing unexpected failures in critical infrastructures such as wind turbines. Many anomaly detection studies are based on supervised learning, which encounters the need for sufficient labeled data. In contrast, the proposed method adopts an unsupervised learning approach which can be applied to unlabeled or expensive-to-label data. This is particularly beneficial in real-world industrial settings. In unsupervised learning, it is difficult to evaluate the performance of a model or generalize to other datasets because no labels exist for the data. This limitation is expected to be a useful strategy if labeling can turn unsupervised data into supervised learning. Self-supervised learning using labeled datasets using a classification method with automatic labeling is expected to produce a variety of models. The proposed method can also perform successful outlier detection in noisy and complex vibration data from industrial environments. Unsupervised learning has the advantage of being able to discover the inherent structure of a dataset, but it has the disadvantage of being generally inconsistent and difficult to interpret. In addition, fault classification needs to be performed using datasets containing different types of fault data in order to classify and predict fault types. To demonstrate the superiority of this research, more model comparisons are needed, and we plan to combine them with XAI to obtain reliable results. Also, since this research was conducted on a limited dataset, we plan to demonstrate its validity on various datasets and real-world industrial environments. Continued technical and research efforts to address these issues are expected to open up new possibilities and contribute to the broader field of artificial intelligence.</p>
+      </sec>
+    </sec>
+    <sec sec-type="conclusions" id="sec5-sensors-24-02833">
+      <title>5. Conclusions</title>
+      <p>In our proposal, we explored the preprocessing of normal data sets using the WPT-HPF-PCA method and the detection of outliers using the LSTM-AE model. The key idea was to transform the data using WPT and HPF and perform dimensionality reduction using PCA to extract the characteristics of the data. In this study, we first decomposed the data using WPT and applied HPF to extract the signals in the desired frequency range. We then performed PCA to reduce the dimensionality of the data and trained the LSTM-AE model accordingly. The LSTM-AE compressed the input data into a low-dimensional latent space to restore the original data. The trained model was used to calculate the reconstruction loss for normal data, which was used to find the threshold to detect outliers. In the experiments, we trained and evaluated the model using different normal datasets with sequential step preprocessing, and evaluated the performance of the model by comparing the reconstruction loss with the actual outliers. The experimental results showed that the proposed method performed well in detecting outliers in the test data using the threshold obtained by training on normal data only, and achieved good results compared to other outlier detection preprocessing algorithms.</p>
+    </sec>
+  </body>
+  <back>
+    <notes>
+      <title>Author Contributions</title>
+      <p>Conceptualization, Y.L.; methodology, N.K.; software, Y.L.; validation, Y.L. and C.P.; formal analysis, J.A.; investigation, Y.L.; resources, Y.L.; data curation, C.P.; writing&#x2014;original draft preparation, Y.L. and C.P.; writing&#x2014;review and editing, Y.L.; visualization, N.K.; supervision, J.J.; project administration, J.J. All authors have read and agreed to the published version of the manuscript.</p>
+    </notes>
+    <notes>
+      <title>Institutional Review Board Statement</title>
+      <p>Not applicable.</p>
+    </notes>
+    <notes>
+      <title>Informed Consent Statement</title>
+      <p>Not applicable.</p>
+    </notes>
+    <notes>
+      <title>Data Availability Statement</title>
+      <p>S. Martin del Campo Barraza, F. Sandin, and D. Str&#xF6;mbergsson, &#x2018;Dataset concerning the vibration signals from wind turbines in northern Sweden&#x2019;. 2018. (<uri>https://ltu.diva-portal.org/smash/record.jsf?pid=diva2%3A1244889&amp;dswid=2589</uri> accessed on 3 September 2018).</p>
+    </notes>
+    <ack>
+      <title>Acknowledgments</title>
+      <p>This research was supported by the SungKyunKwan University and the BK21 FOUR (Graduate School Innovation) funded by the Ministry of Education (MOE, Korea) and National Research Foundation of Korea (NRF). Moreover, this research was supported by the MSIT (Ministry of Science and ICT), Korea, under the ICT Creative Consilience Program (IITP-2024-2020-0-01821) supervised by the IITP (Institute for Information &amp; communications Technology Planning &amp; Evaluation).</p>
+    </ack>
+    <notes notes-type="COI-statement">
+      <title>Conflicts of Interest</title>
+      <p>The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.</p>
+    </notes>
+    <ref-list>
+      <title>References</title>
+      <ref id="B1-sensors-24-02833">
+        <label>1.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Peng</surname>
+              <given-names>Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Modelling and Simulation of Direct Drive Permanent Magnet Wind Power Generation System Based on Simulink</article-title>
+          <source>Proceedings of the IEEE 2021 2nd International Conference on Intelligent Computing and Human-Computer Interaction (ICHCI)</source>
+          <conf-loc>Shenyang, China</conf-loc>
+          <conf-date>17&#x2013;19 November 2021</conf-date>
+          <fpage>344</fpage>
+          <lpage>350</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B2-sensors-24-02833">
+        <label>2.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Sikiru</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Oladosu</surname>
+              <given-names>T.L.</given-names>
+            </name>
+            <name>
+              <surname>Amosa</surname>
+              <given-names>T.I.</given-names>
+            </name>
+            <name>
+              <surname>Olutoki</surname>
+              <given-names>J.O.</given-names>
+            </name>
+            <name>
+              <surname>Ansari</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Abioye</surname>
+              <given-names>K.J.</given-names>
+            </name>
+            <name>
+              <surname>Rehman</surname>
+              <given-names>Z.U.</given-names>
+            </name>
+            <name>
+              <surname>Soleimani</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Hydrogen-powered horizons: Transformative technologies in clean energy generation, distribution, and storage for sustainable innovation</article-title>
+          <source>Int. J. Hydrogen Energy</source>
+          <year>2024</year>
+          <volume>56</volume>
+          <fpage>1152</fpage>
+          <lpage>1182</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.ijhydene.2023.12.186</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B3-sensors-24-02833">
+        <label>3.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ding</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Renewable energy development and transportation infrastructure matters for green economic growth? Empirical evidence from China</article-title>
+          <source>Econ. Anal. Policy</source>
+          <year>2023</year>
+          <volume>79</volume>
+          <fpage>634</fpage>
+          <lpage>646</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.eap.2023.06.042</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B4-sensors-24-02833">
+        <label>4.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Omer</surname>
+              <given-names>A.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Energy, environment and sustainable development</article-title>
+          <source>Renew. Sustain. Energy Rev.</source>
+          <year>2008</year>
+          <volume>12</volume>
+          <fpage>2265</fpage>
+          <lpage>2300</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.rser.2007.05.001</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B5-sensors-24-02833">
+        <label>5.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Nguyen</surname>
+              <given-names>M.P.</given-names>
+            </name>
+            <name>
+              <surname>Ponomarenko</surname>
+              <given-names>T.</given-names>
+            </name>
+            <name>
+              <surname>Nguyen</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Energy Transition in Vietnam: A Strategic Analysis and Forecast</article-title>
+          <source>Sustainability</source>
+          <year>2024</year>
+          <volume>16</volume>
+          <elocation-id>1969</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/su16051969</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6-sensors-24-02833">
+        <label>6.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mandal</surname>
+              <given-names>D.K.</given-names>
+            </name>
+            <name>
+              <surname>Bose</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Biswas</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Manna</surname>
+              <given-names>N.K.</given-names>
+            </name>
+            <name>
+              <surname>Cuce</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Benim</surname>
+              <given-names>A.C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Solar Chimney Power Plants for Sustainable Air Quality Management Integrating Photocatalysis and Particulate Filtration: A Comprehensive Review</article-title>
+          <source>Sustainability</source>
+          <year>2024</year>
+          <volume>16</volume>
+          <elocation-id>2334</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/su16062334</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B7-sensors-24-02833">
+        <label>7.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Liang</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>W.</given-names>
+            </name>
+          </person-group>
+          <article-title>Key technologies analysis of small scale non-grid-connected wind turbines: A review</article-title>
+          <source>Proceedings of the IEEE 2010 World Non-Grid-Connected Wind Power and Energy Conference</source>
+          <conf-loc>Nanjing, China</conf-loc>
+          <conf-date>5&#x2013;7 November 2010</conf-date>
+          <fpage>1</fpage>
+          <lpage>6</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B8-sensors-24-02833">
+        <label>8.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ackermann</surname>
+              <given-names>T.</given-names>
+            </name>
+            <name>
+              <surname>S&#xF6;der</surname>
+              <given-names>L.</given-names>
+            </name>
+          </person-group>
+          <article-title>Wind energy technology and current status: A review</article-title>
+          <source>Renew. Sustain. Energy Rev.</source>
+          <year>2000</year>
+          <volume>4</volume>
+          <fpage>315</fpage>
+          <lpage>374</lpage>
+          <pub-id pub-id-type="doi">10.1016/S1364-0321(00)00004-6</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9-sensors-24-02833">
+        <label>9.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mary</surname>
+              <given-names>S.A.J.</given-names>
+            </name>
+            <name>
+              <surname>Sarika</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Fault Diagnosis and Control Techniques for Wind Energy Conversion System: A Systematic Review</article-title>
+          <source>Proceedings of the IEEE 2022 Third International Conference on Intelligent Computing Instrumentation and Control Technologies (ICICICT)</source>
+          <conf-loc>Kannur, India</conf-loc>
+          <conf-date>11&#x2013;12 August 2022</conf-date>
+          <fpage>700</fpage>
+          <lpage>704</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B10-sensors-24-02833">
+        <label>10.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zemali</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Cherroun</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Hadroug</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Hafaifa</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Iratni</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Alshammari</surname>
+              <given-names>O.S.</given-names>
+            </name>
+            <name>
+              <surname>Colak</surname>
+              <given-names>I.</given-names>
+            </name>
+          </person-group>
+          <article-title>Robust intelligent fault diagnosis strategy using Kalman observers and neuro-fuzzy systems for a wind turbine benchmark</article-title>
+          <source>Renew. Energy</source>
+          <year>2023</year>
+          <volume>205</volume>
+          <fpage>873</fpage>
+          <lpage>898</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.renene.2023.01.095</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B11-sensors-24-02833">
+        <label>11.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Chen</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Jiang</surname>
+              <given-names>T.</given-names>
+            </name>
+          </person-group>
+          <article-title>Anomaly detection for wind turbines based on the reconstruction of condition parameters using stacked denoising autoencoders</article-title>
+          <source>Renew. Energy</source>
+          <year>2020</year>
+          <volume>147</volume>
+          <fpage>1469</fpage>
+          <lpage>1480</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.renene.2019.09.041</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B12-sensors-24-02833">
+        <label>12.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Gupta</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Muthiyan</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Kumar</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Nigam</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Dinesh</surname>
+              <given-names>D.A.</given-names>
+            </name>
+          </person-group>
+          <article-title>A supervised deep learning framework for proactive anomaly detection in cloud workloads</article-title>
+          <source>Proceedings of the 2017 14th IEEE India Council International Conference (INDICON)</source>
+          <conf-loc>Roorkee, India</conf-loc>
+          <conf-date>15&#x2013;17 December 2017</conf-date>
+          <fpage>1</fpage>
+          <lpage>6</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B13-sensors-24-02833">
+        <label>13.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lee</surname>
+              <given-names>M.C.</given-names>
+            </name>
+            <name>
+              <surname>Lin</surname>
+              <given-names>J.C.</given-names>
+            </name>
+            <name>
+              <surname>Gan</surname>
+              <given-names>E.G.</given-names>
+            </name>
+          </person-group>
+          <article-title>ReRe: A lightweight real-time ready-to-go anomaly detection approach for time series</article-title>
+          <source>Proceedings of the 2020 IEEE 44th Annual Computers, Software, and Applications Conference (COMPSAC)</source>
+          <conf-loc>Madrid, Spain</conf-loc>
+          <conf-date>13&#x2013;17 July 2020</conf-date>
+          <fpage>322</fpage>
+          <lpage>327</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B14-sensors-24-02833">
+        <label>14.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wang</surname>
+              <given-names>Q.</given-names>
+            </name>
+            <name>
+              <surname>Bu</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>He</surname>
+              <given-names>Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Achieving predictive and proactive maintenance for high-speed railway power equipment with LSTM-RNN</article-title>
+          <source>IEEE Trans. Ind. Inform.</source>
+          <year>2020</year>
+          <volume>16</volume>
+          <fpage>6509</fpage>
+          <lpage>6517</lpage>
+          <pub-id pub-id-type="doi">10.1109/TII.2020.2966033</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B15-sensors-24-02833">
+        <label>15.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ji</surname>
+              <given-names>T.</given-names>
+            </name>
+            <name>
+              <surname>Sivakumar</surname>
+              <given-names>A.N.</given-names>
+            </name>
+            <name>
+              <surname>Chowdhary</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>Driggs-Campbell</surname>
+              <given-names>K.</given-names>
+            </name>
+          </person-group>
+          <article-title>Proactive anomaly detection for robot navigation with multi-sensor fusion</article-title>
+          <source>IEEE Robot. Autom. Lett.</source>
+          <year>2022</year>
+          <volume>7</volume>
+          <fpage>4975</fpage>
+          <lpage>4982</lpage>
+          <pub-id pub-id-type="doi">10.1109/LRA.2022.3153989</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B16-sensors-24-02833">
+        <label>16.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Spantideas</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Giannopoulos</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Cambeiro</surname>
+              <given-names>M.A.</given-names>
+            </name>
+            <name>
+              <surname>Trullols-Cruces</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Atxutegi</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Trakadas</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Intelligent Mission Critical Services over Beyond 5G Networks: Control Loop and Proactive Overload Detection</article-title>
+          <source>Proceedings of the IEEE 2023 International Conference on Smart Applications, Communications and Networking (SmartNets)</source>
+          <conf-loc>Istanbul, Turkiye</conf-loc>
+          <conf-date>25&#x2013;27 July 2023</conf-date>
+          <fpage>1</fpage>
+          <lpage>6</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B17-sensors-24-02833">
+        <label>17.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Huang</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>W.A.</given-names>
+            </name>
+            <name>
+              <surname>Guo</surname>
+              <given-names>F.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Shi</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Wavelet packet decomposition-based multiscale CNN for fault diagnosis of wind turbine gearbox</article-title>
+          <source>IEEE Trans. Cybern.</source>
+          <year>2021</year>
+          <volume>53</volume>
+          <fpage>443</fpage>
+          <lpage>453</lpage>
+          <pub-id pub-id-type="doi">10.1109/TCYB.2021.3123667</pub-id>
+          <pub-id pub-id-type="pmid">34767518</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B18-sensors-24-02833">
+        <label>18.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bhandari</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Poudel</surname>
+              <given-names>S.R.</given-names>
+            </name>
+            <name>
+              <surname>Lee</surname>
+              <given-names>K.T.</given-names>
+            </name>
+            <name>
+              <surname>Ahn</surname>
+              <given-names>S.H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Mathematical modeling of hybrid renewable energy system: A review on small hydro-solar-wind power generation</article-title>
+          <source>Int. J. Precis. Eng. Manuf.-Green Technol.</source>
+          <year>2014</year>
+          <volume>1</volume>
+          <fpage>157</fpage>
+          <lpage>173</lpage>
+          <pub-id pub-id-type="doi">10.1007/s40684-014-0021-4</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B19-sensors-24-02833">
+        <label>19.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Jiang</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>He</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Xie</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+          </person-group>
+          <article-title>Stacked multilevel-denoising autoencoders: A new representation learning approach for wind turbine gearbox fault diagnosis</article-title>
+          <source>IEEE Trans. Instrum. Meas.</source>
+          <year>2017</year>
+          <volume>66</volume>
+          <fpage>2391</fpage>
+          <lpage>2402</lpage>
+          <pub-id pub-id-type="doi">10.1109/TIM.2017.2698738</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B20-sensors-24-02833">
+        <label>20.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bengio</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Courville</surname>
+              <given-names>A.C.</given-names>
+            </name>
+            <name>
+              <surname>Vincent</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised feature learning and deep learning: A review and new perspectives</article-title>
+          <source>CoRR abs/1206.5538</source>
+          <year>2012</year>
+          <volume>1</volume>
+          <fpage>2012</fpage>
+        </element-citation>
+      </ref>
+      <ref id="B21-sensors-24-02833">
+        <label>21.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kuzu</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Baran</surname>
+              <given-names>E.A.</given-names>
+            </name>
+            <name>
+              <surname>Bogosyan</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Gokasan</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Sabanovic</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Wavelet packet transform-based compression for teleoperation</article-title>
+          <source>Proc. Inst. Mech. Eng. Part I J. Syst. Control. Eng.</source>
+          <year>2015</year>
+          <volume>229</volume>
+          <fpage>639</fpage>
+          <lpage>651</lpage>
+          <pub-id pub-id-type="doi">10.1177/0959651815575438</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B22-sensors-24-02833">
+        <label>22.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lotfollahi-Yaghin</surname>
+              <given-names>M.A.</given-names>
+            </name>
+            <name>
+              <surname>Koohdaragh</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Examining the function of wavelet packet transform (WPT) and continues wavelet transform (CWT) in recognizing the crack specification</article-title>
+          <source>KSCE J. Civ. Eng.</source>
+          <year>2011</year>
+          <volume>15</volume>
+          <fpage>497</fpage>
+          <lpage>506</lpage>
+          <pub-id pub-id-type="doi">10.1007/s12205-011-0925-2</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B23-sensors-24-02833">
+        <label>23.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Prieto</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Novo</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Manzanedo</surname>
+              <given-names>F.</given-names>
+            </name>
+          </person-group>
+          <article-title>The Wavelet Packet Transform and its application to identify arc furnace current and voltage harmonics</article-title>
+          <source>Proceedings of the 2008 IEEE Canada Electric Power Conference</source>
+          <conf-loc>Vancouver, BC, Canada</conf-loc>
+          <conf-date>6&#x2013;7 October 2008</conf-date>
+          <fpage>1</fpage>
+          <lpage>6</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B24-sensors-24-02833">
+        <label>24.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Stein</surname>
+              <given-names>S.A.M.</given-names>
+            </name>
+            <name>
+              <surname>Loccisano</surname>
+              <given-names>A.E.</given-names>
+            </name>
+            <name>
+              <surname>Firestine</surname>
+              <given-names>S.M.</given-names>
+            </name>
+            <name>
+              <surname>Evanseck</surname>
+              <given-names>J.D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Principal components analysis: A review of its application on molecular dynamics data</article-title>
+          <source>Annu. Rep. Comput. Chem.</source>
+          <year>2006</year>
+          <volume>2</volume>
+          <fpage>233</fpage>
+          <lpage>261</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B25-sensors-24-02833">
+        <label>25.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Babu</surname>
+              <given-names>P.A.</given-names>
+            </name>
+            <name>
+              <surname>Prasad</surname>
+              <given-names>K.</given-names>
+            </name>
+          </person-group>
+          <article-title>Removal of ocular artifacts from EEG signals by fast RLS algorithm using wavelet transform</article-title>
+          <source>Int. J. Comput. Appl.</source>
+          <year>2011</year>
+          <volume>21</volume>
+          <fpage>1</fpage>
+          <lpage>5</lpage>
+          <pub-id pub-id-type="doi">10.5120/2503-3384</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B26-sensors-24-02833">
+        <label>26.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Magid</surname>
+              <given-names>S.A.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Wei</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Jang</surname>
+              <given-names>W.D.</given-names>
+            </name>
+            <name>
+              <surname>Lin</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Fu</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Pfister</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Dynamic high-pass filtering and multi-spectral attention for image super-resolution</article-title>
+          <source>Proceedings of the IEEE/CVF International Conference on Computer Vision</source>
+          <conf-loc>Montreal, BC, Canada</conf-loc>
+          <conf-date>11&#x2013;17 October 2021</conf-date>
+          <fpage>4288</fpage>
+          <lpage>4297</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B27-sensors-24-02833">
+        <label>27.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kiakojouri</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Lu</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Mirring</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Powrie</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>L.</given-names>
+            </name>
+          </person-group>
+          <article-title>A Novel Hybrid Technique Combining Improved Cepstrum Pre-Whitening and High-Pass Filtering for Effective Bearing Fault Diagnosis Using Vibration Data</article-title>
+          <source>Sensors</source>
+          <year>2023</year>
+          <volume>23</volume>
+          <elocation-id>9048</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/s23229048</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B28-sensors-24-02833">
+        <label>28.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Moharm</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Eltahan</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Elsaadany</surname>
+              <given-names>E.</given-names>
+            </name>
+          </person-group>
+          <article-title>Wind speed forecast using LSTM and Bi-LSTM algorithms over gabal El-Zayt wind farm</article-title>
+          <source>Proceedings of the IEEE 2020 International Conference on Smart Grids and Energy Systems (SGES)</source>
+          <conf-loc>Perth, Australia</conf-loc>
+          <conf-date>23&#x2013;26 November 2020</conf-date>
+          <fpage>922</fpage>
+          <lpage>927</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B29-sensors-24-02833">
+        <label>29.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Nguyen</surname>
+              <given-names>H.D.</given-names>
+            </name>
+            <name>
+              <surname>Tran</surname>
+              <given-names>K.P.</given-names>
+            </name>
+            <name>
+              <surname>Thomassey</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Hamad</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Forecasting and Anomaly Detection approaches using LSTM and LSTM Autoencoder techniques with the applications in supply chain management</article-title>
+          <source>Int. J. Inf. Manag.</source>
+          <year>2021</year>
+          <volume>57</volume>
+          <fpage>102282</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.ijinfomgt.2020.102282</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B30-sensors-24-02833">
+        <label>30.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Sagheer</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Kotb</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised pre-training of a deep LSTM-based stacked autoencoder for multivariate time series forecasting problems</article-title>
+          <source>Sci. Rep.</source>
+          <year>2019</year>
+          <volume>9</volume>
+          <fpage>19038</fpage>
+          <pub-id pub-id-type="doi">10.1038/s41598-019-55320-6</pub-id>
+          <pub-id pub-id-type="pmid">31836728</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B31-sensors-24-02833">
+        <label>31.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Park</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Hoshi</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Kemp</surname>
+              <given-names>C.C.</given-names>
+            </name>
+          </person-group>
+          <article-title>A multimodal anomaly detector for robot-assisted feeding using an lstm-based variational autoencoder</article-title>
+          <source>IEEE Robot. Autom. Lett.</source>
+          <year>2018</year>
+          <volume>3</volume>
+          <fpage>1544</fpage>
+          <lpage>1551</lpage>
+          <pub-id pub-id-type="doi">10.1109/LRA.2018.2801475</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B32-sensors-24-02833">
+        <label>32.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Alnegheimish</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Cuesta-Infante</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Veeramachaneni</surname>
+              <given-names>K.</given-names>
+            </name>
+          </person-group>
+          <article-title>Tadgan: Time series anomaly detection using generative adversarial networks</article-title>
+          <source>Proceedings of the 2020 IEEE International Conference on Big Data (Big Data)</source>
+          <conf-loc>Atlanta, GA, USA</conf-loc>
+          <conf-date>10&#x2013;13 December 2020</conf-date>
+          <fpage>33</fpage>
+          <lpage>43</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B33-sensors-24-02833">
+        <label>33.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Chen</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Chu</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>Q.</given-names>
+            </name>
+            <name>
+              <surname>Xue</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Anomaly detection and critical SCADA parameters identification for wind turbines based on LSTM-AE neural network</article-title>
+          <source>Renew. Energy</source>
+          <year>2021</year>
+          <volume>172</volume>
+          <fpage>829</fpage>
+          <lpage>840</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.renene.2021.03.078</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B34-sensors-24-02833">
+        <label>34.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Said Elsayed</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Le-Khac</surname>
+              <given-names>N.A.</given-names>
+            </name>
+            <name>
+              <surname>Dev</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Jurcut</surname>
+              <given-names>A.D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Network anomaly detection using LSTM based autoencoder</article-title>
+          <source>Proceedings of the 16th ACM Symposium on QoS and Security for Wireless and Mobile Networks</source>
+          <conf-loc>Alicante, Spain</conf-loc>
+          <conf-date>16&#x2013;20 November 2020</conf-date>
+          <fpage>37</fpage>
+          <lpage>45</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B35-sensors-24-02833">
+        <label>35.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Goldstein</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Uchida</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>A comparative evaluation of unsupervised anomaly detection algorithms for multivariate data</article-title>
+          <source>PLoS ONE</source>
+          <year>2016</year>
+          <volume>11</volume>
+          <elocation-id>e0152173</elocation-id>
+          <pub-id pub-id-type="doi">10.1371/journal.pone.0152173</pub-id>
+          <pub-id pub-id-type="pmid">27093601</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B36-sensors-24-02833">
+        <label>36.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Aggarwal</surname>
+              <given-names>C.C.</given-names>
+            </name>
+            <name>
+              <surname>Yu</surname>
+              <given-names>P.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Outlier detection for high dimensional data</article-title>
+          <source>Proceedings of the 2001 ACM SIGMOD International Conference on Management of Data</source>
+          <conf-loc>Santa Barbara, CA, USA</conf-loc>
+          <conf-date>21&#x2013;24 May 2001</conf-date>
+          <fpage>37</fpage>
+          <lpage>46</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B37-sensors-24-02833">
+        <label>37.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Xiang</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>Min</surname>
+              <given-names>W.</given-names>
+            </name>
+          </person-group>
+          <article-title>Applying Semi-supervised cluster algorithm for anomaly detection</article-title>
+          <source>Proceedings of the IEEE 2010 Third International Symposium on Information Processing</source>
+          <conf-loc>Qingdao, China</conf-loc>
+          <conf-date>15&#x2013;17 October 2010</conf-date>
+          <fpage>43</fpage>
+          <lpage>45</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B38-sensors-24-02833">
+        <label>38.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kiran</surname>
+              <given-names>B.R.</given-names>
+            </name>
+            <name>
+              <surname>Thomas</surname>
+              <given-names>D.M.</given-names>
+            </name>
+            <name>
+              <surname>Parakkal</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>An overview of deep learning based methods for unsupervised and semi-supervised anomaly detection in videos</article-title>
+          <source>J. Imaging</source>
+          <year>2018</year>
+          <volume>4</volume>
+          <elocation-id>36</elocation-id>
+          <pub-id pub-id-type="doi">10.3390/jimaging4020036</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B39-sensors-24-02833">
+        <label>39.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lashgari</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Liang</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Maoz</surname>
+              <given-names>U.</given-names>
+            </name>
+          </person-group>
+          <article-title>Data augmentation for deep-learning-based electroencephalography</article-title>
+          <source>J. Neurosci. Methods</source>
+          <year>2020</year>
+          <volume>346</volume>
+          <fpage>108885</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.jneumeth.2020.108885</pub-id>
+          <pub-id pub-id-type="pmid">32745492</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B40-sensors-24-02833">
+        <label>40.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wulsin</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Gupta</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Mani</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Blanco</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Litt</surname>
+              <given-names>B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Modeling electroencephalography waveforms with semi-supervised deep belief nets: Fast classification and anomaly measurement</article-title>
+          <source>J. Neural Eng.</source>
+          <year>2011</year>
+          <volume>8</volume>
+          <fpage>036015</fpage>
+          <pub-id pub-id-type="doi">10.1088/1741-2560/8/3/036015</pub-id>
+          <pub-id pub-id-type="pmid">21525569</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B41-sensors-24-02833">
+        <label>41.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Manevitz</surname>
+              <given-names>L.M.</given-names>
+            </name>
+            <name>
+              <surname>Yousef</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>One-class SVMs for document classification</article-title>
+          <source>J. Mach. Learn. Res.</source>
+          <year>2001</year>
+          <volume>2</volume>
+          <fpage>139</fpage>
+          <lpage>154</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B42-sensors-24-02833">
+        <label>42.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>L&#xE4;ngkvist</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Karlsson</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Loutfi</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>A review of unsupervised feature learning and deep learning for time-series modeling</article-title>
+          <source>Pattern Recognit. Lett.</source>
+          <year>2014</year>
+          <volume>42</volume>
+          <fpage>11</fpage>
+          <lpage>24</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.patrec.2014.01.008</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B43-sensors-24-02833">
+        <label>43.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Li</surname>
+              <given-names>J.L.</given-names>
+            </name>
+            <name>
+              <surname>Zhou</surname>
+              <given-names>Y.F.</given-names>
+            </name>
+            <name>
+              <surname>Ying</surname>
+              <given-names>Z.Y.</given-names>
+            </name>
+            <name>
+              <surname>Xu</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Anomaly Detection Based on Isolated Forests</article-title>
+          <source>Proceedings of the Advances in Artificial Intelligence and Security: 7th International Conference, ICAIS 2021</source>
+          <conf-loc>Dublin, Ireland</conf-loc>
+          <conf-date>19&#x2013;23 July 2021</conf-date>
+          <fpage>486</fpage>
+          <lpage>495</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B44-sensors-24-02833">
+        <label>44.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Liu</surname>
+              <given-names>F.T.</given-names>
+            </name>
+            <name>
+              <surname>Ting</surname>
+              <given-names>K.M.</given-names>
+            </name>
+            <name>
+              <surname>Zhou</surname>
+              <given-names>Z.H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Isolation forest</article-title>
+          <source>Proceedings of the 2008 Eighth IEEE International Conference on Data Mining</source>
+          <conf-loc>Pisa, Italy</conf-loc>
+          <conf-date>15&#x2013;19 December 2008</conf-date>
+          <fpage>413</fpage>
+          <lpage>422</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B45-sensors-24-02833">
+        <label>45.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>He</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>X.</given-names>
+            </name>
+          </person-group>
+          <article-title>Time&#x2013;frequency feature extraction of acoustic emission signals in aluminum alloy MIG welding process based on SST and PCA</article-title>
+          <source>IEEE Access</source>
+          <year>2019</year>
+          <volume>7</volume>
+          <fpage>113988</fpage>
+          <lpage>113998</lpage>
+          <pub-id pub-id-type="doi">10.1109/ACCESS.2019.2935117</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B46-sensors-24-02833">
+        <label>46.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Xiang</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Qin</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Zhu</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>LSTM networks based on attention ordered neurons for gear remaining life prediction</article-title>
+          <source>ISA Trans.</source>
+          <year>2020</year>
+          <volume>106</volume>
+          <fpage>343</fpage>
+          <lpage>354</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.isatra.2020.06.023</pub-id>
+          <pub-id pub-id-type="pmid">32631591</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B47-sensors-24-02833">
+        <label>47.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Xu</surname>
+              <given-names>X.</given-names>
+            </name>
+            <name>
+              <surname>Yoneda</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Multitask air-quality prediction based on LSTM-autoencoder model</article-title>
+          <source>IEEE Trans. Cybern.</source>
+          <year>2019</year>
+          <volume>51</volume>
+          <fpage>2577</fpage>
+          <lpage>2586</lpage>
+          <pub-id pub-id-type="doi">10.1109/TCYB.2019.2945999</pub-id>
+          <pub-id pub-id-type="pmid">31689226</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B48-sensors-24-02833">
+        <label>48.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yan</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Liu</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Feng</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Memory-augmented skip-connected autoencoder for unsupervised anomaly detection of rocket engines with multi-source fusion</article-title>
+          <source>ISA Trans.</source>
+          <year>2023</year>
+          <volume>133</volume>
+          <fpage>53</fpage>
+          <lpage>65</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.isatra.2022.07.014</pub-id>
+          <pub-id pub-id-type="pmid">35871101</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B49-sensors-24-02833">
+        <label>49.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ferris</surname>
+              <given-names>M.H.</given-names>
+            </name>
+            <name>
+              <surname>McLaughlin</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Grieggs</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Ezekiel</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Blasch</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Alford</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Cornacchia</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Bubalo</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Using ROC curves and AUC to evaluate performance of no-reference image fusion metrics</article-title>
+          <source>Proceedings of the IEEE 2015 National Aerospace and Electronics Conference (NAECON)</source>
+          <conf-loc>Dayton, OH, USA</conf-loc>
+          <conf-date>15&#x2013;19 June 2015</conf-date>
+          <fpage>27</fpage>
+          <lpage>34</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B50-sensors-24-02833">
+        <label>50.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Priyanto</surname>
+              <given-names>C.Y.</given-names>
+            </name>
+            <name>
+              <surname>Hendry</surname>
+            </name>
+            <name>
+              <surname>Purnomo</surname>
+              <given-names>H.D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Combination of Isolation Forest and LSTM Autoencoder for Anomaly Detection</article-title>
+          <source>Proceedings of the 2021 2nd International Conference on Innovative and Creative Information Technology (ICITech)</source>
+          <conf-loc>Salatiga, Indonesia</conf-loc>
+          <conf-date>23&#x2013;25 September 2021</conf-date>
+          <fpage>35</fpage>
+          <lpage>38</lpage>
+          <pub-id pub-id-type="doi">10.1109/ICITech50181.2021.9590143</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B51-sensors-24-02833">
+        <label>51.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Martin-del Campo</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Sandin</surname>
+              <given-names>F.</given-names>
+            </name>
+            <name>
+              <surname>Str&#xF6;mbergsson</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Dictionary learning approach to monitoring of wind turbine drivetrain bearings</article-title>
+          <source>arXiv</source>
+          <year>2019</year>
+          <pub-id pub-id-type="arxiv">1902.01426</pub-id>
+          <pub-id pub-id-type="doi">10.2991/ijcis.d.201105.001</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B52-sensors-24-02833">
+        <label>52.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Maleki</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Maleki</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Jennings</surname>
+              <given-names>N.R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Unsupervised anomaly detection with LSTM autoencoders using statistical data-filtering</article-title>
+          <source>Appl. Soft Comput.</source>
+          <year>2021</year>
+          <volume>108</volume>
+          <fpage>107443</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.asoc.2021.107443</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+    <sec sec-type="display-objects">
+      <title>Figures and Tables</title>
+      <fig id="sensors-24-02833-f001" position="float">
+        <label>Figure 1</label>
+        <caption>
+          <p>Wavelet Packet Transform.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g001.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f002" position="float">
+        <label>Figure 2</label>
+        <caption>
+          <p>LSTM cell.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g002.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f003" position="float">
+        <label>Figure 3</label>
+        <caption>
+          <p>LSTM Autoencoder.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g003.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f004" position="float">
+        <label>Figure 4</label>
+        <caption>
+          <p>The Proposed Model Framework.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g004.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f005" position="float">
+        <label>Figure 5</label>
+        <caption>
+          <p>Gearbox Schematic for Wind Turbines.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g005.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f006" position="float">
+        <label>Figure 6</label>
+        <caption>
+          <p>Wave of Normal Data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g006.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f007" position="float">
+        <label>Figure 7</label>
+        <caption>
+          <p>Wave of Abnormal Data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g007.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f008" position="float">
+        <label>Figure 8</label>
+        <caption>
+          <p>Wave of Normal WPT eighth Data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g008.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f009" position="float">
+        <label>Figure 9</label>
+        <caption>
+          <p>Wave of Abnormal WPT eighth Data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g009.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f010" position="float">
+        <label>Figure 10</label>
+        <caption>
+          <p>HPF of Normal Data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g010.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f011" position="float">
+        <label>Figure 11</label>
+        <caption>
+          <p>HPF of Abnormal Data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g011.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f012" position="float">
+        <label>Figure 12</label>
+        <caption>
+          <p>Bandwidth of Normal Vibration eighth.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g012.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f013" position="float">
+        <label>Figure 13</label>
+        <caption>
+          <p>Bandwidth of Abnormal Vibration eighth.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g013.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f014" position="float">
+        <label>Figure 14</label>
+        <caption>
+          <p>PCA of normal data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g014.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f015" position="float">
+        <label>Figure 15</label>
+        <caption>
+          <p>PCA of abnormal data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g015.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f016" position="float">
+        <label>Figure 16</label>
+        <caption>
+          <p>Dimension reduction for PCA of normal data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g016.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f017" position="float">
+        <label>Figure 17</label>
+        <caption>
+          <p>Dimension reduction for PCA of abnormal data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g017.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f018" position="float">
+        <label>Figure 18</label>
+        <caption>
+          <p>Isolation Forest of normal data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g018.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f019" position="float">
+        <label>Figure 19</label>
+        <caption>
+          <p>Isolation Forest of abnormal data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g019.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f020" position="float">
+        <label>Figure 20</label>
+        <caption>
+          <p>Visualizations of each preprocessing. (<bold>a</bold>) PCA of raw original data; (<bold>b</bold>) PCA of raw reconstructed data; (<bold>c</bold>) HPF-PCA of original data; (<bold>d</bold>) HPF-PCA of reconstructed data; (<bold>e</bold>) WPT-HPF-PCA of original data; (<bold>f</bold>) WPT-HPF-PCA of reconstructed data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g020.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f021" position="float">
+        <label>Figure 21</label>
+        <caption>
+          <p>AUC of each data. (<bold>a</bold>) PCA data; (<bold>b</bold>) WPT-PCA data; (<bold>c</bold>) WPT-HPT-PCA data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g021.tif"/>
+      </fig>
+      <fig id="sensors-24-02833-f022" position="float">
+        <label>Figure 22</label>
+        <caption>
+          <p>Distribution and threshold of each data. (<bold>a</bold>) PCA data; (<bold>b</bold>) WPT-PCA data; (<bold>c</bold>) WPT-PCA-HPF data.</p>
+        </caption>
+        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sensors-24-02833-g022.tif"/>
+      </fig>
+      <table-wrap id="sensors-24-02833-t001" position="float">
+        <object-id pub-id-type="pii">sensors-24-02833-t001_Table 1</object-id>
+        <label>Table 1</label>
+        <caption>
+          <p>Data Explained Variance Ratio.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin"> </th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Normal Data</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Abnormal Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">Components = 515</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.9890</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.9856</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="sensors-24-02833-t002" position="float">
+        <object-id pub-id-type="pii">sensors-24-02833-t002_Table 2</object-id>
+        <label>Table 2</label>
+        <caption>
+          <p>Model loss.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin"> </th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">PCA Data</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">HPF-PCA Data</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">WPT-HPF-PCA Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle">Epoch 30</td>
+              <td align="center" valign="middle">35.0556</td>
+              <td align="center" valign="middle">0.1078</td>
+              <td align="center" valign="middle">0.0065</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Epoch 60</td>
+              <td align="center" valign="middle">24.8907</td>
+              <td align="center" valign="middle">0.0604</td>
+              <td align="center" valign="middle">0.0029</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Epoch 90</td>
+              <td align="center" valign="middle">18.6556</td>
+              <td align="center" valign="middle">0.0333</td>
+              <td align="center" valign="middle">0.0021</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Epoch 120</td>
+              <td align="center" valign="middle">14.2359</td>
+              <td align="center" valign="middle">0.0220</td>
+              <td align="center" valign="middle">0.0017</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">Epoch 150</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">11.7810</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.0181</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.0015</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="sensors-24-02833-t003" position="float">
+        <object-id pub-id-type="pii">sensors-24-02833-t003_Table 3</object-id>
+        <label>Table 3</label>
+        <caption>
+          <p>AUC Value.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin"> </th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">PCA</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">HPF-PCA</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">WPT-HPF-PCA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">AUC</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.9410</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.8622</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.9744</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+    </sec>
+    <fn-group>
+      <fn>
+        <p><bold>Disclaimer/Publisher&#x2019;s Note:</bold> The statements, opinions and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to people or property resulting from any ideas, methods, instructions or products referred to in the content.</p>
+      </fn>
+    </fn-group>
+  </back>
+</article>
