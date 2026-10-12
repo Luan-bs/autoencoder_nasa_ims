@@ -1,0 +1,83 @@
+# NASA IMS Bearing Dataset Configuration
+# Source of truth: data/raw/IMS/Readme Document for IMS Bearing Data.pdf
+
+dataset:
+  name: "NASA IMS Bearing Data"
+  provider: "Center for Intelligent Maintenance Systems (IMS), University of Cincinnati / Rexnord Corp"
+  bearings: "4x Rexnord ZA-2115 (double row)"
+  shaft_speed_rpm: 2000
+  shaft_speed_hz: 33.333333333333336
+  radial_load_lbs: 6000
+  lubrication: "Forced"
+  accelerometer: "PCB 353B33 High Sensitivity Quartz ICP"
+  daq: "NI DAQ Card 6062E"
+  sampling_rate_hz: 20000      # Canonical rate declared in PDF README (secondary literature often cites 20,480 Hz)
+  points_per_file: 20480
+  duration_per_file_s: 1.024
+  format: "ASCII (tab/space-delimited snapshot)"
+  filename_pattern: "YYYY.MM.DD.HH.MM.SS"
+
+# Theoretical fault frequencies (Hz) for 2000 RPM (33.33 Hz shaft speed)
+fault_frequencies:
+  bpfo: 236.4                  # Ball Pass Frequency Outer race (~236 Hz)
+  bpfi: 296.9                  # Ball Pass Frequency Inner race (~297 Hz)
+  bsf2x: 278.4                 # Ball Spin Frequency x 2 (~278 Hz)
+
+# FFT energy bands for feature engineering
+fft_bands:
+  low: [0, 500]
+  mid: [500, 2000]
+  high: [2000, 5000]
+  bpfo: [216, 256]             # ~236 Hz ± 8.5%
+  bpfi: [272, 322]             # ~297 Hz ± 8.5%
+  bsf2x: [255, 302]            # ~278 Hz ± 8.5%
+
+# Test sets definitions
+sets:
+  "1st_test":
+    rar_file: "data/raw/IMS/1st_test.rar"
+    interim_dir: "data/interim/1st_test"
+    expected_file_count: 2156
+    channels: 8
+    channel_mapping:
+      ch1: "Bearing 1 (x)"
+      ch2: "Bearing 1 (y)"
+      ch3: "Bearing 2 (x)"
+      ch4: "Bearing 2 (y)"
+      ch5: "Bearing 3 (x)"
+      ch6: "Bearing 3 (y)"
+      ch7: "Bearing 4 (x)"
+      ch8: "Bearing 4 (y)"
+    nominal_interval_minutes: 10
+    initial_interval_minutes: 5
+    initial_interval_files: 43
+    failure: "Bearing 3 inner race, Bearing 4 roller element"
+
+  "2nd_test":
+    rar_file: "data/raw/IMS/2nd_test.rar"
+    interim_dir: "data/interim/2nd_test"
+    expected_file_count: 984
+    channels: 4
+    channel_mapping:
+      ch1: "Bearing 1 (failure: outer race)"
+      ch2: "Bearing 2 (negative control)"
+      ch3: "Bearing 3 (negative control)"
+      ch4: "Bearing 4 (negative control)"
+    nominal_interval_minutes: 10
+    failure_bearing: 1
+    failure_channel: 1
+    failure: "Bearing 1 outer race"
+
+  "3rd_test":
+    rar_file: "data/raw/IMS/3rd_test.rar"
+    interim_dir: "data/interim/3rd_test"
+    expected_file_count: 4448
+    channels: 4
+    channel_mapping:
+      ch1: "Bearing 1"
+      ch2: "Bearing 2"
+      ch3: "Bearing 3 (failure: outer race)"
+      ch4: "Bearing 4"
+    nominal_interval_minutes: 10
+    failure: "Bearing 3 outer race"
+

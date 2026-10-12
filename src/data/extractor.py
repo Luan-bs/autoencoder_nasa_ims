@@ -35,6 +35,12 @@ from typing import Optional
 
 import yaml
 
+# Ensure UTF-8 output on Windows consoles
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 # ── Project paths ─────────────────────────────────────────────────────────────
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -324,12 +330,12 @@ def extract_set(
     # ── Count comparison ──────────────────────────────────────────────────
     if result.actual_count == expected_count:
         result.count_ok = True
-        logger.info(f"✓  Count matches expected ({expected_count}).")
+        logger.info(f"[OK] Count matches expected ({expected_count}).")
     else:
         diff = result.actual_count - expected_count
         sign = "+" if diff > 0 else ""
         msg = (
-            f"⚠  COUNT MISMATCH — expected {expected_count}, "
+            f"[WARNING] COUNT MISMATCH - expected {expected_count}, "
             f"got {result.actual_count} ({sign}{diff}). "
             "Verify the archive integrity or update expected_file_count in data.yaml."
         )
@@ -389,7 +395,7 @@ def main() -> None:
     )
 
     if result.warnings:
-        print("\n⚠  Warnings:")
+        print("\n[WARNING] Warnings:")
         for w in result.warnings:
             print(f"   - {w}")
 

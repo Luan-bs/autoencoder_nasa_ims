@@ -36,7 +36,7 @@ autoencoder_nasa_ims/
 │   ├── 03_autoencoder_training.ipynb
 │   └── 04_anomaly_detection.ipynb
 │
-├── src/autoencoder_nasa_ims/
+├── src/
 │   ├── data/              # loader, preprocessor, features
 │   ├── models/            # MLP, Conv1D, LSTM autoencoders + anomaly_detector
 │   ├── training/          # trainer, callbacks, experiment logging
