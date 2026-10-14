@@ -12,6 +12,7 @@ env/
 
 # Jupyter
 .ipynb_checkpoints/
+scripts/
 
 # ── Data ────────────────────────────────────────────────────────────────────
 # raw/ is immutable and large — excluded from git

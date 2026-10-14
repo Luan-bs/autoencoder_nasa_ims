@@ -35,7 +35,7 @@ fft_bands:
 # Test sets definitions
 sets:
   "1st_test":
-    rar_file: "data/raw/IMS/1st_test.rar"
+    rar_file: "data/raw/IMS/IMS/1st_test.rar"
     interim_dir: "data/interim/1st_test"
     expected_file_count: 2156
     channels: 8
@@ -54,7 +54,7 @@ sets:
     failure: "Bearing 3 inner race, Bearing 4 roller element"
 
   "2nd_test":
-    rar_file: "data/raw/IMS/2nd_test.rar"
+    rar_file: "data/raw/IMS/IMS/2nd_test.rar"
     interim_dir: "data/interim/2nd_test"
     expected_file_count: 984
     channels: 4
@@ -69,7 +69,7 @@ sets:
     failure: "Bearing 1 outer race"
 
   "3rd_test":
-    rar_file: "data/raw/IMS/3rd_test.rar"
+    rar_file: "data/raw/IMS/IMS/3rd_test.rar"
     interim_dir: "data/interim/3rd_test"
     expected_file_count: 4448
     channels: 4
