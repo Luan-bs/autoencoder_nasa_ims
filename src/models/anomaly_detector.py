@@ -166,13 +166,40 @@ class IsolationForestDetector(BaseAnomalyDetector):
         }
 
 
-def build_detector(model_name: str, seed: int = 42, **kwargs: Any) -> BaseAnomalyDetector:
-    """Factory function for baseline detectors."""
+def build_detector(
+    model_name: str,
+    seed: int = 42,
+    model_cfg: dict[str, Any] | None = None,
+    train_cfg: dict[str, Any] | None = None,
+) -> BaseAnomalyDetector:
+    """Factory function for all baselines (PCA, IsolationForest) and Autoencoders (MLP, Conv1D, LSTM)."""
     key = model_name.lower().strip()
+    m_cfg = model_cfg or {}
+    t_cfg = train_cfg or {}
+
     if key == "pca":
-        return PCADetector(seed=seed, **kwargs)
+        return PCADetector(
+            n_components=m_cfg.get("n_components", 0.95),
+            seed=seed,
+        )
     elif key in ("isolation_forest", "iforest", "if"):
-        return IsolationForestDetector(seed=seed, **kwargs)
+        return IsolationForestDetector(
+            n_estimators=int(m_cfg.get("n_estimators", 200)),
+            contamination=m_cfg.get("contamination", "auto"),
+            seed=seed,
+        )
+    elif key in ("mlp", "conv1d", "lstm"):
+        from src.models.autoencoder import AutoencoderDetector
+
+        return AutoencoderDetector(
+            arch=key,
+            model_cfg=m_cfg,
+            train_cfg=t_cfg,
+            seed=seed,
+        )
     else:
-        raise ValueError(f"Unsupported baseline model '{model_name}'. Choose 'pca' or 'isolation_forest'.")
+        raise ValueError(
+            f"Unsupported model '{model_name}'. Choose from: 'pca', 'isolation_forest', 'mlp', 'conv1d', 'lstm'."
+        )
+
 

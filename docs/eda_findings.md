@@ -137,10 +137,10 @@ Diagrama de divisão das partições temporais ao longo dos 984 arquivos do Set 
 
 ## 5. Artefatos Gráficos Salvos
 
-As imagens em alta resolução estão armazenadas em `reports/figures/`:
-- `reports/figures/eda_zones_timeline.png` — Visualização completa da timeline com as 4 features e marcação visual das zonas.
-- `reports/figures/eda_waveform_comparison.png` — Comparação de forma de onda temporal (Snapshots 100, 600 e 975).
-- `reports/figures/eda_fft_spectrum.png` — Comparação de espectro FFT evidenciando a BPFO (~236,4 Hz).
+As imagens em alta resolução estão armazenadas em `docs/figures/`:
+- `docs/figures/eda_zones_timeline.png` — Visualização completa da timeline com as 4 features e marcação visual das zonas.
+- `docs/figures/eda_waveform_comparison.png` — Comparação de forma de onda temporal (Snapshots 100, 600 e 975).
+- `docs/figures/eda_fft_spectrum.png` — Comparação de espectro FFT evidenciando a BPFO (~236,4 Hz).
 
 ---
 

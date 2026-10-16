@@ -488,3 +488,37 @@ def plot_score_distribution(
     return fig
 
 
+def plot_training_curve(
+    train_loss: Sequence[float],
+    best_epoch: int,
+    model_name: str,
+    seed: int,
+    output_path: str | Path | None = None,
+) -> plt.Figure:
+    """Plot training MSE loss vs epoch for PyTorch Autoencoders."""
+    set_plot_style()
+    fig, ax = plt.subplots(figsize=(9, 4.8))
+    epochs = np.arange(1, len(train_loss) + 1)
+
+    ax.plot(epochs, train_loss, color="#1f77b4", lw=1.8, label="Healthy Train MSE Loss")
+    if 1 <= best_epoch <= len(train_loss):
+        best_val = train_loss[best_epoch - 1]
+        ax.axvline(best_epoch, color="#2ca02c", linestyle="--", lw=1.5,
+                   label=f"Best Epoch ({best_epoch}) | MSE = {best_val:.5f}")
+        ax.scatter([best_epoch], [best_val], color="#2ca02c", s=60, zorder=5)
+
+    ax.set_xlabel("Epoch")
+    ax.set_ylabel("Reconstruction MSE Loss")
+    ax.set_title(f"{model_name.upper()} Autoencoder — Training Convergence (Seed {seed})")
+    ax.legend(loc="upper right")
+
+    plt.tight_layout()
+    if output_path is not None:
+        p = Path(output_path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(p, dpi=200, bbox_inches="tight")
+        plt.close(fig)
+    return fig
+
+
+

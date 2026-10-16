@@ -1,14 +1,17 @@
 """
 src/training/trainer.py
 
-Experiment runner for Unsupervised Anomaly Detection Baselines (PCA, Isolation Forest)
-with strict temporal splitting, seed reproducibility, physical FFT/BPFO + RUL explainability,
-and model-segregated artifact storage under experiments/<model>/<run_id>/.
+Unified Experiment Runner for Unsupervised Anomaly Detection Baselines (PCA, Isolation Forest)
+and Neural Autoencoders (MLP, Conv1D, LSTM) with strict temporal splitting, seed reproducibility,
+physical FFT/BPFO + RUL explainability, and model-segregated artifact storage under
+`experiments/<model>/<run_id>/`.
 
 CLI Usage:
+    .venv/Scripts/python.exe -m src.training.trainer --model all_ae --allow-dirty
+    .venv/Scripts/python.exe -m src.training.trainer --model mlp --allow-dirty
+    .venv/Scripts/python.exe -m src.training.trainer --model conv1d --allow-dirty
+    .venv/Scripts/python.exe -m src.training.trainer --model lstm --allow-dirty
     .venv/Scripts/python.exe -m src.training.trainer --model all --allow-dirty
-    .venv/Scripts/python.exe -m src.training.trainer --model pca --allow-dirty
-    .venv/Scripts/python.exe -m src.training.trainer --model isolation_forest --allow-dirty
 """
 
 from __future__ import annotations
@@ -22,12 +25,13 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import joblib
 import numpy as np
 import pandas as pd
 import sklearn
+import torch
 import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -37,12 +41,14 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.data.loader import list_ims_files, load_snapshot
 from src.data.preprocessor import load_labeling_config, prepare_data
 from src.models.anomaly_detector import build_detector
+from src.models.autoencoder import AutoencoderDetector
 from src.utils.metrics import compute_phm_metrics, select_threshold
 from src.utils.seed import set_seed
 from src.utils.visualization import (
     plot_explainability_fft_rul,
     plot_reconstruction_error_timeline,
     plot_score_distribution,
+    plot_training_curve,
 )
 
 
@@ -155,7 +161,7 @@ def run_single_experiment(
     set_name: str = "2nd_test",
     channel: str = "b1",
     seed: int = 42,
-    window_size: int = 1,
+    window_size: int | None = None,
     allow_dirty: bool = False,
 ) -> dict[str, Any]:
     """
@@ -171,6 +177,15 @@ def run_single_experiment(
         labeling_cfg = yaml.safe_load(f)
     with (PROJECT_ROOT / "configs" / "eval.yaml").open(encoding="utf-8") as f:
         eval_cfg = yaml.safe_load(f)
+    with (PROJECT_ROOT / "configs" / "models.yaml").open(encoding="utf-8") as f:
+        models_yaml = yaml.safe_load(f)
+
+    key = model_name.lower().strip()
+    m_cfg = models_yaml["models"].get(key, {})
+    t_cfg = models_yaml.get("default_training", {})
+
+    eff_window_size = int(window_size if window_size is not None else m_cfg.get("window_size_files", 1))
+    input_mode: Literal["window_flat", "window_sequence"] = m_cfg.get("input_mode", "window_flat")
 
     git_commit = _get_git_info(allow_dirty=allow_dirty)
 
@@ -178,8 +193,8 @@ def run_single_experiment(
     splits = prepare_data(
         set_name=set_name,
         channel=channel,
-        window_size=window_size,
-        mode="window_flat",
+        window_size=eff_window_size,
+        mode=input_mode,
     )
 
     features_csv_path = PROJECT_ROOT / "data" / "processed" / f"{set_name}_features.csv"
@@ -187,7 +202,7 @@ def run_single_experiment(
 
     # Fit detector on healthy training set ONLY
     t0 = time.perf_counter()
-    detector = build_detector(model_name, seed=seed)
+    detector = build_detector(key, seed=seed, model_cfg=m_cfg, train_cfg=t_cfg)
     detector.fit(splits.X_train)
     train_time_s = round(time.perf_counter() - t0, 4)
 
@@ -227,9 +242,9 @@ def run_single_experiment(
     X_alarm = splits.X_test[alarm_mask] if np.any(alarm_mask) else splits.X_test[:sustained_window]
     contribs_alarm = np.mean(detector.feature_contributions(X_alarm), axis=0)
 
-    # Map contributions back to base feature names if window_size > 1
-    if window_size > 1:
-        contribs_reshaped = contribs_alarm.reshape(window_size, len(splits.feature_names))
+    # Map contributions back to base feature names if flattened window_size > 1
+    if contribs_alarm.shape[0] != len(splits.feature_names) and eff_window_size > 1:
+        contribs_reshaped = contribs_alarm.reshape(eff_window_size, len(splits.feature_names))
         contribs_per_feat = np.mean(contribs_reshaped, axis=0)
     else:
         contribs_per_feat = contribs_alarm
@@ -268,9 +283,12 @@ def run_single_experiment(
         "set_name": set_name,
         "channel": channel,
         "seed": seed,
-        "window_size_files": window_size,
+        "window_size_files": eff_window_size,
+        "input_mode": input_mode,
         "git_commit": git_commit,
         "data_hash": data_hash,
+        "model_hyperparameters": m_cfg,
+        "training_hyperparameters": t_cfg if isinstance(detector, AutoencoderDetector) else None,
         "data_config": data_cfg,
         "labeling_config": labeling_cfg,
         "eval_config": eval_cfg,
@@ -278,11 +296,23 @@ def run_single_experiment(
     with (run_dir / "config.yaml").open("w", encoding="utf-8") as fh:
         yaml.safe_dump(config_snapshot, fh, sort_keys=False, allow_unicode=True)
 
-    # 2. Save scaler.pkl and model.pkl
+    # 2. Save scaler.pkl and model weights (model_weights.pt for PyTorch, model.pkl for sklearn)
     joblib.dump(splits.scaler, run_dir / "scaler.pkl")
-    detector.save(run_dir / "model.pkl")
+    if isinstance(detector, AutoencoderDetector):
+        detector.save(run_dir / "model_weights.pt")
+        plot_training_curve(
+            train_loss=detector.history.train_loss,
+            best_epoch=detector.history.best_epoch,
+            model_name=detector.name,
+            seed=seed,
+            output_path=run_dir / "training_curve.png",
+        )
+        device_str = detector.device_desc
+    else:
+        detector.save(run_dir / "model.pkl")
+        device_str = "cpu"
 
-    # 3. Generate and save figures in experiments/<model>/<run_id>/
+    # 3. Generate and save evaluation & explainability figures in experiments/<model>/<run_id>/
     plot_reconstruction_error_timeline(
         idx_timeline=splits.idx_timeline,
         scores_timeline=timeline_scores,
@@ -322,7 +352,10 @@ def run_single_experiment(
     )
 
     # 4. Save metrics.json with full PHM + RUL + FFT explainability
-    lib_versions = f"numpy={np.__version__};pandas={pd.__version__};sklearn={sklearn.__version__}"
+    lib_versions = (
+        f"numpy={np.__version__};pandas={pd.__version__};"
+        f"sklearn={sklearn.__version__};torch={torch.__version__}"
+    )
     full_metrics_payload = {
         "run_id": run_id,
         "model": detector.name,
@@ -330,7 +363,7 @@ def run_single_experiment(
         "test_set": set_name,
         "channel": channel,
         "seed": seed,
-        "window_size_files": window_size,
+        "window_size_files": eff_window_size,
         "threshold_strategy": thr_cfg["strategy"],
         "metrics": metrics,
         "rul_explainability": {
@@ -346,7 +379,7 @@ def run_single_experiment(
         "git_commit": git_commit,
         "data_hash": data_hash,
         "lib_versions": lib_versions,
-        "device": "cpu",
+        "device": device_str,
         "training_time_s": train_time_s,
         "timestamp": now_dt.isoformat(timespec="seconds"),
     }
@@ -361,7 +394,7 @@ def run_single_experiment(
         "test_set": set_name,
         "channel": channel,
         "seed": seed,
-        "window_size_files": window_size,
+        "window_size_files": eff_window_size,
         "recall": metrics["recall"],
         "false_alarm_rate": metrics["false_alarm_rate"],
         "first_alarm_idx": metrics["first_alarm_idx"],
@@ -375,7 +408,7 @@ def run_single_experiment(
         "git_commit": git_commit,
         "data_hash": data_hash,
         "lib_versions": lib_versions,
-        "device": "cpu",
+        "device": device_str,
         "training_time_s": train_time_s,
         "timestamp": now_dt.isoformat(timespec="seconds"),
     }
@@ -391,11 +424,11 @@ def run_model_across_seeds(
     model_name: str,
     set_name: str = "2nd_test",
     channel: str = "b1",
-    window_size: int = 1,
+    window_size: int | None = None,
     allow_dirty: bool = False,
 ) -> dict[str, Any]:
     """
-    Run a baseline model across all seeds in configs/eval.yaml ([42, 123, 456])
+    Run a model across all seeds in configs/eval.yaml ([42, 123, 456])
     and write an aggregated summary in `experiments/<model>/summary_metrics.json`.
     """
     with (PROJECT_ROOT / "configs" / "eval.yaml").open(encoding="utf-8") as f:
@@ -440,9 +473,10 @@ def run_model_across_seeds(
     model_folder = PROJECT_ROOT / "experiments" / runs[0]["model"]
     summary_payload = {
         "model": runs[0]["model"],
+        "model_metadata": runs[0]["model_metadata"],
         "test_set": set_name,
         "channel": channel,
-        "window_size_files": window_size,
+        "window_size_files": runs[0]["window_size_files"],
         "seeds": seeds,
         "aggregated_metrics": aggregated,
         "sample_feature_attribution_pct": runs[0]["feature_attribution_at_alarm_pct"],
@@ -459,20 +493,35 @@ def run_model_across_seeds(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run Unsupervised Anomaly Detection Baselines.")
+    parser = argparse.ArgumentParser(
+        description="Run Unsupervised Anomaly Detection Baselines & Neural Autoencoders."
+    )
     parser.add_argument(
         "--model",
-        default="all",
-        choices=["pca", "isolation_forest", "all"],
-        help="Baseline model to run ('pca', 'isolation_forest', or 'all').",
+        default="all_ae",
+        choices=["pca", "isolation_forest", "mlp", "conv1d", "lstm", "all_baselines", "all_ae", "all"],
+        help="Model(s) to run.",
     )
     parser.add_argument("--set", default="2nd_test", dest="set_name", help="Dataset key in configs/data.yaml.")
     parser.add_argument("--channel", default="b1", help="Channel prefix ('b1', 'b2', 'b3', 'b4', or 'all').")
-    parser.add_argument("--window-size", type=int, default=1, help="Window size L in consecutive files.")
+    parser.add_argument(
+        "--window-size",
+        type=int,
+        default=None,
+        help="Override window size L in consecutive files (defaults to configs/models.yaml).",
+    )
     parser.add_argument("--allow-dirty", action="store_true", help="Allow running with uncommitted git changes.")
     args = parser.parse_args()
 
-    models_to_run = ["pca", "isolation_forest"] if args.model == "all" else [args.model]
+    if args.model == "all_baselines":
+        models_to_run = ["pca", "isolation_forest"]
+    elif args.model == "all_ae":
+        models_to_run = ["mlp", "conv1d", "lstm"]
+    elif args.model == "all":
+        models_to_run = ["pca", "isolation_forest", "mlp", "conv1d", "lstm"]
+    else:
+        models_to_run = [args.model]
+
     for m in models_to_run:
         run_model_across_seeds(
             model_name=m,
@@ -485,4 +534,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

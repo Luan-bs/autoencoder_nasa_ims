@@ -1,0 +1,55 @@
+# Model hyperparameters configuration
+# No hyperparameters should be hardcoded in src/.
+# All models share the exact same temporal split, StandardScaler, and threshold protocol.
+
+default_training:
+  epochs: 150
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  loss: "mse"                   # Mean Squared Reconstruction Error
+  lr_scheduler_patience: 15
+  lr_scheduler_factor: 0.5
+  early_stopping_patience: 30   # Monitored strictly on TRAIN loss (never val/test)
+  min_delta: 0.00001
+
+models:
+  pca:
+    type: "sklearn"
+    input_mode: "window_flat"
+    window_size_files: 1
+    n_components: 0.95          # Retain components explaining >= 95% healthy variance
+
+  isolation_forest:
+    type: "sklearn"
+    input_mode: "window_flat"
+    window_size_files: 1
+    n_estimators: 200
+    contamination: "auto"
+
+  mlp:
+    type: "pytorch"
+    input_mode: "window_flat"
+    window_size_files: 1
+    hidden_dims: [32, 16]
+    latent_dim: 4               # Bottleneck compression (11 features -> 4 latent dims)
+    dropout: 0.0
+
+  conv1d:
+    type: "pytorch"
+    input_mode: "window_sequence"
+    window_size_files: 5        # Sequence of L=5 consecutive snapshots (50 min context)
+    channels: [16, 8]
+    kernel_size: 3
+    latent_dim: 4
+    dropout: 0.0
+
+  lstm:
+    type: "pytorch"
+    input_mode: "window_sequence"
+    window_size_files: 5        # Sequence of L=5 consecutive snapshots (never crosses gaps)
+    hidden_dim: 16
+    num_layers: 1
+    latent_dim: 4
+    dropout: 0.0
+
