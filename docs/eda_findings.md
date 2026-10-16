@@ -144,7 +144,7 @@ As imagens em alta resolução estão armazenadas em `reports/figures/`:
 
 ---
 
-## 6. Proposta de Configuração para `configs/labeling.yaml`
+## 6. Configuração Aprovada em `configs/labeling.yaml`
 
 ```yaml
 sets:
@@ -155,9 +155,38 @@ sets:
     val_start_idx: 451
     val_end_idx: 530
     test_start_idx: 531
+    test_end_idx: 981
     shutdown_idx: 982
-    note: "Definido via 01_EDA.ipynb. Defeito outer race surge no arquivo 532 (~2004.02.16 03:12)."
-    approved_by: null
-    frozen: false
+    note: "Defined via 01_EDA.ipynb. Incipient outer race defect (BPFO ~236.4 Hz) starts around file 532; motor turned off at 982."
+    approved_by: "Owner + EDA (2026-10-16)"
+    frozen: true
 ```
+
+---
+
+## 7. Investigação de Comportamentos Físicos e Anomalias de Canal (Notas Metodológicas)
+
+### 7.1 Por que o Rolamento 3 (Controle Negativo) apresenta maior ruído de base que o Rolamento 1?
+Ao observar os gráficos da EDA no período de treino saudável (`0..400`), nota-se que o **Rolamento 3 (`b3`)** apresenta métricas absolutas consistentemente superiores às do **Rolamento 1 (`b1`)**:
+
+| Canal | RMS Médio (`0..400`) | Curtose Média / Máx (`0..400`) | Crest Factor Médio / Máx | Energia Banda BPFO Média / Máx |
+| :--- | :---: | :---: | :---: | :---: |
+| **Bearing 1 (`b1` — Falha no final)** | `0,0772 g` | `3,43` / `4,16` | `5,23` / `7,72` | `7.835` / `22.624` |
+| **Bearing 2 (`b2` — Controle)** | `0,0946 g` | `3,19` / `3,51` | `4,99` / `7,93` | `21.642` / `77.860` |
+| **Bearing 3 (`b3` — Controle)** | **`0,1019 g`** | **`4,53` / `6,70`** | **`7,56` / `12,05`** | **`75.908` / `238.475`** |
+| **Bearing 4 (`b4` — Controle)** | `0,0555 g` | `3,13` / `3,81` | `4,70` / `9,24` | `4.175` / `8.199` |
+
+A análise espectral e temporal dos dados esclarece as três hipóteses levantadas:
+1. **Descarte de erro de mapeamento de canal:** O sinal de `b3` é **estritamente estacionário** ao longo de quase toda a vida do teste: seu RMS médio no treino (`0..400`) é `0,1019 ± 0,0028 g`, na validação (`451..530`) é `0,0994 ± 0,0013 g` e no teste (`531..900`) é `0,1017 ± 0,0037 g`. Ele não degrada no `2nd_test`. Apenas nos últimos ~80 arquivos (`901..981`), quando o Rolamento 1 entra em colapso severo (`RMS > 0,72 g`), a vibração extrema se propaga mecanicamente pelo eixo compartilhado (*cross-talk* estrutural), elevando o RMS de todos os demais canais (`b2`, `b3`, `b4`) e derrubando a curtose de `b3` para `3,12`.
+2. **Causa física da energia alta na banda `bpfo` (`[216, 256] Hz`) em `b3`:** Inspecionando a FFT do Canal 3 no início saudável (`idx=100`), as frequências dominantes são `[985,4 Hz, 231,4 Hz, 492,2 Hz, 984,4 Hz]`. O pico estacionário intenso em **`231,4 Hz`** corresponde exatamente ao **7º harmônico da rotação do eixo** ($7 \times 33,06\text{ Hz} = 231,45\text{ Hz}$, acompanhado de $15\times = 492,2\text{ Hz}$ e $30\times = 985,4\text{ Hz}$). Como a banda `bpfo` compreende `216–256 Hz`, esse harmônico rotacional/estrutural da posição do mancal 3 (onde o mecanismo de carga radial de 6.000 lbs atua diretamente na bancada) cai dentro da janela e infla a energia absoluta desde o instante zero.
+3. **Folga/impulsividade mecânica nativa de `b3`:** A posição do mancal 3 na bancada IMS sofre maior solicitação mecânica e desalinhamento residual (não por acaso, o Rolamento 3 foi justamente o que falhou no `1st_test` e no `3rd_test`).
+4. **Consequência prática para modelagem:** Esse fenômeno demonstra por que **regras de limiar absoluto fixo** (ex.: *"Curtose > 4,5 = falha"*) falham na indústria. Em nosso pipeline não supervisionado, cada canal é padronizado pelo seu próprio `StandardScaler` ajustado no respectivo baseline saudável (`0..400`), aprendendo o que é normal para aquela posição específica de sensor.
+
+---
+
+### 7.2 Curtose Saudável Empírica (~3,43) vs. Valor Teórico Gaussiano (3,00)
+- Embora uma distribuição normal teórica possua Curtose de Pearson igual a $3,00$, o baseline saudável real do Rolamento 1 apresenta média **$3,43$** (variando até $4,16$ no treino).
+- *Nota terminológica:* Valores de curtose de Pearson **acima de $3,0$** caracterizam uma distribuição **leptocúrtica** (caudas mais pesadas e pico mais agudo que a Gaussiana; valores $< 3,0$ seriam platicúrticos). Em rolamentos reais sob carga radial elevada (6.000 lbs), a passagem contínua dos corpos rolantes e micro-imperfeições superficiais geram impulsividade de fundo mesmo em peças novas.
+- Por esse motivo, **nenhum detector do projeto utiliza `Kurtosis = 3.0` como referência**: toda a detecção baseia-se na distribuição empírica aprendida dos arquivos `0..400` e no percentil 99 do erro de reconstrução/isolamento.
+
 

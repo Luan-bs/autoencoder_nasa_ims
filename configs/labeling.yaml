@@ -27,20 +27,22 @@
 #   approved_by          : initials + date (filled when owner approves)
 #   frozen               : set to true after first training run — DO NOT change
 
-status: "SKELETON — pending EDA approval"
+status: "ACTIVE — 2nd_test approved after EDA"
 
 sets:
 
   "2nd_test":                  # Failure: Bearing1 outer race  |  984 files
-    train_end_idx: null        # ← to fill after EDA
-    grey_start_idx: null
-    grey_end_idx: null
-    val_start_idx: null
-    val_end_idx: null
-    test_start_idx: null
-    note: "pending EDA (01_EDA.ipynb)"
-    approved_by: null
-    frozen: false
+    train_end_idx: 400         # 0..400 (401 healthy files, ~66.8h)
+    grey_start_idx: 401        # 401..450 (50 files buffer excluded)
+    grey_end_idx: 450
+    val_start_idx: 451         # 451..530 (80 healthy files for threshold selection)
+    val_end_idx: 530
+    test_start_idx: 531        # 531..981 (451 degradation/failure files; outer race fault onset at ~532)
+    test_end_idx: 981          # Last active snapshot before motor shutdown
+    shutdown_idx: 982          # 982..983 motor turned off (excluded from evaluation)
+    note: "Defined via 01_EDA.ipynb. Incipient outer race defect (BPFO ~236.4 Hz) starts around file 532; motor turned off at 982."
+    approved_by: "Owner + EDA (2026-10-16)"
+    frozen: true
 
   "1st_test":                  # Failure: B3 inner race, B4 rolling element  |  2156 files
     train_end_idx: null

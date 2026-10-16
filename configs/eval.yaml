@@ -17,36 +17,33 @@ threshold:
   # if strategy = "recall_target":
   recall_target: null         # target recall on val set (unused when strategy=percentile)
 
-# ── Metrics ─────────────────────────────────────────────────────────────────
-# PRINCIPAL metric: recall.
-# accuracy / balanced_accuracy are REPORTED but NEVER used to select model or threshold.
+# ── Metrics (Unsupervised PHM / Run-to-Failure Protocol) ────────────────────
+# Supervised static classification metrics (accuracy, balanced_accuracy,
+# precision, f1, confusion_matrix, pr_curve) were removed because run-to-failure
+# degradation is continuous and test_set contains the degradation trajectory.
 metrics:
-  primary: "recall"
+  primary: "detection_lead_hours"   # RUL at first sustained alarm (along with recall & false_alarm_rate)
 
   report_all:
-    - recall                  # fraction of failure files correctly flagged
-    - precision
-    - f1
-    - pr_auc                  # area under precision-recall curve (threshold-independent)
-    - roc_auc                 # area under ROC curve (threshold-independent)
-    - false_alarm_rate        # fraction of healthy files incorrectly flagged
-    - detection_lead_files    # files before end-of-life at first sustained alarm
-    - detection_lead_hours    # same, converted to hours
-    - accuracy                # REPORTED ONLY — not used for selection
-    - balanced_accuracy       # REPORTED ONLY — not used for selection
+    - recall                        # fraction of degradation files (test) flagged above threshold
+    - false_alarm_rate              # fraction of healthy validation files falsely flagged
+    - first_alarm_idx               # file index of first sustained alarm in degradation zone
+    - detection_lead_files          # RUL in files before failure (test_end_idx - first_alarm_idx)
+    - detection_lead_hours          # RUL in hours before failure at first sustained alarm
+    - separation_ratio              # mean(test_score) / mean(val_score) — threshold-free contrast
+    - spearman_monotonicity         # rank correlation of anomaly score vs time during degradation
+    - roc_auc                       # Mann-Whitney U separation between healthy (val) and degradation (test)
+    - train_score_mean
+    - val_score_mean
+    - test_score_mean
 
   # Sustained alarm: N consecutive files above threshold
   sustained_alarm_window_files: 5
 
-  # ALERT: if recall < accuracy in any run, mark "ALERTA" in report and explain.
-  # This is a sanity check, not a target to optimise.
-  alert_if_recall_lt_accuracy: true
-
   save_per_run:
-    - confusion_matrix        # saved as confusion_matrix.png + confusion_matrix.json
-    - pr_curve                # precision-recall curve
-    - roc_curve
-    - reconstruction_error_timeline  # error over time with threshold line
+    - reconstruction_error_timeline   # anomaly score over time with zones, threshold & 1st alarm RUL
+    - explainability_fft_rul          # FFT spectrum at 1st alarm (BPFO verification) + RUL + feature attribution
+    - score_distribution              # histogram/KDE of healthy (train/val) vs degradation (test) scores
 
 # ── Seeds ────────────────────────────────────────────────────────────────────
 seeds:
@@ -55,7 +52,8 @@ seeds:
 
 # ── Experiment management ────────────────────────────────────────────────────
 experiment:
-  require_clean_git: true     # abort if there are uncommitted changes
+  require_clean_git: true     # abort if uncommitted changes (unless --allow-dirty is passed)
+  output_dir_by_model: true   # organizes runs under experiments/<model>/<run_id>/
   run_id_format: "YYYYMMDD-HHMM_{model}_{test_set}_seed{seed}"
 
   # experiments/registry.csv — one row per run
@@ -68,16 +66,15 @@ experiment:
     - seed
     - window_size_files
     - recall
-    - precision
-    - f1
-    - pr_auc
-    - roc_auc
     - false_alarm_rate
+    - first_alarm_idx
     - detection_lead_files
     - detection_lead_hours
+    - separation_ratio
+    - spearman_monotonicity
+    - roc_auc
     - threshold_value
     - threshold_strategy
-    - alert_recall_lt_accuracy  # bool
     - git_commit
     - data_hash
     - lib_versions
@@ -85,19 +82,15 @@ experiment:
     - training_time_s
     - timestamp
 
-  # Per-run artefacts saved in experiments/<run_id>/
+  # Per-run artefacts saved in experiments/<model>/<run_id>/
   run_artefacts:
     - config.yaml             # full snapshot of all configs at run time
-    - metrics.json            # all metrics for this run
-    - training_curve.png      # loss vs epoch
-    - confusion_matrix.png
-    - confusion_matrix.json
-    - pr_curve.png
-    - roc_curve.png
+    - metrics.json            # all metrics + RUL & BPFO explainability summary
     - reconstruction_error_timeline.png
+    - explainability_fft_rul.png
+    - score_distribution.png
     - scaler.pkl              # StandardScaler fitted on train only
-    - model_weights.pt        # PyTorch state_dict (autoencoders)
-                              # or model.pkl (PCA / IsolationForest)
+    - model.pkl               # or model_weights.pt for PyTorch autoencoders
 
 # ── Baselines ────────────────────────────────────────────────────────────────
 # Same protocol, same split, same features, same evaluation for all.
