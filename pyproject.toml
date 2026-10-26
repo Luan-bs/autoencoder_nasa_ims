@@ -5,28 +5,23 @@ description = "Anomaly detection in bearings using autoencoders – NASA IMS dat
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    # Data 
+    # Data
     "numpy>=2.5.3",
     "pandas>=3.0.6",
     "scipy>=1.15.3",           # FFT, signal processing
-
-    # ML 
+    # ML
     "torch>=2.7.1",            # CUDA 12.8 wheel via [tool.uv.sources] below
     "scikit-learn>=1.7.0",     # PCA, IsolationForest, StandardScaler, metrics
-
-    # Config & experiment tracking 
+    # Config & experiment tracking
     "pyyaml>=6.0.2",           # configs/*.yaml
     "tqdm>=4.67.1",            # progress bars
-
-    # Visualisation 
+    # Visualisation
     "matplotlib>=3.11.2",
     "seaborn>=0.13.2",
-
-    # Notebooks 
+    # Notebooks
     "jupyterlab>=4.6.4",
     "ipywidgets>=8.1.7",
-
-    # Quality & tests 
+    # Quality & tests
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
 ]
