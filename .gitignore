@@ -20,8 +20,7 @@ data/raw/*
 !data/raw/.gitkeep
 
 # interim/ contains extracted ASCII files — large, reproducible from raw/
-data/interim/*
-!data/interim/.gitkeep
+
 
 # processed/ contains computed features — reproducible from interim/
 data/processed/train/*

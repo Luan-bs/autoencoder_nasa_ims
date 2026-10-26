@@ -1,0 +1,25 @@
+2026-10-25 15:03:08  INFO      ====================================================================
+2026-10-25 15:03:08  INFO        IMS Extractor  |  set: 2nd_test
+2026-10-25 15:03:08  INFO        Started : 2026-10-25T15:03:08
+2026-10-25 15:03:08  INFO        RAR     : C:\Users\Luan\Documents\GitHub\autoencoder_nasa_ims\data\raw\IMS\IMS\2nd_test.rar
+2026-10-25 15:03:08  INFO        Output  : C:\Users\Luan\Documents\GitHub\autoencoder_nasa_ims\data\interim\2nd_test
+2026-10-25 15:03:08  INFO        Expected: 984 data files
+2026-10-25 15:03:08  INFO        Dry run : False
+2026-10-25 15:03:08  INFO      ====================================================================
+2026-10-25 15:03:08  INFO      Extracting…
+2026-10-25 15:03:08  INFO      CMD: C:\Program Files\WinRAR\WinRAR.exe x C:\Users\Luan\Documents\GitHub\autoencoder_nasa_ims\data\raw\IMS\IMS\2nd_test.rar C:\Users\Luan\Documents\GitHub\autoencoder_nasa_ims\data\interim\2nd_test\ -y -ibck
+2026-10-25 15:03:46  INFO      Extraction finished.
+2026-10-25 15:03:46  INFO      No macOS artifacts found.
+2026-10-25 15:03:46  INFO      Data files found  : 984
+2026-10-25 15:03:46  INFO      Non-data files    : 0
+2026-10-25 15:03:46  INFO      [OK] Count matches expected (984).
+2026-10-25 15:03:46  INFO      --------------------------------------------------------------------
+2026-10-25 15:03:46  INFO        SUMMARY
+2026-10-25 15:03:46  INFO        Set name     : 2nd_test
+2026-10-25 15:03:46  INFO        Expected     : 984
+2026-10-25 15:03:46  INFO        Actual       : 984
+2026-10-25 15:03:46  INFO        Count OK     : True
+2026-10-25 15:03:46  INFO        Warnings     : 0
+2026-10-25 15:03:46  INFO        Log file     : C:\Users\Luan\Documents\GitHub\autoencoder_nasa_ims\data\interim\2nd_test_extraction.log
+2026-10-25 15:03:46  INFO        Finished     : 2026-10-25T15:03:46
+2026-10-25 15:03:46  INFO      ====================================================================
