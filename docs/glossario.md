@@ -1,111 +1,164 @@
-# Glossário — Mecânica/Vibração e Autoencoder
+# Glossário Técnico - Mecânica, Processamento de Sinais e Autoencoders
 
-Material de apoio pessoal (não é para a IA executora). Objetivo: entender o "porquê" de cada termo usado no projeto `autoencoder_nasa_ims`.
-
----
-
-## Parte 1 — Mecânica e vibração
-
-### SHM — Simple Harmonic Motion (Movimento Harmônico Simples)
-Movimento oscilatório periódico em que a força restauradora é proporcional ao deslocamento e aponta na direção oposta a ele. É o modelo matemático mais simples de vibração, descrito por uma função seno/cosseno.
-
-**Relação com o projeto:** a vibração "saudável" de um rolamento se aproxima de uma soma de componentes quase senoidais, ligadas à rotação do eixo e dos componentes internos. Quando aparece uma falha, o sinal deixa de ser suave e ganha **impactos** (picos curtos e repetidos), que não se explicam mais por SHM puro. Entender SHM ajuda a entender o que é o "normal" que o autoencoder vai aprender.
-
-### RPM e frequência do eixo
-O eixo gira a 2000 RPM, ou seja, 2000/60 ≈ 33,33 Hz. Essa é a frequência fundamental de rotação.
-
-**Relação com o projeto:** todas as frequências de falha (BPFO, BPFI, BSF) são múltiplos dessa frequência, calculados pela geometria do rolamento. Sem ela, os cálculos de BPFO/BPFI não fazem sentido.
-
-### Rolamento (bearing), pista interna e pista externa (inner/outer race)
-O rolamento tem um anel preso ao eixo (pista interna, gira), um anel preso à carcaça (pista externa, fixo), e esferas/rolos entre eles. Cada peça pode desenvolver defeito.
-
-**Relação com o projeto:** o tipo de defeito muda a frequência do impacto gerado. É por isso que existe BPFO (defeito na pista externa) e BPFI (defeito na pista interna), com valores diferentes.
-
-### BPFO / BPFI / BSF — frequências características de falha
-São frequências teóricas, calculadas a partir da geometria do rolamento e da rotação, em que aparecem impactos repetidos quando existe defeito em cada parte específica (pista externa, pista interna ou elemento rolante).
-
-**Relação com o projeto:** servem como **verificação física** dos resultados do modelo. Se o autoencoder disparar um alarme e, ao olhar o espectro (FFT) daquele trecho, aparecer um pico crescendo perto de 236 Hz (BPFO), isso confirma que a detecção faz sentido mecânico, e não é um artefato do modelo.
-
-### RMS — Root Mean Square
-Raiz quadrada da média dos quadrados do sinal. É uma medida de energia/amplitude geral da vibração ao longo do tempo.
-
-**Relação com o projeto:** é uma das features mais simples e mais usadas em manutenção preditiva. RMS tende a subir conforme o rolamento degrada, mas sobe relativamente tarde (quando o dano já é considerável).
-
-### Curtose (kurtosis)
-Mede o quão "pontudo" é o sinal, ou seja, o quanto ele tem picos isolados em relação a um sinal gaussiano comum (curtose ≈ 3 para distribuição normal).
-
-**Relação com o projeto:** impactos de defeito aparecem como picos raros e fortes no meio de um sinal mais calmo, o que eleva bastante a curtose. Ela costuma reagir **antes** do RMS, sendo um indicador mais sensível a falhas iniciais.
-
-### Fator de crista (crest factor)
-Razão entre o valor de pico do sinal e o RMS.
-
-**Relação com o projeto:** outro indicador sensível a impactos isolados, parecido em propósito com a curtose, mas calculado de forma diferente. Costuma ser usado junto, não no lugar.
-
-### FFT — Fast Fourier Transform / espectro de frequência
-Transforma um sinal do domínio do tempo (amplitude por instante) para o domínio da frequência (energia por frequência).
-
-**Relação com o projeto:** é a ferramenta que permite checar se o pico de energia está exatamente nas frequências BPFO/BPFI/BSF esperadas, ligando o resultado do modelo a uma causa física, e não só a um número de erro de reconstrução.
-
-### Run-to-failure
-Tipo de experimento em que a máquina roda continuamente até a peça falhar de verdade, sem interrupção ou troca preventiva.
-
-**Relação com o projeto:** é por isso que o dataset IMS tem degradação gradual registrada, e não só dois estados (novo / quebrado). É o que possibilita treinar com o início saudável e testar no restante.
-
-### RUL — Remaining Useful Life (vida útil restante)
-Estimativa de quanto tempo (ou quantos ciclos) faltam até a peça falhar, a partir do estado atual medido.
-
-**Relação com o projeto:** é um objetivo mais avançado que detecção de anomalia. Detecção de anomalia responde "está falhando?"; RUL responde "quanto tempo falta?". O projeto atual é de detecção, mas RUL é o próximo passo natural, caso queira estender depois.
-
-### PHM — Prognostics and Health Management
-É a área de pesquisa que reúne monitoramento de condição, detecção de falha e previsão de vida útil de equipamentos.
-
-**Relação com o projeto:** é o nome do campo onde este trabalho se encaixa academicamente, útil para buscar mais artigos e situar a introdução do trabalho.
+**Projeto:** Detecção Não-Supervisionada de Falhas em Rolamentos (NASA IMS Bearings)  
+**Autor:** Luan B. Sarmento  
+**Objetivo:** Estabelecer a fundamentação conceitual, física e matemática dos termos técnicos empregados no pipeline de dados, na extração de características e na modelagem por autoencoders.
 
 ---
 
-## Parte 2 — Autoencoder e aprendizado não supervisionado
+## 1. Fundamentos Mecânicos e o Sistema Físico
+
+Antes da modelagem de dados, é necessário compreender a bancada física de onde os sinais se originam.
+
+### Eixo (*Shaft*)
+Barra metálica cilíndrica acoplada ao motor elétrico, responsável por transmitir torque e movimento rotativo aos demais componentes do sistema.
+* **No contexto do projeto:** É a parte móvel central da bancada de testes da NASA. Os rolamentos sob monitoramento são montados ao redor desse eixo para sustentá-lo enquanto uma carga radial de 6.000 lbs(2.721,55 kg) é aplicada.
+
+### Rolamento (*Bearing*), Pista Interna e Pista Externa
+Componente mecânico projetado para suportar cargas e permitir a rotação suave do eixo com atrito reduzido. É constituído por quatro elementos principais:
+* **Pista interna (*inner race*):** Anel metálico montado diretamente sobre o eixo, girando na mesma velocidade que ele.
+* **Pista externa (*outer race*):** Anel metálico externo montado na carcaça fixa da máquina, permanecendo estático.
+* **Elementos rolantes (*rolling elements*):** Esferas ou rolos cilíndricos posicionados entre as duas pistas que rolam durante o movimento.
+* **Gaiola (*cage*):** Estrutura que mantém o espaçamento uniforme entre os elementos rolantes.
+* **No contexto do projeto:** Cada região do rolamento está sujeita a tensões de fadiga distintas. Quando surge uma falha (como descamação ou trinca), a localização dessa falha define a frequência dos impactos gerados.
+
+### Vibração
+Movimento oscilatório contínuo de um corpo mecânico em torno de sua posição de equilíbrio estático.
+* **No contexto do projeto:** Máquinas rotativas geram vibrações contínuas durante a operação. Acelerômetros piezelétricos instalados nas carcaças dos rolamentos medem essa oscilação sob a forma de uma série temporal de aceleração ($g$). Em estado saudável, a vibração apresenta amplitude baixa e comportamento estacionário; à medida que surgem defeitos estruturais, surgem impactos mecânicos repetitivos.
+
+### RPM (Revolutions Per Minute - Rotações Por Minuto) e Frequência do Eixo (Hz - Hertz)
+* **RPM:** Quantidade de rotações completas ($360^\circ$) que o eixo realiza no intervalo de um minuto. No banco de testes da NASA, o motor opera em regime permanente a $2000\text{ RPM}$.
+* **Hertz (Hz):** Unidade do Sistema Internacional para frequência, equivalente a ciclos ou eventos por segundo ($1\text{ Hz} = 1\text{ ciclo/s}$).
+* **Conversão e Frequência Fundamental ($f_r$):** Para converter a velocidade angular de minutos para segundos, divide-se o valor de RPM por 60:
+  $$f_r = \frac{2000\text{ RPM}}{60} \approx 33{,}33\text{ Hz}$$
+  O eixo completa cerca de $33{,}33$ voltas por segundo. Esse valor é denominado **frequência fundamental de rotação**.
+* **No contexto do projeto:** Esta frequência é a grandeza base de todo o sistema cinemático. Qualquer assimetria ou rotação no eixo gera perturbações em $33{,}33\text{ Hz}$ e seus harmônicos.
+
+### Frequências Características de Falha de Rolamentos (BPFO, BPFI, BSF)
+Frequências cinemáticas teóricas calculadas a partir da velocidade do eixo ($f_r$) e da geometria interna do rolamento (diâmetro de pistas, diâmetro dos rolos e quantidade de elementos rolantes).
+
+> **Atenção conceitual importante:** Essas frequências **não** indicam a rotação das peças. A pista externa, por exemplo, é fixa na carcaça e não gira ($0\text{ RPM}$). A unidade Hertz ($\text{Hz}$) aqui mede a **taxa de repetição dos impactos mecânicos por segundo**: cada vez que um elemento rolante passa por uma imperfeição na superfície metálica, gera-se um microimpacto brusco registrado pelo acelerômetro.
+
+* **BPFO (*Ball Pass Frequency Outer Race*):** Taxa de repetição dos impactos quando os elementos rolantes passam por um defeito situado na pista externa fixa ($\approx 236{,}4\text{ Hz}$ no rolamento Rexnord ZA-2115 a 2000 RPM).
+  * *Significado físico:* Havendo uma trinca na pista externa, passam elementos rolantes por cima dela gerando aproximadamente **236 impactos por segundo**.
+* **BPFI (*Ball Pass Frequency Inner Race*):** Taxa de impactos quando os elementos passam por um defeito na pista interna giratória ($\approx 296{,}9\text{ Hz}$).
+* **BSF (*Ball Spin Frequency*):** Frequência de rotação do próprio elemento rolante em torno de seu próprio centro geométrico ($\approx 139{,}2\text{ Hz}$). Quando o defeito está na esfera ou rolo, ele colide alternadamente contra a pista interna e externa ($2 \times \text{BSF} \approx 278{,}4\text{ Hz}$).
+* **No contexto do projeto:** Servem como **validação física** dos modelos. Se o detector acusa uma anomalia em determinado instante, a análise espectral (FFT) deve revelar o surgimento de energia concentrada exatamente nessas frequências teóricas.
+
+#### Como se calcula a BPFO ($236{,}4\text{ Hz}$)?
+A frequência de passagem de esferas pela pista externa é obtida pela equação clássica da cinemática de rolamentos:
+
+$$\text{BPFO} = \frac{N_b}{2} \cdot f_r \cdot \left(1 - \frac{d}{D} \cos\theta\right)$$
+
+Onde os parâmetros físicos do rolamento **Rexnord ZA-2115** sob rotação de $2000\text{ RPM}$ são:
+* $f_r$: Frequência fundamental de rotação do eixo ($\frac{2000}{60} \approx 33{,}333\text{ Hz}$).
+* $N_b$: Quantidade de elementos rolantes por fileira ($N_b = 16$).
+* $d$: Diâmetro do elemento rolante ($\approx 8{,}41\text{ mm}$ ou $0{,}331\text{ in}$).
+* $D$: Diâmetro médio primitivo do rolamento (*pitch diameter*, $\approx 71{,}50\text{ mm}$ ou $2{,}815\text{ in}$).
+* $\theta$: Ângulo de contato da carga ($\theta \approx 0^\circ \implies \cos(0^\circ) = 1$).
+
+Substituindo os valores na equação:
+1. Termo da fileira e rotação: $\frac{N_b}{2} \cdot f_r = \frac{16}{2} \cdot 33{,}333 = 8 \cdot 33{,}333 \approx 266{,}67$
+2. Razão geométrica dos diâmetros: $\frac{d}{D} \cos\theta \approx \frac{8{,}41}{71{,}50} \approx 0{,}1135$
+3. Cálculo final:
+   $$\text{BPFO} = 266{,}67 \cdot (1 - 0{,}1135) = 266{,}67 \cdot 0{,}8865 \approx 236{,}4\text{ Hz}$$
+
+Portanto, o valor de $\approx 236{,}4\text{ Hz}$ é uma propriedade mecânica exata: a cada segundo de funcionamento a $2000\text{ RPM}$, exatamente $236$ rolos passam pela mesma coordenada da pista externa.
+
+---
+
+## 2. Processamento de Sinais e Métricas Estatísticas
+
+As medições contínuas de aceleração são analisadas no domínio do tempo e no domínio da frequência para rastrear a evolução da degradação.
+
+### SHM - *Simple Harmonic Motion* (Movimento Harmônico Simples)
+Modelo físico ideal de oscilação periódica no qual a força de restauração é diretamente proporcional ao deslocamento, resultando em uma função senoidal pura.
+* **No contexto do projeto:** O sinal de vibração de um rolamento perfeitamente equilibrado e sem defeitos é modelado aproximadamente como a sobreposição de ondas senoidais regulares. O aparecimento de falhas quebra essa suavidade, introduzindo pulsos impulsivos e transitórios não-lineares.
+
+### RMS (*Root Mean Square* - Valor Eficaz)
+Medida estatística da magnitude média de uma quantidade que varia com o tempo, calculada como a raiz quadrada da média aritmética dos quadrados dos valores instantâneos:
+$$\text{RMS} = \sqrt{\frac{1}{N}\sum_{i=1}^{N} x_i^2}$$
+* **No contexto do projeto:** O RMS quantifica a energia global da vibração. É um indicador robusto do nível geral de severidade mecânica, embora costume se elevar apenas nos estágios intermediários e finais da degradação.
+
+### Curtose (*Kurtosis*)
+Momento estatístico de quarta ordem normalizado, que mede o grau de achatamento da distribuição de probabilidade do sinal em relação a uma distribuição normal (gaussiana, onde curtose $\approx 3$):
+$$\text{Curtose} = \frac{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{\left(\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2\right)^2}$$
+* **No contexto do projeto:** Impactos incipientes de falha manifestam-se como picos pontuais de alta amplitude intercalados por períodos calmos. Essa presença de "caudas pesadas" eleva acentuadamente a curtose antes de haver alteração perceptível no RMS, tornando-a um indicador precoce de avaria.
+
+### Fator de Crista (*Crest Factor*)
+Razão matemática entre a amplitude de pico máxima ($|x|_{\max}$) e o valor eficaz ($\text{RMS}$) da série temporal:
+$$\text{CF} = \frac{|x|_{\max}}{\text{RMS}}$$
+* **No contexto do projeto:** Permite identificar se o sinal possui impactos isolados intensos em relação à sua energia média. É amplamente utilizado de forma complementar à curtose.
+
+### FFT (*Fast Fourier Transform* - Transformada Rápida de Fourier)
+Algoritmo eficiente para computar a Transformada Discreta de Fourier (DFT), decompondo um sinal registrado no domínio do tempo em seus componentes espectrais no domínio da frequência.
+* **No contexto do projeto:** Converte o sinal de aceleração contínuo em um gráfico de amplitude por frequência. Permite inspecionar se a energia vibratória está concentrada na rotação fundamental ($33{,}33\text{ Hz}$) ou nas bandas associadas às falhas cinemáticas ($236\text{ Hz}$, $297\text{ Hz}$).
+
+---
+
+## 3. Filosofia Experimental de Manutenção e Prognóstico
+
+### *Run-to-Failure* (Ensaio até a Falha)
+Metodologia experimental em que o equipamento é mantido em funcionamento sob regime contínuo de operação até que a integridade mecânica seja completamente perdida, sem intervenção de manutenção corretiva ou preventiva.
+* **No contexto do projeto:** O conjunto de dados IMS da NASA foi gerado seguindo esse protocolo. Isso fornece o histórico completo da vida do rolamento - desde a fase inicial de acomodação mecânica (*run-in*), passando por semanas de operação saudável, até a fadiga acelerada e quebra final.
+
+### PHM (*Prognostics and Health Management*)
+Disciplina da engenharia que combina sensoriamento, processamento de sinais e aprendizado de máquina para diagnosticar o estado de integridade de ativos industriais e prognosticar sua degradação futura.
+* **No contexto do projeto:** Área acadêmica e industrial onde este estudo está circunscrito.
+
+### RUL (*Remaining Useful Life* - Vida Útil Restante)
+Tempo residual ou ciclos operacionais esperados até que um componente atinja um limiar intolerável de risco operacional ou quebra funcional.
+* **No contexto do projeto:** Representa a etapa subsequente à detecção. Este projeto foca primordialmente na detecção de anomalia (responder "quando a degradação começou?"); a estimativa de RUL responde "quanto tempo a máquina ainda opera até o colapso?".
+
+---
+
+## 4. Aprendizado Não-Supervisionado e Arquiteturas de Autoencoders
+
+A detecção de falha é formulada como uma tarefa de modelagem de densidade do estado saudável sem rótulos supervisionados.
+
+### Aprendizado Não-Supervisionado (*Unsupervised Learning*)
+Paradigma de aprendizado de máquina no qual o algoritmo infere representações e padrões intrínsecos a partir de dados de entrada sem depender de classes ou rótulos prévios fornecidos por especialistas.
+* **No contexto do projeto:** Os modelos são ajustados exclusivamente com amostras extraídas dos primeiros dias de ensaio, quando se tem certeza física de que o rolamento está intacto. O modelo nunca é exposto a dados de defeito durante a etapa de treinamento.
 
 ### Autoencoder
-Rede neural treinada para reconstruir sua própria entrada, passando por um "gargalo" (camada menor que a entrada) no meio.
+Arquitetura de rede neural artificial composta por duas seções funcionais principais - o codificador (*encoder*) e o decodificador (*decoder*) - cujo objetivo é reconstruir o vetor de entrada $\mathbf{x}$ minimizando a divergência com a saída reconstruída $\hat{\mathbf{x}}$.
 
-**Relação com o projeto:** ao forçar os dados por um gargalo, o modelo é obrigado a aprender só os padrões mais importantes do sinal saudável. Dados fora desse padrão (falha) ficam mal reconstruídos.
+```
+Entrada x (D dimensões) ───► [ Encoder ] ───► Espaço Latente z (d dimensões, d << D) ───► [ Decoder ] ───► Saída Reconstruída x̂
+```
 
-### Encoder / decoder / bottleneck (gargalo) / espaço latente
-Encoder comprime a entrada até o gargalo; decoder tenta reconstruir a entrada original a partir dele. O gargalo é a representação comprimida, também chamada de espaço latente.
+### Espaço Latente (*Latent Space* / *Bottleneck*)
+Camada intermediária estreita da rede neural que atua como um gargalo de informação. 
+* **Conceito Intuitivo:** O espaço latente é um conjunto compacto de números onde as características essenciais do sinal são resumidas. Trata-se de uma representação de dimensionalidade reduzida que preserva os padrões fundamentais dos dados, de modo que, ao serem alimentados em equações subsequentes (as camadas do decodificador), o sinal original é restaurado com alta fidelidade.
+* **No contexto do projeto:** Se a entrada possui $D$ dimensões (ex.: 2048 amostras brutas ou $K$ métricas de engenharia) e o gargalo possui dimensão $d \ll D$, o modelo é forçado a reter somente as dinâmicas do sinal saudável. A escolha da dimensão latente é crítica: um gargalo excessivamente largo pode memorizar ruídos e sinais anômalos; um gargalo excessivamente estreito não preserva a variabilidade operacional saudável.
 
-**Relação com o projeto:** o tamanho do gargalo é uma decisão de projeto: pequeno demais perde informação até de dados saudáveis; grande demais deixa o modelo "decorar" tudo, inclusive falhas, o que destrói a detecção.
+### Erro de Reconstrução (*Reconstruction Error*)
+Diferença calculada ponto a ponto entre o vetor original $\mathbf{x}$ e a saída reconstruída $\hat{\mathbf{x}}$, frequentemente expressa pelo Erro Quadrático Médio (MSE) ou Erro Absoluto Médio (MAE):
+$$\text{MSE}(\mathbf{x}, \hat{\mathbf{x}}) = \frac{1}{D}\sum_{j=1}^{D} (x_j - \hat{x}_j)^2$$
+* **No contexto do projeto:** Constitui o escore de anomalia contínuo. Enquanto o rolamento opera em condições idênticas às de treinamento, a reconstrução é precisa e o erro permanece reduzido. No momento em que anomalias mecânicas se manifestam no sinal, a rede não dispõe de parâmetros treinados para sintetizá-las, resultando na elevação proporcional do erro.
 
-### Erro de reconstrução (reconstruction error)
-Diferença entre a entrada original e a saída reconstruída pelo autoencoder, normalmente medida por MSE ou MAE.
+### Limiar de Decisão (*Anomaly Threshold*)
+Valor de corte escalar aplicado sobre a série temporal do erro de reconstrução, determinando a transição do estado classificado entre "saudável" e "anômalo".
+* **No contexto do projeto:** O limiar é estabelecido exclusivamente a partir do conjunto de validação saudável (por critérios estatísticos como média $+ 3\sigma$ ou percentis pré-definidos). O conjunto de teste nunca é consultado para calibrar esse parâmetro, resguardando a integridade metodológica.
 
-**Relação com o projeto:** é a métrica central do método. Erro baixo = parecido com o que o modelo viu no treino (saudável). Erro alto = fora do padrão aprendido (possível falha).
+### Vazamento de Informação (*Data Leakage*)
+Contaminação indevida do processo de modelagem pela inclusão acidental de dados provenientes do conjunto de validação, teste ou do futuro temporal durante o ajuste de hiperparâmetros, escalonamento ou treinamento.
+* **No contexto do projeto:** Como séries temporais de degradação possuem forte autocorrelação temporal, o particionamento de dados respeita rigorosamente a divisão cronológica (*temporal split*). Os parâmetros de normalização (como média e desvio padrão do `StandardScaler`) são aprendidos estritamente na partição de treino.
 
-### Aprendizado não supervisionado
-Treino sem rótulos: o modelo aprende só a partir da estrutura dos dados, sem alguém dizer "isso é falha" e "isso é saudável" exemplo a exemplo.
+### *Overfitting* em Modelos Não-Supervisionados
+Fenômeno em que o modelo ajusta parâmetros para memorizar peculiaridades pontuais e ruídos específicos dos dados de treinamento, em detrimento do padrão global subjacente.
+* **No contexto de autoencoders:** Apresenta uma consequência particular: caso a rede possua capacidade representativa exagerada (ou um espaço latente amplo demais), ela pode se tornar uma função identidade trivial. Nesse cenário, o autoencoder aprenderá a reconstruir qualquer sinal arbitrário - inclusive dados com falha -, anulando sua capacidade de gerar erro elevado na presença de anomalias.
 
-**Relação com o projeto:** o autoencoder nunca vê exemplo de falha no treino. Ele só aprende "normal", por isso os rótulos existem apenas para avaliação (no `labeling.yaml`), nunca para treinar.
+---
 
-### Limiar (threshold) de anomalia
-Valor de corte no erro de reconstrução, acima do qual uma amostra é classificada como anomalia.
+## 5. Modelos de Referência (*Baselines*)
 
-**Relação com o projeto:** é a peça que transforma um número contínuo (erro) em uma decisão binária (saudável/falha). Escolhido só na validação, nunca olhando o teste, para não "trapacear" o resultado.
+Para demonstrar a utilidade e o valor agregado das arquiteturas neurais profundas, o pipeline compara o desempenho dos autoencoders com algoritmos clássicos consagrados na literatura.
 
-### Vazamento de dados (data leakage)
-Quando informação do conjunto de teste (ou do futuro) influencia, de forma indevida, o treino ou a escolha de hiperparâmetros/limiar.
+### PCA (*Principal Component Analysis* - Análise de Componentes Principais)
+Método estatístico linear não-paramétrico que projeta os dados originais sobre um conjunto ortogonal de direções ordenadas pela máxima variância (componentes principais).
+* **No contexto do projeto:** O PCA é utilizado como um autoencoder linear de referência. Se um autoencoder neural profundo não apresentar ganho expressivo de detecção em relação à projeção linear do PCA, evidencia-se que a dinâmica da falha sob análise pode ser satisfatoriamente capturada por relações lineares de menor custo computacional.
 
-**Relação com o projeto:** é o erro mais comum e mais grave nesse tipo de estudo. Por isso o protocolo exige split temporal, normalização ajustada só no treino, e limiar escolhido só na validação.
-
-### PCA — Principal Component Analysis
-Técnica clássica (não é rede neural) que também comprime os dados em menos dimensões, de forma linear, e pode medir erro de reconstrução do mesmo jeito.
-
-**Relação com o projeto:** é um dos baselines do projeto. Se o autoencoder (não linear) não superar o PCA (linear), isso é um resultado importante a discutir, não motivo para descartar.
-
-### Isolation Forest
-Algoritmo de detecção de anomalia baseado em árvores de decisão, que isola pontos "fora do padrão" com menos divisões do que pontos "normais".
-
-**Relação com o projeto:** é o segundo baseline, de uma família de método bem diferente (não é reconstrução), o que dá mais força à comparação.
-
-### Overfitting (no contexto de autoencoder saudável)
-Quando o modelo aprende até os ruídos específicos dos dados de treino, em vez do padrão geral.
-
-**Relação com o projeto:** aqui tem uma armadilha ao contrário do usual: se o gargalo for grande demais, o autoencoder pode aprender a reconstruir **qualquer coisa** bem, inclusive falha, zerando a capacidade de detecção. Validação ajuda a flagrar isso.
+### *Isolation Forest*
+Algoritmo de detecção de anomalias baseado em conjuntos de árvores de decisão aleatórias que parte do princípio de que observações anômalas necessitam de menos divisões para serem isoladas do restante dos dados.
+* **No contexto do projeto:** Atua como um *baseline* representativo de uma família metodológica distinta (baseada em isolamento e densidade espacial, e não em reconstrução residual), enriquecendo o rigor comparativo do estudo.

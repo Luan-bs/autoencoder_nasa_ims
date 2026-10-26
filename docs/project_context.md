@@ -1,4 +1,4 @@
-# Contexto do Projeto — Autoencoder NASA IMS Bearings
+# Contexto do Projeto - Autoencoder NASA IMS Bearings
 
 > **Uso:** Este documento é o ponto de entrada para qualquer IA, colaborador ou
 > ferramenta (NotebookLM, RAG, etc.) que precise entender o projeto sem contexto
@@ -16,7 +16,7 @@ Detecção **não-supervisionada** de falhas em rolamentos industriais usando
    rolamento).
 2. Na inferência, o autoencoder tenta reconstruir o sinal de entrada.
 3. Quando o rolamento começa a se degradar, o sinal muda e o **erro de
-   reconstrução aumenta** — esse erro é o sinal de anomalia.
+   reconstrução aumenta** - esse erro é o sinal de anomalia.
 
 O projeto **não é supervisionado**: não há rótulo por arquivo indicando
 "saudável" ou "com falha". Os rótulos surgem de um protocolo temporal
@@ -25,7 +25,7 @@ de qualquer treino.
 
 ---
 
-## 2. Dataset — NASA IMS Bearings
+## 2. Dataset - NASA IMS Bearings
 
 ### Origem
 - **Fonte:** [NASA Open Data Portal](https://data.nasa.gov/dataset/ims-bearings)
@@ -50,7 +50,7 @@ de qualquer treino.
 | Taxa de amostragem | **20.000 Hz** (declarado no PDF; valor canônico adotado) |
 | Pontos por arquivo | 20.480 |
 | Duração por arquivo | ~1,024 s (snapshot) |
-| Formato | ASCII — cada linha é um ponto de vibração |
+| Formato | ASCII - cada linha é um ponto de vibração |
 | Nome do arquivo | Timestamp da coleta: `YYYY.MM.DD.HH.MM.SS` |
 
 > **Nota taxa:** Literatura secundária cita 20.480 Hz (20.480 pts / 1,024 s).
@@ -88,9 +88,9 @@ Shaft speed = 33,33 Hz (2.000 RPM ÷ 60)
 
 | Modo | Frequência |
 |---|---|
-| BPFO — Ball Pass Frequency Outer race | ~236 Hz |
-| BPFI — Ball Pass Frequency Inner race | ~297 Hz |
-| BSF×2 — Ball Spin Frequency × 2 | ~278 Hz |
+| BPFO - Ball Pass Frequency Outer race | ~236 Hz |
+| BPFI - Ball Pass Frequency Inner race | ~297 Hz |
+| BSF×2 - Ball Spin Frequency × 2 | ~278 Hz |
 
 ### Lacunas de timestamp
 Intervalos nominais entre arquivos: 10 min (5 min nos primeiros 43 do Set 1).
@@ -99,7 +99,7 @@ parado à noite). Janelas e sequências LSTM **nunca cruzam essas lacunas**.
 
 ---
 
-## 3. Protocolo experimental (FIXO — igual para todos os modelos)
+## 3. Protocolo experimental (FIXO - igual para todos os modelos)
 
 ### 3.1 Modelos comparados
 | Tipo | Arquitetura | Input |
@@ -159,15 +159,15 @@ Janela de entrada do modelo = L arquivos consecutivos (L configurável; L=1 como
 ### 3.7 Métricas reportadas (sempre todas)
 | Métrica | Uso |
 |---|---|
-| **Recall** | Principal — fração de arquivos de falha corretamente detectados |
+| **Recall** | Principal - fração de arquivos de falha corretamente detectados |
 | Precision | Reportar |
 | F1 | Reportar |
 | PR-AUC | Independente de limiar |
 | ROC-AUC | Independente de limiar |
 | Taxa de falso alarme | Em dados saudáveis |
 | Antecedência de detecção | Arquivos/horas antes do fim de vida no primeiro alarme sustentado |
-| Accuracy | Reportar apenas — **NUNCA** usar para selecionar modelo |
-| Balanced Accuracy | Reportar apenas — **NUNCA** usar para selecionar modelo |
+| Accuracy | Reportar apenas - **NUNCA** usar para selecionar modelo |
+| Balanced Accuracy | Reportar apenas - **NUNCA** usar para selecionar modelo |
 
 > **ALERTA automático:** se recall < accuracy em qualquer run, marcar
 > "ALERTA" no relatório. Isso indica desbalanceamento mascarando a performance.
@@ -181,11 +181,11 @@ autoencoder_nasa_ims/
 │
 ├── configs/
 │   ├── data.yaml          ← parâmetros do dataset (FONTE: PDF README)
-│   ├── labeling.yaml      ← split temporal — CONGELADO antes do treino
+│   ├── labeling.yaml      ← split temporal - CONGELADO antes do treino
 │   └── eval.yaml          ← protocolo de avaliação fixo para todos os modelos
 │
 ├── data/
-│   ├── raw/               ← IMUTÁVEL — nunca modificar
+│   ├── raw/               ← IMUTÁVEL - nunca modificar
 │   │   └── IMS/IMS/
 │   │       ├── 1st_test.rar
 │   │       ├── 2nd_test.rar
@@ -259,14 +259,14 @@ autoencoder_nasa_ims/
 |---|---|
 | Python | 3.12 |
 | Gerenciador de pacotes | uv 0.12+ |
-| PyTorch | 2.7.1 — wheel CUDA 12.8 |
+| PyTorch | 2.7.1 - wheel CUDA 12.8 |
 | scikit-learn | 1.7.0 (PCA, IsolationForest, métricas) |
 | numpy, pandas, scipy | 2.5+, 3.0+, 1.15+ |
 | pyyaml | 6.0+ (leitura de configs/) |
 
 ### Instalação
 ```bash
-# Único comando — instala tudo, inclusive PyTorch CUDA 12.8
+# Único comando - instala tudo, inclusive PyTorch CUDA 12.8
 uv sync
 
 # Verificar device
@@ -285,7 +285,7 @@ Cada run de treino tem um **run_id único**: `YYYYMMDD-HHMM_{modelo}_{set}_seed{
 Exemplo: `20241028-1430_mlp_2nd_test_seed42`
 
 ### Regras obrigatórias
-1. Rodar `git status` antes de treinar — **abortar se houver mudanças não commitadas**.
+1. Rodar `git status` antes de treinar - **abortar se houver mudanças não commitadas**.
 2. Cada run salva em `experiments/<run_id>/` um snapshot completo:
    config, seed, commit, hash dos dados, versões das libs, métricas, figuras,
    scaler, pesos do modelo.
@@ -304,7 +304,7 @@ Exemplo: `20241028-1430_mlp_2nd_test_seed42`
 | Scaler fit só no treino | Nunca toca val/teste |
 | Limiar escolhido só na val | Nunca olhar o teste para isso |
 | labeling.yaml congelado | Antes do primeiro treino |
-| Mesmo protocolo para todos | MLP, Conv1D, LSTM, PCA, IF — comparáveis |
+| Mesmo protocolo para todos | MLP, Conv1D, LSTM, PCA, IF - comparáveis |
 | data/raw imutável | Nunca extrair para dentro de raw/ |
 | Não remover outliers de degradação | São o sinal de interesse |
 | Recall é a métrica principal | Accuracy não seleciona nada |
@@ -317,7 +317,7 @@ Exemplo: `20241028-1430_mlp_2nd_test_seed42`
 |---|---|
 | Estrutura de pastas e configs | ✅ Concluído |
 | pyproject.toml + dependências | ✅ Concluído (aguardando `uv sync`) |
-| `src/data/extractor.py` | ✅ Implementado — aguardando execução aprovada |
+| `src/data/extractor.py` | ✅ Implementado - aguardando execução aprovada |
 | Extração do `2nd_test.rar` | ⏳ Aguardando aprovação para rodar |
 | `src/data/loader.py` | 🔲 A implementar |
 | `01_EDA.ipynb` | 🔲 A implementar |
@@ -335,10 +335,10 @@ Exemplo: `20241028-1430_mlp_2nd_test_seed42`
 |---|---|
 | **Autoencoder** | Rede neural que comprime e reconstrói o input. Erro de reconstrução alto = anomalia |
 | **Run-to-failure** | Experimento que roda até o rolamento falhar naturalmente |
-| **BPFO** | Ball Pass Frequency Outer race — frequência de defeito na pista externa |
-| **BPFI** | Ball Pass Frequency Inner race — pista interna |
-| **BSF** | Ball Spin Frequency — elemento rolante |
-| **RUL** | Remaining Useful Life — vida útil restante |
+| **BPFO** | Ball Pass Frequency Outer race - frequência de defeito na pista externa |
+| **BPFI** | Ball Pass Frequency Inner race - pista interna |
+| **BSF** | Ball Spin Frequency - elemento rolante |
+| **RUL** | Remaining Useful Life - vida útil restante |
 | **PHM** | Prognostics and Health Management |
 | **run_id** | Identificador único de um experimento de treino |
 | **Zona cinza** | Período entre dados claramente saudáveis e claramente degradados; excluído da avaliação |
