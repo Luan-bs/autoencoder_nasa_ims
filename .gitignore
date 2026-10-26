@@ -18,9 +18,7 @@ scripts/
 # raw/ is immutable and large — excluded from git
 data/raw/*
 !data/raw/.gitkeep
-
-# interim/ contains extracted ASCII files — large, reproducible from raw/
-
+data/interim/*
 
 # processed/ contains computed features — reproducible from interim/
 data/processed/train/*
