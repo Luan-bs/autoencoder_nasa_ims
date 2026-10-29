@@ -14,6 +14,9 @@ Antes da modelagem de dados, é necessário compreender a bancada física de ond
 Barra metálica cilíndrica acoplada ao motor elétrico, responsável por transmitir torque e movimento rotativo aos demais componentes do sistema.
 * **No contexto do projeto:** É a parte móvel central da bancada de testes da NASA. Os rolamentos sob monitoramento são montados ao redor desse eixo para sustentá-lo enquanto uma carga radial de 6.000 lbs(2.721,55 kg) é aplicada.
 
+![Bancada de Testes NASA IMS — Motor, Eixo, Rolamentos e Acelerômetros](img/IMS_testsetup.webp)
+*Figura 1: Diagrama da bancada experimental da NASA IMS mostrando o motor elétrico, o eixo central, os quatro mancais com rolamentos (Bearing 1 a 4) e os sensores acelerômetros instalados nas carcaças, acompanhado da fotografia do rolamento Rexnord ZA-2115.*
+
 ### Rolamento (*Bearing*), Pista Interna e Pista Externa
 Componente mecânico projetado para suportar cargas e permitir a rotação suave do eixo com atrito reduzido. É constituído por quatro elementos principais:
 * **Pista interna (*inner race*):** Anel metálico montado diretamente sobre o eixo, girando na mesma velocidade que ele.
@@ -21,6 +24,9 @@ Componente mecânico projetado para suportar cargas e permitir a rotação suave
 * **Elementos rolantes (*rolling elements*):** Esferas ou rolos cilíndricos posicionados entre as duas pistas que rolam durante o movimento.
 * **Gaiola (*cage*):** Estrutura que mantém o espaçamento uniforme entre os elementos rolantes.
 * **No contexto do projeto:** Cada região do rolamento está sujeita a tensões de fadiga distintas. Quando surge uma falha (como descamação ou trinca), a localização dessa falha define a frequência dos impactos gerados.
+
+![Anatomia e Componentes Internos de um Rolamento](img/bearing.webp)
+*Figura 2: Componentes estruturais de um rolamento: pista externa (outer ring), pista interna (inner ring), elementos rolantes (rolling elements) e gaiola (cage).*
 
 ### Vibração
 Movimento oscilatório contínuo de um corpo mecânico em torno de sua posição de equilíbrio estático.

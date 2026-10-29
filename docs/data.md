@@ -8,6 +8,9 @@
 
 ## Setup experimental
 
+![Bancada Experimental NASA IMS e Rolamento Rexnord ZA-2115](img/IMS_testsetup.webp)
+*Figura 1: Diagrama esquemático da bancada de testes da NASA IMS com o motor elétrico CA, o eixo rotativo acoplado, os 4 rolamentos sob teste (Bearings 1 a 4), o mecanismo de aplicação de carga radial e o posicionamento dos acelerômetros. No topo, fotografia real do rolamento de rolos de dupla fileira Rexnord ZA-2115 utilizado no experimento.*
+
 | Parâmetro | Valor |
 |---|---|
 | Rolamentos | 4× Rexnord ZA-2115 (dupla fileira) |
