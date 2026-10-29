@@ -14,6 +14,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+REPORTS_DIR = PROJECT_ROOT / "reports"
+
 
 def set_plot_style() -> None:
     """Configure matplotlib defaults for publication-quality figures."""
