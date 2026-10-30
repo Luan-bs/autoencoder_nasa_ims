@@ -50,7 +50,8 @@ autoencoder_nasa_ims/
 │   └── lstm/                      # Runs por seed + summary_metrics.json (LSTM Autoencoder)
 │
 ├── notebooks/
-│   └── 01_EDA.ipynb               # Notebook interativo de exploração de sinais, FFT e zonas
+│   ├── 01_EDA.ipynb               # Notebook interativo de exploração de sinais, FFT e zonas
+│   └── 03_deepod_benchmark.ipynb  # Benchmark de Deep SVDD, DIF e TranAD (deepod) vs. MLP Autoencoder
 │
 ├── src/
 │   ├── data/                      # extractor.py, loader.py, features.py, preprocessor.py
