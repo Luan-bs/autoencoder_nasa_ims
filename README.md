@@ -85,6 +85,7 @@ autoencoder_nasa_ims/
 │   ├── 01_EDA_01.ipynb            # Análise exploratória integrada aos módulos de visualização de src/
 │   ├── 02_preprocess.ipynb        # Estudo de extração de features, split temporal e normalização
 │   ├── 03_modeling.ipynb          # Treinamento passo a passo do MLP Autoencoder e detecção de RUL
+│   └── 03_deepod_benchmark.ipynb  # Benchmark de Deep SVDD, DIF e TranAD (deepod) vs. MLP Autoencoder
 │   ├── 04_cross_bearing_eval.ipynb# Avaliação cruzada de generalização entre rolamentos/testes
 │   └── models/                    # Pesos e predições salvos durante os estudos nos notebooks
 │
