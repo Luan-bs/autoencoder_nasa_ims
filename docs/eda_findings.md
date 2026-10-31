@@ -131,16 +131,17 @@ Diagrama de divisão das partições temporais ao longo dos 984 arquivos do Set 
    - `plot_fft_spectrum_comparison`: plota os espectros de frequência destacando a BPFO (~236,4 Hz) e seus harmônicos $2\times$ e $3\times$.
 
 4. **Notebooks:**
-   - `notebooks/01_EDA.ipynb` e `notebooks/EDA.ipynb`: notebooks completos, executados e com todas as saídas e visualizações salvas.
+   - `notebooks/01_EDA.ipynb` e `notebooks/01_EDA_01.ipynb`: notebooks completos, executados e com todas as saídas e visualizações salvas.
 
 ---
 
 ## 5. Artefatos Gráficos Salvos
 
-As imagens em alta resolução estão armazenadas em `docs/figures/`:
-- `docs/figures/eda_zones_timeline.png` — Visualização completa da timeline com as 4 features e marcação visual das zonas.
-- `docs/figures/eda_waveform_comparison.png` — Comparação de forma de onda temporal (Snapshots 100, 600 e 975).
-- `docs/figures/eda_fft_spectrum.png` — Comparação de espectro FFT evidenciando a BPFO (~236,4 Hz).
+As imagens em alta resolução estão armazenadas em `reports/` (na raiz do projeto):
+- `reports/eda_zones_timeline.png` — Visualização completa da timeline com as 4 features e marcação visual das zonas.
+- `reports/eda_waveform_comparison.png` — Comparação de forma de onda temporal (Snapshots 100, 600 e 975).
+- `reports/eda_fft_spectrum.png` — Comparação de espectro FFT evidenciando a BPFO (~236,4 Hz).
+- `reports/evolucao_completa_rolamento_1.png` — Painel evolutivo das métricas físicas do Rolamento 1 ao longo do teste.
 
 ---
 
